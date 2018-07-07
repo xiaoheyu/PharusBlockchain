@@ -1,0 +1,70 @@
+@import '~@angular/material/_theming.scss';
+
+
+
+@include mat-core();
+$app-primary: mat-palette($mat-red,A400,A200,A100);
+$app-accent:  mat-palette($mat-indigo);
+$app-warn:    mat-palette($mat-red);
+
+$app-theme: mat-dark-theme($app-primary, $app-accent, $app-warn);
+@include angular-material-theme($app-theme);
+
+
+//legacy css from last version
+.mat-tab-labels {
+    background-color: #116CC9;
+}
+
+h2
+{
+    width: 80%;
+}
+h1 {
+    font-weight:bold;
+}
+body {
+    background-color:#F0F0F0;
+    font-family: 'Raleway','Source Sans Pro', 'Arial';
+}
+.container {
+    margin-left: 1%;
+}
+label {
+    display:block;
+    margin-bottom:10px;
+}
+input {
+    padding:10px;
+    width: 80%;
+    margin-bottom: 1em;
+}
+button {
+    margin: 2em 0;
+    padding: 1em 4em;
+    display:block;
+}
+
+#sample {
+    padding:1em;
+    background-color:#fff;
+    margin: 1em 0;
+    width: 80%;
+}
+
+#balance {
+    padding:1em;
+    background-color:#fff;
+    margin: 1em 0;
+}
+
+#address {
+    padding:1em;
+    background-color:#fff;
+    margin: 1em 0;
+}
+.mat-tab-label-content 
+{
+    font-weight:bold;
+    color:white;
+}

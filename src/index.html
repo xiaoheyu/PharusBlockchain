@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Walletui</title>
+  <base href="/">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+</head>
+<body>
+  <app-root></app-root>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/gh/ethereum/web3.js/dist/web3.min.js"></script>
+  <script>
+      if (typeof web3 !== 'undefined') {
+          web3 = new Web3(web3.currentProvider);
+      } else {
+          // set the provider you want from Web3.providers
+          web3 = new Web3(new Web3.providers.HttpProvider("http://localhost:8545"));
+      }
+      //debug
+      console.log(typeof web3)
+  web3.eth.defaultAccount = web3.eth.accounts[0];
+  
+  var account = web3.eth.defaultAccount
+  var balance = web3.eth.getBalance(web3.eth.defaultAccount).toNumber()
+  
+  console.log("This is the balance");
+  console.log(balance);
+  console.log("This is the Account");
+  console.log(account);
+  
+       var CoursetroContract = web3.eth.contract(
+        [
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "_fName",
+				"type": "string"
+			},
+			{
+				"name": "_age",
+				"type": "uint256"
+			}
+		],
+		"name": "setInstructor",
+		"outputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [],
+		"name": "getInstructor",
+		"outputs": [
+			{
+				"name": "",
+				"type": "string"
+			},
+			{
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	}
+]
+);
+  
+  var Coursetro = CoursetroContract.at('0x6050b2318833bb4b56116f09e7316a1822a68db4');
+  
+  console.log(Coursetro);
+  window.onload=function(){
+
+  $("#balance").html(balance);
+  $("#address").html(account);
+  Coursetro.getInstructor(function(error, result){
+          if(!error)
+              {	
+        console.log(result);
+                  $("#sample").html(result[0]+' ('+result[1]+' years old)');
+         
+                  console.log(result);
+              }
+          else
+              console.error(error);
+      });
+  
+      $("#button").click(function() {
+          Coursetro.setInstructor($("#name").val(), $("#age").val());
+      });
+
+}
+  
+  
+ 
+  
+  </script>
+</body>
+</html>
