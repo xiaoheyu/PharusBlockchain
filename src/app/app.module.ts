@@ -9,6 +9,19 @@ import { Service1Component } from './service1/service1.component';
 import { Service2Component } from './service2/service2.component';
 import { EDIComponent } from './edi/edi.component';
 import { FormsModule }   from '@angular/forms';
+import { RouterModule, Routes } from '@angular/router';
+import {MatCardModule} from '@angular/material/card';
+import {MatGridListModule} from '@angular/material/grid-list';
+import {MatDividerModule} from '@angular/material/divider';
+import { EdiIntroComponent } from './edi-intro/edi-intro.component';
+import { Edi2Component } from './edi2/edi2.component';
+
+const appRoutes: Routes = [
+  { path: 'edi-form', component: EDIComponent },
+  { path: 'edi-form2', component: Edi2Component }
+];
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -16,13 +29,23 @@ import { FormsModule }   from '@angular/forms';
     Service1Component,
     Service2Component,
     EDIComponent,
+    EdiIntroComponent,
+    Edi2Component,
   ],
   imports: [
+    RouterModule.forRoot(
+      appRoutes,
+      { enableTracing: true } // <-- debugging purposes only
+    ),
     BrowserModule,
     BrowserAnimationsModule,
     MatTabsModule,
     MatToolbarModule,
-    FormsModule
+    FormsModule,
+    MatCardModule,
+    MatGridListModule,
+    MatDividerModule,
+    RouterModule,
 
   ],
   providers: [],

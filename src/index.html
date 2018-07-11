@@ -15,6 +15,7 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <script src="https://cdn.jsdelivr.net/gh/ethereum/web3.js/dist/web3.min.js"></script>
+  
   <script>
       if (typeof web3 !== 'undefined') {
           web3 = new Web3(web3.currentProvider);
@@ -29,10 +30,20 @@
   var account = web3.eth.defaultAccount
   var balance = web3.eth.getBalance(web3.eth.defaultAccount).toNumber()
   
-  console.log("This is the balance");
-  console.log(balance);
-  console.log("This is the Account");
-  console.log(account);
+  var account2 = web3.eth.accounts[1];
+  var balance2 = web3.eth.getBalance(account2).toNumber()
+  
+  var account3 = web3.eth.accounts[2];
+  var balance3 = web3.eth.getBalance(account3).toNumber()
+
+  var account4 = web3.eth.accounts[3];
+  var balance4 = web3.eth.getBalance(account4).toNumber()
+  
+  var account5 = web3.eth.accounts[4];
+  var balance5 = web3.eth.getBalance(account5).toNumber()
+
+  var account6 = web3.eth.accounts[5];
+  var balance6 = web3.eth.getBalance(account6).toNumber()
   
        var CoursetroContract = web3.eth.contract(
         [
@@ -80,24 +91,23 @@
   console.log(Coursetro);
   window.onload=function(){
 
-  $("#balance").html(balance);
-  $("#address").html(account);
-  Coursetro.getInstructor(function(error, result){
-          if(!error)
-              {	
-        console.log(result);
-                  $("#sample").html(result[0]+' ('+result[1]+' years old)');
-         
-                  console.log(result);
-              }
-          else
-              console.error(error);
-      });
-  
-      $("#button").click(function() {
-          Coursetro.setInstructor($("#name").val(), $("#age").val());
-      });
+  $("#balance").html("Balance: "+balance.toString().substring(0,10)+"..");
+  $("#address").html("Account: "+account.toString().substring(0,10)+"..");
 
+  $("#balance2").html("Balance: "+balance2.toString().substring(0,8)+"..");
+  $("#address2").html("Account: "+account2.toString().substring(0,8)+"..");
+
+  $("#balance3").html("Balance: "+balance3.toString().substring(0,8)+"..");
+  $("#address3").html("Account: "+account3.toString().substring(0,8)+"..");
+
+  $("#balance4").html("Balance: "+balance4.toString().substring(0,8)+"..");
+  $("#address4").html("Account: "+account4.toString().substring(0,8)+"..");
+
+  $("#balance5").html("Balance: "+balance5.toString().substring(0,8)+"..");
+  $("#address5").html("Account: "+account5.toString().substring(0,8)+"..");
+
+  $("#balance6").html("Balance: "+balance6.toString().substring(0,8)+"..");
+  $("#address6").html("Account: "+account6.toString().substring(0,8)+"..");
 }
   
   

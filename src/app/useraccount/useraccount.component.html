@@ -1,60 +1,91 @@
-<div class="container">
-
+<div class="container-fluid">
+  
   <div class="row">
-    <h1 class="col-xs-12 col-lg-12">Account Information</h1>
+    <h1 id="title1">Account Overview</h1>
   </div>
   
+  <div class="row">
+    <h2 id="title2">Description:</h2>
+    <span>This is the description of the accounts.</span>
+  </div>
+  
+  <div class="row middle">
+      <a href="">
+      <mat-card class="col-lg-2 col-md-2 col-xs-3">
+          <mat-card-header>
+          <span mat-card-avatar class="example-header-image" ></span>
+          </mat-card-header>
+          <mat-card-title> Account 1</mat-card-title>
+          <mat-card-subtitle id="balance" >Balance </mat-card-subtitle>
+          <mat-card-content id="address">address</mat-card-content>
+      </mat-card>
+      </a>
 
-<div class="row"> 
-<span>
-  <label for="name" class="col-xs-6 control-label">Current Account Address</label>
-  <h2 id="address"></h2> 
-</span>
-<div class="col-xs-6"></div>
+      <a href="">
+      <mat-card class="col-lg-2 col-md-2 col-xs-3">
+          <mat-card-header>
+          <span mat-card-avatar class="example-header-image" ></span>
+          </mat-card-header>
+          <mat-card-title> Account 2</mat-card-title>
+          <mat-card-subtitle id="balance2" >Balance </mat-card-subtitle>
+          <mat-card-content id="address2">address</mat-card-content>
+      </mat-card>
+      </a>
+
+      <a href="">
+      <mat-card class="col-lg-2 col-md-2 col-xs-3">
+          <mat-card-header>
+          <span mat-card-avatar class="example-header-image" ></span>
+          </mat-card-header>
+          <mat-card-title> Account 3</mat-card-title>
+          <mat-card-subtitle id="balance3" >Balance </mat-card-subtitle>
+          <mat-card-content id="address3">address</mat-card-content>
+      </mat-card>
+      </a>
+
+      <a href="">
+      <mat-card class="col-lg-2 col-md-2 col-xs-3">
+          <mat-card-header>
+          <span mat-card-avatar class="example-header-image" ></span>
+          </mat-card-header>
+          <mat-card-title> Account 4</mat-card-title>
+          <mat-card-subtitle id="balance4" >Balance </mat-card-subtitle>
+          <mat-card-content id="address4">address</mat-card-content>
+      </mat-card>
+      </a>
+
+      <a href="">
+      <mat-card class="col-lg-2 col-md-2 col-xs-3">
+          <mat-card-header>
+          <span mat-card-avatar class="example-header-image" ></span>
+          </mat-card-header>
+          <mat-card-title> Account 5</mat-card-title>
+          <mat-card-subtitle id="balance5" >Balance </mat-card-subtitle>
+          <mat-card-content id="address5">address</mat-card-content>
+      </mat-card>
+      </a>
+
+      <a href="">
+      <mat-card class="col-lg-2 col-md-2 col-xs-3">
+          <mat-card-header>
+          <span mat-card-avatar class="example-header-image" ></span>
+          </mat-card-header>
+          <mat-card-title> Account 6</mat-card-title>
+          <mat-card-subtitle id="balance6" >Balance </mat-card-subtitle>
+          <mat-card-content id="address6">address</mat-card-content>
+      </mat-card>
+      </a> 
+  </div>
+
+  <div class="row">
+    <a href="">
+    <table>
+      <tr>
+        <td id="lefthalf">+</td>
+        <td id="righthalf">ADD ACCOUNT</td>
+      </tr>
+    </table>
+  </a>
+  </div>
 </div>
 
-<div class="row">
-<span>
-  <label for="name" class="col-xs-6 control-label">Current Balance</label>
-  <h2 id="balance"></h2>
-</span> 
-<div class="col-xs-6"></div>
-</div>
-
-
-<div class="row">
-<h1 class="col-lg-12 col-xs-12">Smart Contract Set Example</h1>
-</div>
-
-<div class="row">
-  <label for="name" class="col-xs-6 control-label">Name</label>
-  <div class="col-xs-6"></div>
-</div>
-
-<div class="row">
-    <input id="name" type="text">
-</div>
-
-<div class="row">
-  <label for="name" class="col-xs-12 col-md-12 col-lg-12 control-label">Age</label>
-  <div class="col-xs-6 col-md-12 col-lg-12"></div>
-</div>
-
-<div class="row">
-<input id="age" type="text">
-</div>
-
-<div class="row">
-    <h2  class="col-lg-12 col-md-12 col-xs-12" id="sample"></h2> 
-</div>
-
-<div class="row">
-    <button id="button">Update</button>
-</div>
-
-</div>
-
-<script>
-  document.getElementById("balance").innerHTML=balance;
-  document.getElementById("address").innerHTML=account;
-</script>

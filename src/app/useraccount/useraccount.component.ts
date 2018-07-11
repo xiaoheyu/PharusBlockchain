@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,VERSION } from '@angular/core';
 
 @Component({
   selector: 'app-useraccount',
@@ -6,10 +6,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./useraccount.component.scss']
 })
 export class UseraccountComponent implements OnInit {
-
+  cardIndex:string[]=["account1","account2"] ;
   constructor() { }
 
   ngOnInit() {
+ 
   }
+
 
 }
