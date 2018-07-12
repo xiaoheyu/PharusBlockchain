@@ -28,42 +28,16 @@ body {
     font-family: 'Raleway','Source Sans Pro', 'Arial';
 }
 .container {
-    margin:auto;
+    margin-left:1%;
+    margin-right:1%;
     padding:auto;
+    width:auto;
 }
 label {
     display:block;
     margin-bottom:10px;
 }
-// input {
-//     padding:10px;
-//     width: 80%;
-//     margin-bottom: 1em;
-// }
-// button {
-//     margin: 2em 0;
-//     padding: 1em 4em;
-//     display:block;
-// }
 
-// #sample {
-//     padding:1em;
-//     background-color:#fff;
-//     margin: 1em 0;
-//     width: 80%;
-// }
-
-// #balance {
-//     padding:1em;
-//     background-color:#fff;
-//     margin: 1em 0;
-// }
-
-// #address {
-//     padding:1em;
-//     background-color:#fff;
-//     margin: 1em 0;
-// }
 .mat-tab-label-content 
 {
     font-weight:bold;

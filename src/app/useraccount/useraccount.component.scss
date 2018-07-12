@@ -22,7 +22,7 @@ a
 table {
     height:80px;
     width:250px;
-    margin-top:5%;
+    margin-top:2%;
     margin-bottom:5%;
     background:white;
     color:black;
@@ -61,6 +61,7 @@ table:hover {
   }
 
   mat-card {
+    margin:1%;
     background: #fff;
     border-radius: 2px;
     // display: inline-block;
@@ -83,5 +84,5 @@ table:hover {
 
   .middle
   {
-      margin-top:8%;
+      margin-top:3%;
   }

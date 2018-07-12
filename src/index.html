@@ -12,7 +12,10 @@
 </head>
 <body>
   <app-root></app-root>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script
+        src="https://code.jquery.com/jquery-3.3.1.min.js"
+        integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <script src="https://cdn.jsdelivr.net/gh/ethereum/web3.js/dist/web3.min.js"></script>
   
@@ -88,7 +91,7 @@
   
   var Coursetro = CoursetroContract.at('0x6050b2318833bb4b56116f09e7316a1822a68db4');
   
-  console.log(Coursetro);
+
   window.onload=function(){
 
   $("#balance").html("Balance: "+balance.toString().substring(0,10)+"..");
