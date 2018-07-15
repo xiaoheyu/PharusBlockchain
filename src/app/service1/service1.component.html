@@ -1,3 +1,7 @@
+<!-- <link rel="stylesheet" href="https://unpkg.com/bootstrap-material-design@4.1.1/dist/css/bootstrap-material-design.min.css" integrity="sha384-wXznGJNEXNG1NFsbm0ugrLFMQPWswR3lds2VeinahP8N0zJw9VWSopbjv2x7WCvX" crossorigin="anonymous"> -->
+<script src="https://unpkg.com/popper.js@1.12.6/dist/umd/popper.js" integrity="sha384-fA23ZRQ3G/J53mElWqVJEGJzU0sTs+SvzG8fXVWP+kJQ1lwFAOkcUOysnlKJC33U" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/bootstrap-material-design@4.1.1/dist/js/bootstrap-material-design.js" integrity="sha384-CauSuKpEqAFajSpkdjv3z9t8E7RlpJ1UP0lKM/+NdtSarroVKu069AlsRPKkFBz9" crossorigin="anonymous"></script>
+<script>$(document).ready(function() { $('body').bootstrapMaterialDesign(); });</script>
 <div class="container">
   
     <div class="row">
@@ -10,7 +14,8 @@
     </div>
     
     <div class="row middle">
-        <mat-card class="col-lg-2 col-md-2 col-xs-3">
+      <a>
+        <mat-card id="cardOne" class="col-lg-2 col-md-2 col-xs-3">
             <mat-card-header>
             <span mat-card-avatar class="example-header-image" ></span>
             </mat-card-header>
@@ -18,7 +23,7 @@
             <mat-card-subtitle>COST: $1000 </mat-card-subtitle>
             <mat-card-content>This is the description of Model 1</mat-card-content>
         </mat-card>
-  
+      </a>
         <mat-card class="col-lg-2 col-md-2 col-xs-3">
             <mat-card-header>
             <span mat-card-avatar class="example-header-image" ></span>
@@ -28,19 +33,60 @@
             <mat-card-content>This is the description of Model 2</mat-card-content>
         </mat-card>
 
-        <a href="" class="col-lg-2 col-md-2 col-xs-3" >
-            <table>
-              <tr>
-                <td id="lefthalf">+</td>
-                <td id="righthalf">ADD MODEL</td>
-              </tr>
-            </table>
-          </a>
        
+          <div class=' col-lg-2 col-md-2 col-xs-3'>
+            <form id="purchase" action="http://18.236.104.52:8080/sendCoin/" method="GET">
+              <div class="form-group">
+            <select class="custom-select" id="accountSelect" name="address_a">
+            <option selected value=''>Your available accounts for MODEL 1</option>
+            </select>
+            <small class="form-text text-muted">Choose an account from the dropdown list above and submit to proceed.</small>
+              </div>
+            <button type="submit" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalLong">Submit</button>
+            <button type="button" class="btn btn-info" id="refreshList">Refresh the list</button>
+            </form>
+          
+          
+          
+          
+          <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Purchase Info</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body" id="modelMessage">
+                ...
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              </div>
+              </div>
+            </div>
+            </div>
+          
+          
+          
+            <div class="jumbotron">
+              <ol class="list-group">
+              </ol>
+              <button type="button" id="cleanHistory" class="btn btn-warning">Clean History</button>
+            </div>
+          </div>
     </div>
   
     <div class="row">
-      
+      <a href="" class="col-lg-2 col-md-2 col-xs-3" >
+        <table>
+          <tr>
+            <td id="lefthalf">+</td>
+            <td id="righthalf">ADD MODEL</td>
+          </tr>
+        </table>
+      </a>
     </div>
   </div>
   
