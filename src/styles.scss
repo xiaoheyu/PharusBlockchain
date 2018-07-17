@@ -15,6 +15,13 @@ $app-theme: mat-dark-theme($app-primary, $app-accent, $app-warn);
 .mat-tab-labels {
     background-color: #116CC9;
 }
+mat-tab-header.mat-tab-header
+{
+    position: sticky;
+    position: -webkit-sticky; /* For macOS/iOS Safari */
+    top: 0; /* Sets the sticky toolbar to be on top */
+    z-index: 1000; /* Ensure that your app's content doesn't overlap the toolbar */
+}
 
 h2
 {
