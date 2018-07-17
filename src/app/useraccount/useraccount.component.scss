@@ -61,6 +61,7 @@ table:hover {
   }
 
   mat-card {
+    max-width: 400px;
     margin:1%;
     background: #fff;
     border-radius: 2px;
@@ -72,11 +73,16 @@ table:hover {
   mat-card:hover {
     box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
   }
-  mat-card-title,mat-card-subtitle
+  mat-card-title
   {
       color:black;
+      font-weight: bold;
   }
-
+  mat-card-subtitle
+  {
+      font-size:150%;
+      color:black;
+  }
   mat-card-content
   {
       color:gray;
@@ -86,3 +92,13 @@ table:hover {
   {
       margin-top:3%;
   }
+
+  mat-card-footer
+  {
+      background:gray;
+      font-size:90%;
+      color:white;
+      box-shadow: 0 -2px 8px gray;
+  }
+
+  

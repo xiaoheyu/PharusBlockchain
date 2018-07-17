@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatTabsModule} from '@angular/material';
 import { AppComponent } from './app.component';
@@ -15,10 +15,24 @@ import {MatGridListModule} from '@angular/material/grid-list';
 import {MatDividerModule} from '@angular/material/divider';
 import { EdiIntroComponent } from './edi-intro/edi-intro.component';
 import { Edi2Component } from './edi2/edi2.component';
+import { MDBBootstrapModule } from 'angular-bootstrap-md';
+import { Service1Model1FormComponent } from './service1-model1-form/service1-model1-form.component';
+import {MatSelectModule} from '@angular/material/select';
+import { Service1Model2FormComponent } from './service1-model2-form/service1-model2-form.component';
 
 const appRoutes: Routes = [
   { path: 'edi-form', component: EDIComponent },
-  { path: 'edi-form2', component: Edi2Component }
+  { path: 'edi-form2', component: Edi2Component },
+  {
+    path: 'compose',
+    component: Service1Model1FormComponent,
+    outlet: 'popup'
+  },
+  {
+    path: 'compose2',
+    component: Service1Model2FormComponent,
+    outlet: 'popup'
+  }
 ];
 
 
@@ -31,8 +45,11 @@ const appRoutes: Routes = [
     EDIComponent,
     EdiIntroComponent,
     Edi2Component,
+    Service1Model1FormComponent,
+    Service1Model2FormComponent,
   ],
   imports: [
+    MDBBootstrapModule.forRoot(),
     RouterModule.forRoot(
       appRoutes,
       { enableTracing: true } // <-- debugging purposes only
@@ -46,8 +63,10 @@ const appRoutes: Routes = [
     MatGridListModule,
     MatDividerModule,
     RouterModule,
+    MatSelectModule
 
   ],
+  schemas:[ NO_ERRORS_SCHEMA ],
   providers: [],
   bootstrap: [AppComponent]
 })

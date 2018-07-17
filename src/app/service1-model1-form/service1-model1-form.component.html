@@ -1,0 +1,39 @@
+<script src="https://unpkg.com/popper.js@1.12.6/dist/umd/popper.js" integrity="sha384-fA23ZRQ3G/J53mElWqVJEGJzU0sTs+SvzG8fXVWP+kJQ1lwFAOkcUOysnlKJC33U" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/bootstrap-material-design@4.1.1/dist/js/bootstrap-material-design.js" integrity="sha384-CauSuKpEqAFajSpkdjv3z9t8E7RlpJ1UP0lKM/+NdtSarroVKu069AlsRPKkFBz9" crossorigin="anonymous"></script>
+<script>$(document).ready(function() { $('body').bootstrapMaterialDesign(); });</script>
+    <form id="purchase" action="http://18.236.104.52:8080/sendCoin/" method="GET">
+      <div class="form-group">
+    <select class="custom-select" id="accountSelect" name="address_a">
+    <option selected value=''>Your available accounts for MODEL 1</option>
+    </select>
+    <small class="form-text text-muted">Choose an account from the dropdown list above and submit to proceed.</small>
+      </div>
+    <button type="submit" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalLong">Purchase Model 1 at {{modelOnePrice}}</button>
+    </form>
+   
+  <!-- <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Purchase Info</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body" id="modelMessage">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+      </div>
+    </div>
+    </div> -->
+  
+  
+  
+    <div class="jumbotron">
+      <ol reversed class="list-group">
+      </ol>
+      <button type="button" id="cleanHistory" class="btn btn-warning">Clean History</button>
+    </div>

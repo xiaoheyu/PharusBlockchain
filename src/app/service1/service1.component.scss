@@ -1,4 +1,4 @@
-// @import url('https://unpkg.com/bootstrap-material-design@4.1.1/dist/css/bootstrap-material-design.min.css integrity="sha384-wXznGJNEXNG1NFsbm0ugrLFMQPWswR3lds2VeinahP8N0zJw9VWSopbjv2x7WCvX" crossorigin="anonymous"');
+
 #title1 
 {
     padding-top:2%;
@@ -61,7 +61,7 @@ table:hover {
     width: 100px;
   }
 
-  mat-card {
+  #serviceOneContainer mat-card {
     margin:1%;
     background: #fff;
     border-radius: 2px;
@@ -70,15 +70,15 @@ table:hover {
     transition: all 0.3s cubic-bezier(.25,.8,.25,1);
   }
   
-  mat-card:hover {
+  #serviceOneContainer mat-card:hover {
     box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
   }
-  mat-card-title,mat-card-subtitle
+  #serviceOneContainer mat-card-title,mat-card-subtitle
   {
       color:black;
   }
 
-  mat-card-content
+  #serviceOneContainer mat-card-content
   {
       color:gray;
   }
@@ -87,4 +87,16 @@ table:hover {
   {
       margin-top:8%;
       margin-bottom: 5%;
+  }
+
+  .container {
+    width:auto;
+    margin-left: 1%;
+    margin-right: 1%;
+    padding: auto;
+    width: auto;
+}
+
+#serviceOneContainer a.active mat-card{
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
   }
