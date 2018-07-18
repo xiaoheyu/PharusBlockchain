@@ -29,21 +29,23 @@ export class Service1Model1FormComponent implements OnInit,AfterViewChecked {
     //why doesn't it work outside?
     this.modelOnePrice=15;
     for (let i of data.account_list){
-      if (Number(i['balance'])>=this.modelOnePrice){
+      if (Number(i['balance'])>=this.modelOnePrice*Math.pow(10,18)){
         modelOneList.push(i);
       }
     };
     $("option").remove();
-    $('select').append('<option selected value=\'\'>Your available accounts for MODEL 1</option>');
+    $('select').append('<option disabled selected value >Your available accounts for MODEL 1</option>');
     for (let i of modelOneList){
-      $('select').append('<option value='+i.account+'>'+'Account address: '+i.account+' Balance: '+(i.balance/Math.pow(10,18)).toFixed(3)+'</option>');
+      $('select').append('<option value='+i.account+'>'+'Account address: '+i.account+' Balance: '+(i.balance/Math.pow(10,18)).toFixed(2)+'</option>');
       };
     //submit form using ajax
     $('#purchase').submit(function(event){
       event.preventDefault();
       var $form=$(this),
       url=$form.attr('action');
-      var posting =$.get(url,{address_a:$('#accountSelect').val(), trans_value:this.modelOnePrice});
+      this.modelOnePrice=15;
+      
+      var posting =$.get(url,{address_a:$('#accountSelect').val(), trans_value:this.modelOnePrice*Math.pow(10,18)});
       posting.done(function(data){
         this.modelOnePrice=15;
         $("option").remove();
@@ -58,19 +60,19 @@ export class Service1Model1FormComponent implements OnInit,AfterViewChecked {
             //why doesn't it work outside?
             this.modelOnePrice=15;
             for (let i of data.account_list){
-              if (Number(i['balance'])>=this.modelOnePrice){
+              if (Number(i['balance'])>=this.modelOnePrice*Math.pow(10,18)){
                 modelOneList.push(i);
               }
             };
             for (let i of modelOneList){
-              $('select').append('<option value='+i.account+'>'+'Account address: '+i.account+' Balance: '+(i.balance/Math.pow(10,18)).toFixed(3)+'</option>');
+              $('select').append('<option value='+i.account+'>'+'Account address: '+i.account+' Balance: '+(i.balance/Math.pow(10,18)).toFixed(2)+'</option>');
             };
           }
   
         });
 
         $('#modelMessage').text(data);
-        $('ol').prepend('<li><a class="list-group-item">\n<div class=\"bmd-list-group-col\">'+'<p class=\"list-group-item-heading\"> Transaction Address: '+data+'</p>'+'<p class=\"list-group-item-text\">'+this.modelOnePrice+'</p></div></a></li>');
+        $('ol').prepend('<li><a class="list-group-item">\n<div class=\"bmd-list-group-col\">'+'<p class=\"list-group-item-heading\"> Transaction Address:<br>'+data+'</p>'+'</div></a></li>');
       });
     });
 

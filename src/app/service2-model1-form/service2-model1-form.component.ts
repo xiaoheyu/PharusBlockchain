@@ -5,35 +5,36 @@ import * as $ from 'jquery';
 var modelOneList:any[]=[];
 export {modelOneList};
 
+
 @Component({
-  selector: 'app-service1-model2-form',
-  templateUrl: './service1-model2-form.component.html',
-  styleUrls: ['./service1-model2-form.component.scss'],
+  selector: 'app-service2-model1-form',
+  templateUrl: './service2-model1-form.component.html',
+  styleUrls: ['./service2-model1-form.component.scss'],
   // encapsulation: ViewEncapsulation.None
 })
 
-export class Service1Model2FormComponent implements OnInit,AfterViewChecked {
+export class Service2Model1FormComponent implements OnInit,AfterViewChecked {
 
   //binding variables
   selectedAccount: string;
 
   //this is used to control how many times the function inside ngAfterViewChecked() will be run
-  private serviceTwoCount:number;
-  public modelTwoPrice:number;
+  private serviceOneCount:number;
+  public modelOnePrice:number;
   
   test:any[];
   //Handler function for ajax
   successAjax(data){
     modelOneList=[];
     //why doesn't it work outside?
-    this.modelTwoPrice=50;
+    this.modelOnePrice=15;
     for (let i of data.account_list){
-      if (Number(i['balance'])>=this.modelTwoPrice*Math.pow(10,18)){
+      if (Number(i['balance'])>=this.modelOnePrice*Math.pow(10,18)){
         modelOneList.push(i);
       }
     };
     $("option").remove();
-    $('select').append('<option disabled selected value>Your available accounts for MODEL 2</option>');
+    $('select').append('<option disabled selected value >Your available accounts for MODEL 1</option>');
     for (let i of modelOneList){
       $('select').append('<option value='+i.account+'>'+'Account address: '+i.account+' Balance: '+(i.balance/Math.pow(10,18)).toFixed(2)+'</option>');
       };
@@ -42,10 +43,11 @@ export class Service1Model2FormComponent implements OnInit,AfterViewChecked {
       event.preventDefault();
       var $form=$(this),
       url=$form.attr('action');
-      this.modelTwoPrice=50;
-      var posting =$.get(url,{address_a:$('#accountSelect').val(), trans_value:this.modelTwoPrice*Math.pow(10,18)});
+      this.modelOnePrice=15;
+      
+      var posting =$.get(url,{address_a:$('#accountSelect').val(), trans_value:this.modelOnePrice*Math.pow(10,18)});
       posting.done(function(data){
-        this.modelTwoPrice=50;
+        this.modelOnePrice=15;
         $("option").remove();
         $.ajax({
           url:'http://18.236.104.52:8080/accounts',
@@ -53,12 +55,12 @@ export class Service1Model2FormComponent implements OnInit,AfterViewChecked {
           dataType:'json',
           success:function(data)
           {
-            $('select').append('<option selected value=\'\'>Your available accounts for MODEL 2</option>');
+            $('select').append('<option selected value=\'\'>Your available accounts for MODEL 1</option>');
             modelOneList=[];
             //why doesn't it work outside?
-            this.modelTwoPrice=50;
+            this.modelOnePrice=15;
             for (let i of data.account_list){
-              if (Number(i['balance'])>=this.modelTwoPrice*Math.pow(10,18)){
+              if (Number(i['balance'])>=this.modelOnePrice*Math.pow(10,18)){
                 modelOneList.push(i);
               }
             };
@@ -70,7 +72,7 @@ export class Service1Model2FormComponent implements OnInit,AfterViewChecked {
         });
 
         $('#modelMessage').text(data);
-        $('ol').prepend('<li><a class="list-group-item">\n<div class=\"bmd-list-group-col\">'+'<p class=\"list-group-item-heading\"> Transaction Address: '+data+'</div></a></li>');
+        $('ol').prepend('<li><a class="list-group-item">\n<div class=\"bmd-list-group-col\">'+'<p class=\"list-group-item-heading\"> Transaction Address:<br>'+data+'</p>'+'</div></a></li>');
       });
     });
 
@@ -82,11 +84,11 @@ export class Service1Model2FormComponent implements OnInit,AfterViewChecked {
 
 
   ngAfterViewChecked(){
-	  if ($('#serviceOneContainer').length===1){
-		  this.serviceTwoCount++;
+	  if ($('#serviceTwoContainer').length===1){
+		  this.serviceOneCount++;
 		  //run only when service 1 is truly rendered
-		  if(this.serviceTwoCount===1){
-				var response=$.ajax({
+		  if(this.serviceOneCount===1){
+				$.ajax({
 					url:'http://18.236.104.52:8080/accounts',
 					type:'GET',
           dataType:'json',
@@ -100,7 +102,7 @@ export class Service1Model2FormComponent implements OnInit,AfterViewChecked {
 	 //reset the count whenever Service 1 component is no longer rendered 
 	  else
 	  {
-		  this.serviceTwoCount=0;
+		  this.serviceOneCount=0;
 	  }
   }
   
@@ -109,8 +111,8 @@ export class Service1Model2FormComponent implements OnInit,AfterViewChecked {
     
   }
   constructor() {
-    this.serviceTwoCount=0;
-    this.modelTwoPrice=50;
+    this.serviceOneCount=0;
+    this.modelOnePrice=15;
     this.test=[1,2,3,4,5]
    }
 

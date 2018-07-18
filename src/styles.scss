@@ -11,10 +11,11 @@ $app-theme: mat-dark-theme($app-primary, $app-accent, $app-warn);
 @include angular-material-theme($app-theme);
 
 
-//legacy css from last version
+
 .mat-tab-labels {
     background-color: #116CC9;
 }
+
 mat-tab-header.mat-tab-header
 {
     position: sticky;
@@ -25,10 +26,17 @@ mat-tab-header.mat-tab-header
 
 h2
 {
-    width: 80%;
+    
+    padding-left:1%;
 }
 h1 {
+    padding-top:2%;
+    padding-left:1%;
     font-weight:bold;
+}
+span
+{
+    padding-left:1%;
 }
 body {
     background-color:#F0F0F0;
@@ -40,6 +48,12 @@ body {
     padding:auto;
     width:auto;
 }
+// .container-fluid {
+//     margin-left:0.5%;
+//     margin-right:0.5%;
+//     padding:auto;
+//     width:auto;
+// }
 label {
     display:block;
     margin-bottom:10px;
@@ -50,3 +64,40 @@ label {
     font-weight:bold;
     color:white;
 }
+
+mat-card {
+    min-width: 350px;
+    max-width: 350px;
+    margin:auto 2% auto 2%;
+    background: #fff;
+    border-radius: 2px;
+    // display: inline-block;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+    transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+    
+  }
+  
+  mat-card:hover {
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+  }
+
+  #accountSelect
+  {
+      width:auto;
+  }
+
+  .balanceUnit
+  {
+    font-size: 50%;
+    color:gray;
+  }
+
+  .noselect {
+    -webkit-touch-callout: none; /* iOS Safari */
+      -webkit-user-select: none; /* Safari */
+       -khtml-user-select: none; /* Konqueror HTML */
+         -moz-user-select: none; /* Firefox */
+          -ms-user-select: none; /* Internet Explorer/Edge */
+              user-select: none; /* Non-prefixed version, currently
+                                    supported by Chrome and Opera */
+  }

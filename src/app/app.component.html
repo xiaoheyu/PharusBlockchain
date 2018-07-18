@@ -1,5 +1,4 @@
-<nav class="sticky">
-<mat-tab-group>
+<mat-tab-group class="noselect">
   <mat-tab >
     <!-- The name of a label -->
     <ng-template mat-tab-label>
@@ -8,15 +7,11 @@
     <app-useraccount ></app-useraccount>
   </mat-tab>
   <mat-tab>
-      <ng-template mat-tab-label>
-          Service 1
-      </ng-template>
+      <ng-template mat-tab-label>Trading Partner Discovery</ng-template>
       <app-service1></app-service1>
   </mat-tab>
   <mat-tab> 
-      <ng-template mat-tab-label>
-          Service 2
-      </ng-template>
+      <ng-template mat-tab-label>Inventory Forecasting</ng-template>
       <app-service2></app-service2>
   </mat-tab>
   <mat-tab> 
@@ -26,4 +21,4 @@
     <app-edi-intro></app-edi-intro>
   </mat-tab>
 </mat-tab-group>
-</nav>
+

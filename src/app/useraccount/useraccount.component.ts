@@ -27,8 +27,8 @@ export class UseraccountComponent implements OnInit,AfterViewChecked {
     
     for (let i of accountList){
       $('#address'+listCount).text(i.account);
-      $('#balance'+listCount).text("Balance: "+(i.balance/Math.pow(10,18)).toFixed(3));
-      $('#balance'+listCount).append('<span class=\"balanceUnit\" style=\"font-size: 50%;color:gray;\"> ETH</span>')
+      $('#balance'+listCount).text((i.balance/Math.pow(10,18)).toFixed(2));
+      $('#balance'+listCount).append('<span class=\"balanceUnit\"> ETH</span>')
       listCount++;
       };
       
@@ -41,11 +41,12 @@ export class UseraccountComponent implements OnInit,AfterViewChecked {
 		  if(this.userAccountCount===1){
         listCount=1;
         accountList=[];
-        console.log('account visited');
-        console.log(listCount);
+        //debug
+        // console.log('account visited');
+        // console.log(listCount);
         for (let i=1;i<11;i++)
         {
-          console.log(i)
+          // console.log(i)
           $('#address'+i).text("");
           $('#balance'+i).text("");
         }

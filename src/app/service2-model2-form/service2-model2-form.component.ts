@@ -6,13 +6,13 @@ var modelOneList:any[]=[];
 export {modelOneList};
 
 @Component({
-  selector: 'app-service1-model2-form',
-  templateUrl: './service1-model2-form.component.html',
-  styleUrls: ['./service1-model2-form.component.scss'],
+  selector: 'app-service2-model2-form',
+  templateUrl: './service2-model2-form.component.html',
+  styleUrls: ['./service2-model2-form.component.scss'],
   // encapsulation: ViewEncapsulation.None
 })
 
-export class Service1Model2FormComponent implements OnInit,AfterViewChecked {
+export class Service2Model2FormComponent implements OnInit,AfterViewChecked {
 
   //binding variables
   selectedAccount: string;
@@ -82,7 +82,7 @@ export class Service1Model2FormComponent implements OnInit,AfterViewChecked {
 
 
   ngAfterViewChecked(){
-	  if ($('#serviceOneContainer').length===1){
+	  if ($('#serviceTwoContainer').length===1){
 		  this.serviceTwoCount++;
 		  //run only when service 1 is truly rendered
 		  if(this.serviceTwoCount===1){

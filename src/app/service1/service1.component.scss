@@ -100,3 +100,33 @@ table:hover {
 #serviceOneContainer a.active mat-card{
     box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
   }
+  
+  #serviceOneRightPart
+  {
+      padding-right:1%;
+  }
+
+  select.custom-select
+  {
+      width:auto;
+  }
+
+  mat-card-title
+  {
+      color:black;
+      font-weight: bold;
+  }
+  mat-card-subtitle
+  {
+      font-size:150%;
+      color:black;
+  }
+  mat-card-content
+  {
+      color:gray;
+  }
+
+  button>span
+{
+    color:white;
+}

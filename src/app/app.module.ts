@@ -19,6 +19,8 @@ import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { Service1Model1FormComponent } from './service1-model1-form/service1-model1-form.component';
 import {MatSelectModule} from '@angular/material/select';
 import { Service1Model2FormComponent } from './service1-model2-form/service1-model2-form.component';
+import { Service2Model1FormComponent } from './service2-model1-form/service2-model1-form.component';
+import { Service2Model2FormComponent } from './service2-model2-form/service2-model2-form.component';
 
 const appRoutes: Routes = [
   { path: 'edi-form', component: EDIComponent },
@@ -32,6 +34,16 @@ const appRoutes: Routes = [
     path: 'compose2',
     component: Service1Model2FormComponent,
     outlet: 'popup'
+  },
+  {
+    path: 'compose3',
+    component: Service2Model1FormComponent,
+    outlet: 'popup2'
+  },
+  {
+    path: 'compose4',
+    component: Service2Model2FormComponent,
+    outlet: 'popup2'
   }
 ];
 
@@ -47,12 +59,14 @@ const appRoutes: Routes = [
     Edi2Component,
     Service1Model1FormComponent,
     Service1Model2FormComponent,
+    Service2Model1FormComponent,
+    Service2Model2FormComponent,
   ],
   imports: [
     MDBBootstrapModule.forRoot(),
     RouterModule.forRoot(
       appRoutes,
-      { enableTracing: true } // <-- debugging purposes only
+      { enableTracing: true,onSameUrlNavigation	:'ignore' } // <-- debugging purposes only
     ),
     BrowserModule,
     BrowserAnimationsModule,
