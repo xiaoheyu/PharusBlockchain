@@ -1,22 +1,37 @@
-<mat-tab-group class="noselect">
+<mat-tab-group class="noselect" [backgroundColor]="tabBackgroundColor" [color]="tabColor">
   <mat-tab >
     <!-- The name of a label -->
     <ng-template mat-tab-label>
-      Account
+      <span>Account</span>
     </ng-template>
     <app-useraccount ></app-useraccount>
   </mat-tab>
   <mat-tab>
-      <ng-template mat-tab-label>Trading Partner Discovery</ng-template>
+      <ng-template mat-tab-label><span>Trading Partner<br>Discovery</span></ng-template>
       <app-service1></app-service1>
   </mat-tab>
+
   <mat-tab> 
-      <ng-template mat-tab-label>Inventory Forecasting</ng-template>
+    <ng-template mat-tab-label><span>Business 360</span> </ng-template>
+    
+  </mat-tab>
+
+  <mat-tab> 
+      <ng-template mat-tab-label><span>Inventory Planning</span> </ng-template>
       <app-service2></app-service2>
   </mat-tab>
+
+  <mat-tab> 
+    <ng-template mat-tab-label><span>Sales Prediction</span> </ng-template>
+  </mat-tab>
+
+  <mat-tab> 
+    <ng-template mat-tab-label><span>Shipping Optimization</span> </ng-template>
+  </mat-tab>
+
   <mat-tab> 
       <ng-template mat-tab-label>
-          EDI
+          <span>EDI</span>
       </ng-template>
     <app-edi-intro></app-edi-intro>
   </mat-tab>

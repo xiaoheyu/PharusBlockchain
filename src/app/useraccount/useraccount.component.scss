@@ -2,15 +2,15 @@
 #lefthalf
 {
     font-size:250%;
-    background:#116CC9;
+    background:#2E9DEE;
     color:white;
 }
+
 #righthalf
 {
     font-size:150%;
-    color:#116CC9;
+    color:#2E9DEE;
 }
-
 a
 {
     text-decoration: none;
@@ -41,10 +41,10 @@ table:hover {
      font-weight: bold;
  }
 
- .example-header-image {
-    background-image: url('https://github.com/download13/blockies/raw/master/sample.png');
-    background-size: cover;
-  }
+//  .example-header-image {
+//     background-image: url('https://github.com/download13/blockies/raw/master/sample.png');
+//     background-size: cover;
+//   }
   
   mat-card-header
   {
@@ -60,7 +60,7 @@ table:hover {
   mat-card {
     min-width: 350px;
     max-width: 350px;
-    margin:auto 2% auto 2%;
+    margin:5% 2.5% auto 2.5%;
     background: #fff;
     border-radius: 2px;
     // display: inline-block;
