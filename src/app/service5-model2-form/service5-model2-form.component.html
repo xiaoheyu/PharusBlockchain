@@ -1,15 +1,19 @@
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <script src="https://unpkg.com/popper.js@1.12.6/dist/umd/popper.js" integrity="sha384-fA23ZRQ3G/J53mElWqVJEGJzU0sTs+SvzG8fXVWP+kJQ1lwFAOkcUOysnlKJC33U" crossorigin="anonymous"></script>
 <script src="https://unpkg.com/bootstrap-material-design@4.1.1/dist/js/bootstrap-material-design.js" integrity="sha384-CauSuKpEqAFajSpkdjv3z9t8E7RlpJ1UP0lKM/+NdtSarroVKu069AlsRPKkFBz9" crossorigin="anonymous"></script>
-<script>$(document).ready(function() { $('body').bootstrapMaterialDesign(); });</script>
+<script src='https://code.jquery.com/ui/1.12.1/jquery-ui.min.js'></script>
+<script>$(document).ready(function() { $('body').bootstrapMaterialDesign(); });
+// $("#purchaseTooltip").tooltip({animation:true,delay: { "show": 500, "hide": 100 },html:true});
+</script>
     <form id="purchase" action="http://18.236.104.52:8080/sendCoin" method="GET">
       <div class="form-group">
     <select class="custom-select" id="accountSelect" name="address_a">
-    <option selected value=''>Your available accounts for MODEL 1</option>
+    <option selected value=''>Your available accounts for MODEL 2</option>
     </select>
     <small class="form-text text-muted">Choose an account from the dropdown list above and submit to proceed.</small>
       </div>
-    <button type="submit" class="btn btn-primary btn-raised" ><i class="material-icons md-36">attach_money</i>Purchase Model 1 at {{modelOnePrice}}<span class="balanceUnit"> ETH</span></button>
+    <button id="purchaseTooltip" type="submit" class="btn btn-primary btn-raised"><i class="material-icons md-36">attach_money</i>Purchase Model 2 at {{modelTwoPrice}}<span class="balanceUnit"> ETH</span></button>
+    <!-- <button id="purchaseTooltip" type="submit" class="btn btn-primary btn-raised" data-toggle="tooltip" data-placement="top" [title]="tooltipContent">Purchase</button> -->
     </form>
    
   <!-- <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">

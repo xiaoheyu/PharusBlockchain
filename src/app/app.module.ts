@@ -21,6 +21,15 @@ import {MatSelectModule} from '@angular/material/select';
 import { Service1Model2FormComponent } from './service1-model2-form/service1-model2-form.component';
 import { Service2Model1FormComponent } from './service2-model1-form/service2-model1-form.component';
 import { Service2Model2FormComponent } from './service2-model2-form/service2-model2-form.component';
+import { Service3Component } from './service3/service3.component';
+import { Service3Model1FormComponent } from './service3-model1-form/service3-model1-form.component';
+import { Service3Model2FormComponent } from './service3-model2-form/service3-model2-form.component';
+import { Service4Component } from './service4/service4.component';
+import { Service4Model1FormComponent } from './service4-model1-form/service4-model1-form.component';
+import { Service4Model2FormComponent } from './service4-model2-form/service4-model2-form.component';
+import { Service5Component } from './service5/service5.component';
+import { Service5Model1FormComponent } from './service5-model1-form/service5-model1-form.component';
+import { Service5Model2FormComponent } from './service5-model2-form/service5-model2-form.component';
 
 const appRoutes: Routes = [
   { path: 'edi-form', component: EDIComponent },
@@ -44,6 +53,36 @@ const appRoutes: Routes = [
     path: 'compose4',
     component: Service2Model2FormComponent,
     outlet: 'popup2'
+  },
+  {
+    path: 'compose5',
+    component: Service3Model1FormComponent,
+    outlet: 'popup3'
+  },
+  {
+    path: 'compose6',
+    component: Service3Model2FormComponent,
+    outlet: 'popup3'
+  },
+  {
+    path: 'compose7',
+    component: Service4Model1FormComponent,
+    outlet: 'popup4'
+  },
+  {
+    path: 'compose8',
+    component: Service4Model2FormComponent,
+    outlet: 'popup4'
+  },
+  {
+    path: 'compose9',
+    component: Service5Model1FormComponent,
+    outlet: 'popup5'
+  },
+  {
+    path: 'compose10',
+    component: Service5Model2FormComponent,
+    outlet: 'popup5'
   }
 ];
 
@@ -61,6 +100,15 @@ const appRoutes: Routes = [
     Service1Model2FormComponent,
     Service2Model1FormComponent,
     Service2Model2FormComponent,
+    Service3Component,
+    Service3Model1FormComponent,
+    Service3Model2FormComponent,
+    Service4Component,
+    Service4Model1FormComponent,
+    Service4Model2FormComponent,
+    Service5Component,
+    Service5Model1FormComponent,
+    Service5Model2FormComponent,
   ],
   imports: [
     MDBBootstrapModule.forRoot(),
