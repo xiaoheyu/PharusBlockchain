@@ -41,16 +41,16 @@ export class Service3Model1FormComponent implements OnInit,AfterViewChecked {
     //submit form using ajax
     $('#purchase').submit(function(event){
       event.preventDefault();
-      var $form=$(this),
-      url=$form.attr('action');
+      // var $form=$(this),
+      // url=$form.attr('action');
       this.modelOnePrice=15;
       
-      var posting =$.get(url,{address_a:$('#accountSelect').val(), trans_value:this.modelOnePrice*Math.pow(10,18)});
+      var posting =$.get('http://18.236.104.52:8080/api/sendCoin',{address_a:$('#accountSelect').val(), trans_value:this.modelOnePrice*Math.pow(10,18)});
       posting.done(function(data){
         this.modelOnePrice=15;
         $("option").remove();
         $.ajax({
-          url:'http://18.236.104.52:8080/accounts',
+          url:'http://18.236.104.52:8080/api/accounts',
           type:'GET',
           dataType:'json',
           success:function(data)
@@ -89,7 +89,7 @@ export class Service3Model1FormComponent implements OnInit,AfterViewChecked {
 		  //run only when service 1 is truly rendered
 		  if(this.serviceOneCount===1){
 				$.ajax({
-					url:'http://18.236.104.52:8080/accounts',
+					url:'http://18.236.104.52:8080/api/accounts',
 					type:'GET',
           dataType:'json',
           success:this.successAjax,

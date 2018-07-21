@@ -1,8 +1,4 @@
-<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-<script src="https://unpkg.com/popper.js@1.12.6/dist/umd/popper.js" integrity="sha384-fA23ZRQ3G/J53mElWqVJEGJzU0sTs+SvzG8fXVWP+kJQ1lwFAOkcUOysnlKJC33U" crossorigin="anonymous"></script>
-<script src="https://unpkg.com/bootstrap-material-design@4.1.1/dist/js/bootstrap-material-design.js" integrity="sha384-CauSuKpEqAFajSpkdjv3z9t8E7RlpJ1UP0lKM/+NdtSarroVKu069AlsRPKkFBz9" crossorigin="anonymous"></script>
-<script>$(document).ready(function() { $('body').bootstrapMaterialDesign(); });</script>
-    <form id="purchase" action="http://18.236.104.52:8080/sendCoin" method="GET">
+    <form id="purchase" action="http://18.236.104.52:8080/api/sendCoin" method="GET">
       <div class="form-group">
     <select class="custom-select" id="accountSelect" name="address_a">
     <option selected value=''>Your available accounts for MODEL 2</option>
@@ -11,25 +7,7 @@
       </div>
     <button type="submit" class="btn btn-primary btn-raised" ><i class="material-icons md-36">attach_money</i>Purchase Model 2 at {{modelTwoPrice}}<span class="balanceUnit"> ETH</span></button>
     </form>
-   
-  <!-- <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLongTitle">Purchase Info</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-        <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body" id="modelMessage">
-        ...
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-      </div>
-      </div>
-    </div>
-    </div> -->
+
   
   
   

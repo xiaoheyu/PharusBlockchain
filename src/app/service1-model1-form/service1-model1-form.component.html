@@ -1,43 +1,60 @@
-<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-<script src="https://unpkg.com/popper.js@1.12.6/dist/umd/popper.js" integrity="sha384-fA23ZRQ3G/J53mElWqVJEGJzU0sTs+SvzG8fXVWP+kJQ1lwFAOkcUOysnlKJC33U" crossorigin="anonymous"></script>
-<script src="https://unpkg.com/bootstrap-material-design@4.1.1/dist/js/bootstrap-material-design.js" integrity="sha384-CauSuKpEqAFajSpkdjv3z9t8E7RlpJ1UP0lKM/+NdtSarroVKu069AlsRPKkFBz9" crossorigin="anonymous"></script>
-<script>$(document).ready(function() { $('body').bootstrapMaterialDesign(); });</script>
-    <form id="purchase" action="http://18.236.104.52:8080/sendCoin" method="GET">
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<!-- <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css"> -->
+<link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.light_green-light_blue.min.css" /> 
+<script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+    <div [hidden]="isFormHidden">
+    <form id="purchase" action="http://18.236.104.52:8080/api/sendCoin" method="GET"  >
       <div class="form-group">
     <select class="custom-select" id="accountSelect" name="address_a">
     <option selected value=''>Your available accounts for MODEL 1</option>
     </select>
     <small class="form-text text-muted">Choose an account from the dropdown list above and submit to proceed.</small>
       </div>
-    <button type="submit" class="btn btn-primary btn-raised" ><i class="material-icons md-36">attach_money</i>Purchase Model 1 at {{modelOnePrice}}<span class="balanceUnit"> ETH</span></button>
+      <div id="serviceOneSubmit">
+    <button  type="submit" class="btn btn-primary btn-raised" (click)="toggleAiOne()" ><i class="material-icons md-36">attach_money</i>Purchase Model 1 at {{modelOnePrice}}<span class="balanceUnit"> ETH</span></button>
+      </div>
     </form>
-   
-  <!-- <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLongTitle">Purchase Info</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-        <span aria-hidden="true">&times;</span>
-        </button>
+  </div>
+
+  <div [hidden]="isaiOneHidden">
+    <div class="container">
+      <div class="row">
+
       </div>
-      <div class="modal-body" id="modelMessage">
-        ...
+
+      <div class="row">
+        <button class="col btn btn-primary btn-raised" (click)="toggleAiOne()">switch back</button>
+        <button class="col btn btn-primary btn-raised" >Continue</button>
       </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-      </div>
-      </div>
-    </div>
-    </div> -->
-  
-  
-  
-    <div class="jumbotron">
-      <div>
-      <h2>History:</h2>
-      <ol reversed class="list-group">
-      </ol>
-      <button type="button" id="cleanHistory" class="btn btn-warning">Clean History</button>
-    </div>
-    </div>
+  </div>
+  </div>
+
+  <!-- <table mat-table [dataSource]="tableData" matSort class="mat-elevation-z8">
+
+      
+      <ng-container matColumnDef="transactionHash">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> TxHash </th>
+        <td mat-cell *matCellDef="let element"> {{element.position}} </td>
+      </ng-container>
+    
+      
+      <ng-container matColumnDef="transactionIndex">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> TxIndex </th>
+        <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+      </ng-container>
+    
+      
+      <ng-container matColumnDef="blockHash">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> BlockHash </th>
+        <td mat-cell *matCellDef="let element"> {{element.weight}} </td>
+      </ng-container>
+    
+      
+      <ng-container matColumnDef="blockNumber">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Block No. </th>
+        <td mat-cell *matCellDef="let element"> {{element.symbol}} </td>
+      </ng-container>
+    
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table> -->

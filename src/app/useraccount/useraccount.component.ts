@@ -66,7 +66,7 @@ export class UseraccountComponent implements OnInit,AfterViewChecked {
           $('#balance'+i).text("");
         }
 				$.ajax({
-					url:'http://18.236.104.52:8080/accounts',
+					url:'http://18.236.104.52:8080/api/accounts',
 					type:'GET',
           dataType:'json',
           success:this.successAjax,

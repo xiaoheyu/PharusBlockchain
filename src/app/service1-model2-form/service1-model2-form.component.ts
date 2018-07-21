@@ -48,7 +48,7 @@ export class Service1Model2FormComponent implements OnInit,AfterViewChecked {
         this.modelTwoPrice=50;
         $("option").remove();
         $.ajax({
-          url:'http://18.236.104.52:8080/accounts',
+          url:'http://18.236.104.52:8080/api/accounts',
           type:'GET',
           dataType:'json',
           success:function(data)
@@ -87,7 +87,7 @@ export class Service1Model2FormComponent implements OnInit,AfterViewChecked {
 		  //run only when service 1 is truly rendered
 		  if(this.serviceTwoCount===1){
 				var response=$.ajax({
-					url:'http://18.236.104.52:8080/accounts',
+					url:'http://18.236.104.52:8080/api/accounts',
 					type:'GET',
           dataType:'json',
           success:this.successAjax,
