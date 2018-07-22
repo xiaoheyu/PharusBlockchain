@@ -1,4 +1,4 @@
-import { Component, OnInit,AfterViewChecked,ViewEncapsulation } from '@angular/core';
+import { Component, OnInit,AfterViewChecked } from '@angular/core';
 import * as $ from 'jquery';
 
 //declare and initialize as the global variable
@@ -15,72 +15,47 @@ export {modelOneList};
 
 export class Service3Model1FormComponent implements OnInit,AfterViewChecked {
 
-  //binding variables
-  selectedAccount: string;
-
   //this is used to control how many times the function inside ngAfterViewChecked() will be run
   private serviceOneCount:number;
   public modelOnePrice:number;
+  isFormHidden=false;
+  isaiOneHidden=true;
+  isBacktoModelHidden=true;
+  isaiContentHidden=true;
+  //table data
+  displayedColumns: string[] = ['transactionHash', 'transactionIndex', 'blockHash', 'blockNumber','gasUsed','cumulativeGasUsed'];
+  tableData=[];
   
-  test:any[];
+  //hide the form
+  enterAiThree()
+  {
+    this.isFormHidden=true;
+    this.isaiOneHidden=false;
+    this.isBacktoModelHidden=false;
+  }
+
   //Handler function for ajax
-  successAjax(data){
-    modelOneList=[];
-    //why doesn't it work outside?
-    this.modelOnePrice=15;
-    for (let i of data.account_list){
-      if (Number(i['balance'])>=this.modelOnePrice*Math.pow(10,18)){
-        modelOneList.push(i);
-      }
-    };
-    $("option").remove();
-    $('select').append('<option disabled selected value >Your available accounts for MODEL 1</option>');
-    for (let i of modelOneList){
-      $('select').append('<option value='+i.account+'>'+'Account address: '+i.account+' Balance: '+(i.balance/Math.pow(10,18)).toFixed(2)+'</option>');
-      };
-    //submit form using ajax
-    $('#purchase').submit(function(event){
-      event.preventDefault();
-      // var $form=$(this),
-      // url=$form.attr('action');
-      this.modelOnePrice=15;
-      
-      var posting =$.get('http://18.236.104.52:8080/api/sendCoin',{address_a:$('#accountSelect').val(), trans_value:this.modelOnePrice*Math.pow(10,18)});
-      posting.done(function(data){
-        this.modelOnePrice=15;
-        $("option").remove();
-        $.ajax({
-          url:'http://18.236.104.52:8080/api/accounts',
-          type:'GET',
-          dataType:'json',
-          success:function(data)
-          {
-            $('select').append('<option selected value=\'\'>Your available accounts for MODEL 1</option>');
-            modelOneList=[];
-            //why doesn't it work outside?
-            this.modelOnePrice=15;
-            for (let i of data.account_list){
-              if (Number(i['balance'])>=this.modelOnePrice*Math.pow(10,18)){
-                modelOneList.push(i);
-              }
-            };
-            for (let i of modelOneList){
-              $('select').append('<option value='+i.account+'>'+'Account address: '+i.account+' Balance: '+(i.balance/Math.pow(10,18)).toFixed(2)+'</option>');
-            };
-          }
+
+  backToModel()
+  {
+    this.isaiOneHidden=true;
+    window.sessionStorage.setItem('serviceThreeParentVisible','true');
+    this.isBacktoModelHidden=true;
+    this.isaiContentHidden=true;
+    this.isFormHidden=false;
+  }
+
+  loadAi()
+  {
+    this.isFormHidden=true;
+    this.isaiOneHidden=true;
+    this.isBacktoModelHidden=false;
+    this.isaiContentHidden=false;
+  }
+
+
+  //Handler function for ajax
   
-        });
-
-        $('#modelMessage').text(data);
-        $('ol').prepend('<li><a class="list-group-item">\n<div class=\"bmd-list-group-col\">'+'<p class=\"list-group-item-heading\"> Transaction Address:<br>'+data+'</p>'+'</div></a></li>');
-      });
-    });
-
-    //functionalities for 'Clean History'
-    $('#cleanHistory').click(()=>{
-      $("li").remove();
-    });
-  };
 
 
   ngAfterViewChecked(){
@@ -92,11 +67,73 @@ export class Service3Model1FormComponent implements OnInit,AfterViewChecked {
 					url:'http://18.236.104.52:8080/api/accounts',
 					type:'GET',
           dataType:'json',
-          success:this.successAjax,
+          success:(data)=>{
+            modelOneList=[];
+            //why doesn't it work outside?
+            this.modelOnePrice=15;
+            for (let i of data.account_list){
+              if (Number(i['balance'])>=this.modelOnePrice*Math.pow(10,18)){
+                modelOneList.push(i);
+              }
+            };
+            $("option").remove();
+            $('select').append('<option disabled selected value >Your available accounts for MODEL 1</option>');
+            for (let i of modelOneList){
+              $('select').append('<option value='+i.account+'>'+'Account address: '+i.account+' Balance: '+(i.balance/Math.pow(10,18)).toFixed(2)+'</option>');
+              };
+          },
 					error:function(){
 						alert('error reading accounts!');
 					}
         });
+
+                    //submit form using ajax
+                    $('#purchase').submit(()=>{
+                      this.modelOnePrice=15;
+                      var posting =$.get('http://18.236.104.52:8080/api/sendCoin',{address_a:$('#accountSelect').val(), trans_value:this.modelOnePrice*Math.pow(10,18)},(data)=>{
+                        data.from=$('#accountSelect').val()
+                        // $.get("http://18.236.104.52:8080/api/getBalance?address="+data.from, (data)=>{window.sessionStorage.setItem('currentValue',(data/Math.pow(10,18)).toFixed(2));console.log(window.sessionStorage.getItem('currentValue'));});
+                        // data.currentValue=window.sessionStorage.getItem('currentValue');
+                        data.value=this.modelOnePrice+" ETH";
+                        this.tableData.push(data);
+                      });
+                      posting.done(()=>{
+                        window.sessionStorage.setItem('serviceThreeParentVisible','false');
+                        this.modelOnePrice=15;
+                        $("option").remove();
+                        $.ajax({
+                          url:'http://18.236.104.52:8080/api/accounts',
+                          type:'GET',
+                          dataType:'json',
+                          success:function(data)
+                          {
+                            $('select').append('<option selected value=\'\'>Your available accounts for MODEL 1</option>');
+                            modelOneList=[];
+                            //why doesn't it work outside?
+                            this.modelOnePrice=15;
+                            for (let i of data.account_list){
+                              if (Number(i['balance'])>=this.modelOnePrice*Math.pow(10,18)){
+                                modelOneList.push(i);
+                              }
+                            };
+                            for (let i of modelOneList){
+                              $('select').append('<option value='+i.account+'>'+'Account address: '+i.account+' Balance: '+(i.balance/Math.pow(10,18)).toFixed(2)+'</option>');
+                            };
+                          }
+                        });
+
+                        // $("tbody>tr").remove();
+                        // for (let a of this.tableData)
+                        // {
+                        //   console.log(a);
+                        //   $('#transactionHistoryOne').append(`<tr><td>${a.transactionHash}</td><td>${a.from}</td><td>${a.value}</td><td>${a.currentValue}</td><td>${a.transactionIndex}</td><td>${a.blockHash}</td><td>${a.blockNumber}</td><td>${a.gasUsed}</td><td>${a.cumulativeGasUsed}</td></tr>`);
+                        // }
+                        let a=this.tableData[this.tableData.length-1];
+                        $('#transactionHistoryOne').append(`<tr><td>${a.transactionHash}</td><td>${a.from}</td><td>${a.value}</td><td>${a.transactionIndex}</td><td>${a.blockHash}</td><td>${a.blockNumber}</td><td>${a.gasUsed}</td><td>${a.cumulativeGasUsed}</td></tr>`);
+                           
+                      });
+                    });
+
 		  } 
 	  }
 	 //reset the count whenever Service 1 component is no longer rendered 
@@ -106,14 +143,10 @@ export class Service3Model1FormComponent implements OnInit,AfterViewChecked {
 	  }
   }
   
-  onSubmit(form){
-    alert(form.value);
-    
-  }
+
   constructor() {
     this.serviceOneCount=0;
     this.modelOnePrice=15;
-    this.test=[1,2,3,4,5]
    }
 
   ngOnInit() {

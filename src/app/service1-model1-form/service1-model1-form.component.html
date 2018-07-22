@@ -24,6 +24,8 @@
               <thead>
                 <tr>
                   <th class="text-center mdl-data-table__cell--non-numeric">Transaction Hash</th>
+                  <th>From</th>
+                  <th>Value</th>
                   <th>Transaction Index</th>
                   <th>BlockHash</th>
                   <th>BlockNumber</th>
@@ -31,7 +33,7 @@
                   <th>Cumulative Gas Used</th>
                 </tr>
               </thead>
-              <tbody id="transactionHistory">
+              <tbody id="transactionHistoryOne">
               </tbody>
             </table>
       </div>
@@ -39,12 +41,15 @@
       <div class="row">
         <button class="col btn btn-primary btn-raised" (click)="loadAi()" >Continue</button>
       </div>
+      
   </div>
 
   <div class="row" id="aiContent" [hidden]="isaiContentHidden" >
-      <iframe class="col-md-12" src="http://ai1.s3-website-us-west-2.amazonaws.com/#!/consumer" frameborder="0" allowfullscreen></iframe>
+      <iframe class="col-md-12" src="http://ai1.s3-website-us-west-2.amazonaws.com/#!/consumer"></iframe>
   </div>
+
   <div class="row">
       <button  type="submit" class="btn btn-primary btn-raised" [hidden]="isBacktoModelHidden" (click)="backToModel()" ><i class="material-icons md-36">exit_to_app</i>Back to Models</button>
   </div>
+
 </div>  
