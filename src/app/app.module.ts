@@ -30,6 +30,7 @@ import { Service4Model2FormComponent } from './service4-model2-form/service4-mod
 import { Service5Component } from './service5/service5.component';
 import { Service5Model1FormComponent } from './service5-model1-form/service5-model1-form.component';
 import { Service5Model2FormComponent } from './service5-model2-form/service5-model2-form.component';
+import { Service1Model1AiComponent } from './service1-model1-ai/service1-model1-ai.component';
 
 const appRoutes: Routes = [
   { path: 'edi-form', component: EDIComponent },
@@ -83,6 +84,11 @@ const appRoutes: Routes = [
     path: 'compose10',
     component: Service5Model2FormComponent,
     outlet: 'popup5'
+  },
+  {
+    path: 'tradingPartnerAiOne',
+    component: Service1Model1AiComponent,
+    outlet: 'ai'
   }
 ];
 
@@ -109,6 +115,7 @@ const appRoutes: Routes = [
     Service5Component,
     Service5Model1FormComponent,
     Service5Model2FormComponent,
+    Service1Model1AiComponent,
   ],
   imports: [
     MDBBootstrapModule.forRoot(),

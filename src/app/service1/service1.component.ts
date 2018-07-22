@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,DoCheck } from '@angular/core';
 
 @Component({
   selector: 'app-service1',
@@ -6,10 +6,18 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./service1.component.scss'],
 
 })
-export class Service1Component implements OnInit {
+export class Service1Component implements OnInit,DoCheck {
 
+  serviceOneParentVisible:string;
+  ngDoCheck()
+  {
+    this.serviceOneParentVisible=sessionStorage.getItem('serviceOneParentVisible')==='true'?'flex':'none';
+    console.log(this.serviceOneParentVisible);
+  }
 
   public ngOnInit(){
+    window.sessionStorage.clear();
+    window.sessionStorage.setItem('serviceOneParentVisible','true');
   };
 
 }

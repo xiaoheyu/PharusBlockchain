@@ -1,4 +1,4 @@
-import { Component,DoCheck, OnInit,AfterViewChecked,ViewChild } from '@angular/core';
+import { Component,DoCheck, OnInit,AfterViewChecked,ViewChild,ChangeDetectorRef } from '@angular/core';
 import * as $ from 'jquery';
 import {MatSort, MatTableDataSource} from '@angular/material';
 
@@ -21,9 +21,11 @@ export class Service1Model1FormComponent implements OnInit,AfterViewChecked,DoCh
   public modelOnePrice:number;
   isFormHidden=false;
   isaiOneHidden=true;
+  isBacktoModelHidden=true;
+  isaiContentHidden=true;
   //table data
   displayedColumns: string[] = ['transactionHash', 'transactionIndex', 'blockHash', 'blockNumber','gasUsed','cumulativeGasUsed'];
-  tableData;
+  tableData=[];
   @ViewChild(MatSort) sort: MatSort;
 
   ngOnInit() {
@@ -33,26 +35,83 @@ export class Service1Model1FormComponent implements OnInit,AfterViewChecked,DoCh
 
   ngDoCheck()
   {
-    console.log('inside Docheck');
-    if(this.sort!==undefined){this.tableData.sort = this.sort;}
-    else{console.log('sort undefined')}
+    // console.log('inside Docheck');
+    // if(this.sort!==undefined){this.tableData.sort = this.sort;}
+    // else{console.log('sort undefined')}
   }
 
   
   
   //hide the form
-  toggleAiOne()
+  enterAiOne()
   {
     // $.get('http://18.236.104.52:8080/api/accounts',(data)=>{console.log(data.account_list)});
-    this.isFormHidden=!this.isFormHidden;
-    this.isaiOneHidden=!this.isaiOneHidden;
+    console.log('original length:'+this.tableData.length);
+    $(this.tableData).change(()=>{console.log('changed'+this.tableData.length)})
+    this.isFormHidden=true;
+    this.isaiOneHidden=false;
+    this.isBacktoModelHidden=false;
+    console.log($('#transactionHistory'));
+   
+//     $('div>div.container').prepend(`
+//     <table mat-table [dataSource]="tableData" matSort class=\"mat-elevation-z8\">
+      
+//     <ng-container matColumnDef=\"transactionHash\">
+//       <th mat-header-cell *matHeaderCellDef mat-sort-header> TxHash </th>
+//       <td mat-cell *matCellDef=\"let element\"> {{element.position}} </td>
+//     </ng-container>
+  
+    
+//     <ng-container matColumnDef=\"transactionIndex\">
+//       <th mat-header-cell *matHeaderCellDef mat-sort-header> TxIndex </th>
+//       <td mat-cell *matCellDef=\"let element\"> {{element.name}} </td>
+//     </ng-container>
+  
+    
+//     <ng-container matColumnDef=\"blockHash\">
+//       <th mat-header-cell *matHeaderCellDef mat-sort-header> BlockHash </th>
+//       <td mat-cell *matCellDef=\"let element\"> {{element.weight}} </td>
+//     </ng-container>
+  
+    
+//     <ng-container matColumnDef=\"blockNumber\">
+//       <th mat-header-cell *matHeaderCellDef mat-sort-header> Block No. </th>
+//       <td mat-cell *matCellDef=\"let element\"> {{element.symbol}} </td>
+//     </ng-container>
+  
+//     <tr mat-header-row *matHeaderRowDef=\"displayedColumns\"></tr>
+//     <tr mat-row *matRowDef=\"let row; columns: displayedColumns;\"></tr>
+//   </table>
+
+// `);
+//   this.cd.detectChanges();
     // console.log('hideform')
   }
-
+  // leaveAiOne()
+  // {
+  // this.isFormHidden=!this.isFormHidden;
+  // this.isaiOneHidden=!this.isaiOneHidden;
+  // }
   
   //Handler function for ajax
 
+  backToModel()
+  {
+    this.isaiOneHidden=true;
+    window.sessionStorage.clear();
+    window.sessionStorage.setItem('serviceOneParentVisible','true');
+    this.isBacktoModelHidden=true;
+    this.isaiContentHidden=true;
+    this.isFormHidden=false;
+  }
 
+  loadAi()
+  {
+    this.isFormHidden=true;
+    this.isaiOneHidden=true;
+    this.isBacktoModelHidden=false;
+    this.isaiContentHidden=false;
+  }
 
   ngAfterViewChecked(){
 	  if ($('#serviceOneContainer').length===1){
@@ -60,10 +119,10 @@ export class Service1Model1FormComponent implements OnInit,AfterViewChecked,DoCh
 		  //run only when service 1 is truly rendered
 		  if(this.serviceOneCount===1){
         if (this.tableData!=null){
-        console.log('tableData is not null and create sort object');
-        this.tableData.sort = this.sort;
+        // console.log('tableData is not null and create sort object');
+        // this.tableData.sort = this.sort;
       }
-        let dataSource;
+
 				$.ajax({
 					url:'http://18.236.104.52:8080/api/accounts',
 					type:'GET',
@@ -89,21 +148,14 @@ export class Service1Model1FormComponent implements OnInit,AfterViewChecked,DoCh
 					}
         });
                     //submit form using ajax
-                    $('#purchase').submit((event)=>{
-                      var dataSource;
-                      let transactionRecord=[];
-                      // event.preventDefault();
-                      // var $form=$(this),
-                      // url=$form.attr('action');
+                    $('#purchase').submit(()=>{
                       this.modelOnePrice=15;
                       var posting =$.get('http://18.236.104.52:8080/api/sendCoin',{address_a:$('#accountSelect').val(), trans_value:this.modelOnePrice*Math.pow(10,18)},(data)=>{
-                        transactionRecord.push(data);
-                        this.tableData= new MatTableDataSource(transactionRecord);
-                        console.log(this);
-                        this.ngOnInit();
-                        
+                        this.tableData.push(data);
                       });
                       posting.done(()=>{
+                        window.sessionStorage.clear();
+                        window.sessionStorage.setItem('serviceOneParentVisible','false');
                         this.modelOnePrice=15;
                         $("option").remove();
                         $.ajax({
@@ -126,6 +178,11 @@ export class Service1Model1FormComponent implements OnInit,AfterViewChecked,DoCh
                             };
                           }
                         });
+                        $("tbody>tr").remove();
+                        for (let a of this.tableData)
+                        {
+                          $('#transactionHistory').append(`<tr><td>${a.transactionHash}</td><td>${a.transactionIndex}</td><td>${a.blockHash}</td><td>${a.blockNumber}</td><td>${a.gasUsed}</td><td>${a.cumulativeGasUsed}</td></tr>`);
+                        }
                 
                 
                       });
@@ -145,7 +202,7 @@ export class Service1Model1FormComponent implements OnInit,AfterViewChecked,DoCh
     alert(form.value);
     
   }
-  constructor() {
+  constructor(private cd: ChangeDetectorRef) {
     this.serviceOneCount=0;
     this.modelOnePrice=15;
    }

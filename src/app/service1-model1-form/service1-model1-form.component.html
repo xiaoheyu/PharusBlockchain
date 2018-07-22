@@ -2,7 +2,8 @@
 <!-- <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css"> -->
 <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.light_green-light_blue.min.css" /> 
 <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
-    <div [hidden]="isFormHidden">
+  <div class="container-fluid">
+  <div class="row justify-content-md-center" [hidden]="isFormHidden">
     <form id="purchase" action="http://18.236.104.52:8080/api/sendCoin" method="GET"  >
       <div class="form-group">
     <select class="custom-select" id="accountSelect" name="address_a">
@@ -11,23 +12,48 @@
     <small class="form-text text-muted">Choose an account from the dropdown list above and submit to proceed.</small>
       </div>
       <div id="serviceOneSubmit">
-    <button  type="submit" class="btn btn-primary btn-raised" (click)="toggleAiOne()" ><i class="material-icons md-36">attach_money</i>Purchase Model 1 at {{modelOnePrice}}<span class="balanceUnit"> ETH</span></button>
+    <button  type="submit" class="btn btn-primary btn-raised" (click)="enterAiOne()" ><i class="material-icons md-36">attach_money</i>Purchase Model 1 at {{modelOnePrice}}<span class="balanceUnit"> ETH</span></button>
+    <button  type="submit" class="btn btn-primary btn-raised" [hidden]="isBacktoModelHidden" (click)="backToModel()" ><i class="material-icons md-36">exit_to_app</i>Back to Models</button>
       </div>
     </form>
   </div>
 
   <div [hidden]="isaiOneHidden">
-    <div class="container">
+   
       <div class="row">
-
+          <table class="mdl-data-table mdl-js-data-table mdl-data-table__header--sorted-ascending mdl-shadow--2dp">
+              <thead>
+                <tr>
+                  <th class="text-center mdl-data-table__cell--non-numeric">Transaction Hash</th>
+                  <th>Transaction Index</th>
+                  <th>BlockHash</th>
+                  <th>BlockNumber</th>
+                  <th>Gas Used</th>
+                  <th>Cumulative Gas Used</th>
+                </tr>
+              </thead>
+              <tbody id="transactionHistory">
+              </tbody>
+            </table>
       </div>
 
       <div class="row">
-        <button class="col btn btn-primary btn-raised" (click)="toggleAiOne()">switch back</button>
-        <button class="col btn btn-primary btn-raised" >Continue</button>
+        <!-- <button class="col btn btn-primary btn-raised" (click)="leaveAiOne()">switch back</button> -->
+        <button class="col btn btn-primary btn-raised" (click)="loadAi()" >Continue</button>
       </div>
   </div>
+
+  <div class="row" id="aiContent" [hidden]="isaiContentHidden" >
+      <iframe class="col-md-12" src="http://ai1.s3-website-us-west-2.amazonaws.com/#!/consumer" frameborder="0" allowfullscreen></iframe>
   </div>
+  <div class="row">
+      <button  type="submit" class="btn btn-primary btn-raised" [hidden]="isBacktoModelHidden" (click)="backToModel()" ><i class="material-icons md-36">exit_to_app</i>Back to Models</button>
+  </div>
+</div>  
+
+
+
+
 
   <!-- <table mat-table [dataSource]="tableData" matSort class="mat-elevation-z8">
 
@@ -58,3 +84,7 @@
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
       <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
     </table> -->
+
+  
+
+ 

@@ -9,14 +9,22 @@
     </div>
 
     <div class="row">
-    <span>This is the description of the Trading Partner Discovery.</span>
+    <span class="col-md-11">This is the description of the Trading Partner Discovery.</span>
+    <a href="" class="col-md-1" >
+        <table>
+          <tr>
+            <td id="lefthalf">+</td>
+            <td id="righthalf">ADD MODEL</td>
+          </tr>
+        </table>
+      </a>
     </div>
 
-    <div class="row middle">
+    <div [style.display]="serviceOneParentVisible" class="row middle justify-content-md-center">
       <!-- Another router -->
  
 
-      <a class="col-md-4" [routerLink]="[{ outlets: { popup: ['compose'] } }]" routerLinkActive="active">
+      <a class="col"  [routerLink]="[{ outlets: { popup: ['compose'] } }]" routerLinkActive="active">
         <mat-card id="cardOne" >
             <mat-card-header>
             <span mat-card-avatar class="example-header-image" ></span>
@@ -27,7 +35,7 @@
         </mat-card>
       </a>
 
-      <a class="col-md-4" [routerLink]="[{ outlets: { popup: ['compose2'] } }]" routerLinkActive="active">
+      <a class="col"  [routerLink]="[{ outlets: { popup: ['compose2'] } }]" routerLinkActive="active">
         <mat-card >
             <mat-card-header>
             <span mat-card-avatar class="example-header-image" ></span>
@@ -38,25 +46,53 @@
         </mat-card>
       </a>
       
-      <div class="col-md-4" >
+    </div>
+
+    <div class="row justify-content-md-center">
+      <div >
       <router-outlet name="popup" id="serviceOneRightPart"></router-outlet>
-      </div>
-     
+      <!-- <app-service1-model1-form class="col-lg-6 col-md-6 col-xs-6"></app-service1-model1-form> -->
     </div>
-
+    </div>
+<!-- 
     <div class="row">
-        <a href="" class="col-md-1 offset-md-3" >
-            <table>
+
+        <table class="table table-hover">
+            <thead>
               <tr>
-                <td id="lefthalf">+</td>
-                <td id="righthalf">ADD MODEL</td>
+                <th scope="col">#</th>
+                <th scope="col">Account</th>
+                <th scope="col">Transaction Address</th>
+                <th scope="col">Amount</th>
+                <th scope="col">Current Balance</th>
               </tr>
-            </table>
-          </a>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">1</th>
+                <td>Mark</td>
+                <td>Otto</td>
+                <td>@mdo</td>
+                <td>@mdo</td>
+              </tr>
+              <tr>
+                <th scope="row">2</th>
+                <td>Jacob</td>
+                <td>Thornton</td>
+                <td>@fat</td>
+                <td>@mdo</td>
+              </tr>
+              <tr>
+                <th scope="row">3</th>
+                <td colspan="2">Larry the Bird</td>
+                <td>@twitter</td>
+                <td>@mdo</td>
+                
+              </tr>
+            </tbody>
+          </table>
 
-      
-    </div>
-
+    </div> -->
 
   </div>
   
