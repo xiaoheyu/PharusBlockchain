@@ -4,8 +4,9 @@
     padding-top:2%;
 }
 #lefthalf
-{
-    font-size:250%;
+{   width:30px;
+    padding:3%;
+    font-size:200%;
     background:#2E9DEE;
     color:white;
 }
@@ -62,6 +63,10 @@ table:hover {
     width: 100px;
   }
 
+  h1
+  {
+      padding-left:0;
+  }
   #serviceThreeContainer mat-card {
     margin:1%;
     background: #fff;
@@ -130,4 +135,11 @@ table:hover {
   button>span
 {
     color:white;
+}
+
+.container-fluid {
+    margin-left: 1%;
+    margin-right: 0;
+    padding: auto;
+    width: auto;
 }

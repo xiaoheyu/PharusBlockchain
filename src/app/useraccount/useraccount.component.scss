@@ -51,16 +51,15 @@ table:hover {
     float:left;
   }
   
-  .mat-card-avatar
-  {
-    height: 80px;
-    width: 80px;
-  }
+//   .mat-card-avatar img
+//   {
+//     height: 120px;
+//     width: 120px;
+//   }
 
-  mat-card {
-    min-width: 350px;
-    max-width: 350px;
-    margin:5% 2.5% auto 2.5%;
+  mat-card.mat-card {
+    max-width:100px;
+    margin:5% 0 auto 0;
     background: #fff;
     border-radius: 2px;
     // display: inline-block;
@@ -94,8 +93,9 @@ table:hover {
 
   mat-card-footer
   {
+      overflow:hidden;
       background:gray;
-      font-size:90%;
+      font-size:60%;
       color:white;
       box-shadow: 0 -2px 8px gray;
   }
@@ -121,4 +121,20 @@ a:link {
 
 a:visited {
     text-decoration: none;
+}
+
+.container-fluid {
+    margin-left: 1%;
+    margin-right: 0;
+    padding: auto;
+    width: 2000px;
+}
+// .col
+// {
+//     width:20%;
+// }
+
+div.mat-tab-label
+{
+    width:40%;
 }

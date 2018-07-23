@@ -1,7 +1,15 @@
-<div class="container" id="serviceOneContainer">
+<div class="container-fluid" id="serviceOneContainer">
   
     <div class="row">
-      <h1 id="title1">Trading Partner Discovery</h1>
+      <h1 class="col-md-6" id="title1">Trading Partner Discovery</h1>
+      <a href="" class="col-md-1 offset-md-5" >
+          <table>
+            <tr>
+              <td id="lefthalf">+</td>
+              <td id="righthalf">ADD MODEL</td>
+            </tr>
+          </table>
+        </a>
     </div>
     
     <div class="row">
@@ -9,15 +17,7 @@
     </div>
 
     <div class="row">
-    <span class="col-md-11">This is the description of the Trading Partner Discovery.</span>
-    <a href="" class="col-md-1" >
-        <table>
-          <tr>
-            <td id="lefthalf">+</td>
-            <td id="righthalf">ADD MODEL</td>
-          </tr>
-        </table>
-      </a>
+    <span class="col">This is the description of the Trading Partner Discovery.</span>
     </div>
 
     <div [style.display]="serviceOneParentVisible" class="row middle justify-content-md-center">
@@ -27,7 +27,8 @@
       <a class="col"  [routerLink]="[{ outlets: { popup: ['compose'] } }]" routerLinkActive="active">
         <mat-card id="cardOne" >
             <mat-card-header>
-            <span mat-card-avatar class="example-header-image" ></span>
+              <img mat-card-avatar src="https://www.materialui.co/materialIcons/communication/business_black_144x144.png" alt="">
+            <!-- <span mat-card-avatar class="example-header-image" ></span> -->
             </mat-card-header>
             <mat-card-title> Model 1</mat-card-title>
             <mat-card-subtitle>COST: 15 <span class="balanceUnit" > ETH</span></mat-card-subtitle>
@@ -38,13 +39,38 @@
       <a class="col"  [routerLink]="[{ outlets: { popup: ['compose2'] } }]" routerLinkActive="active">
         <mat-card >
             <mat-card-header>
-            <span mat-card-avatar class="example-header-image" ></span>
+                <img mat-card-avatar src="https://www.materialui.co/materialIcons/communication/business_black_144x144.png" alt="">
+            <!-- <span mat-card-avatar class="example-header-image" ></span> -->
             </mat-card-header>
             <mat-card-title> Model 2</mat-card-title>
             <mat-card-subtitle>COST: 50<span class="balanceUnit"> ETH</span></mat-card-subtitle>
             <mat-card-content>This is the description of Model 2</mat-card-content>
         </mat-card>
       </a>
+
+      <a class="col" >
+          <mat-card id="cardOne" >
+              <mat-card-header>
+              <!-- <span mat-card-avatar class="example-header-image" ></span> -->
+              <img mat-card-avatar src="https://www.materialui.co/materialIcons/communication/business_black_144x144.png" alt="">
+              </mat-card-header>
+              <mat-card-title> Model 3</mat-card-title>
+              <mat-card-subtitle>COST: 15 <span class="balanceUnit" > ETH</span></mat-card-subtitle>
+              <mat-card-content>This is the description of Model 1</mat-card-content>
+          </mat-card>
+        </a>
+
+        <a class="col">
+            <mat-card id="cardOne" >
+                <mat-card-header>
+                    <img mat-card-avatar src="https://www.materialui.co/materialIcons/communication/business_black_144x144.png" alt="">
+                  <!-- <span mat-card-avatar class="example-header-image" ></span> -->
+                </mat-card-header>
+                <mat-card-title> Model 4</mat-card-title>
+                <mat-card-subtitle>COST: 15 <span class="balanceUnit" > ETH</span></mat-card-subtitle>
+                <mat-card-content>This is the description of Model 1</mat-card-content>
+            </mat-card>
+          </a>
       
     </div>
 

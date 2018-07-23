@@ -23,6 +23,7 @@
     "@angular/platform-browser-dynamic": "^6.0.3",
     "@angular/router": "^6.0.3",
     "angular-bootstrap-md": "^6.1.6",
+    "angular-dropdown-component": "^1.0.8",
     "angular5-csv": "^0.2.10",
     "chart.js": "^2.5.0",
     "core-js": "^2.5.4",

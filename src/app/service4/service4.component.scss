@@ -4,8 +4,9 @@
     padding-top:2%;
 }
 #lefthalf
-{
-    font-size:250%;
+{   width:30px;
+    padding:3%;
+    font-size:200%;
     background:#2E9DEE;
     color:white;
 }
@@ -24,8 +25,6 @@ a:visited {
 }
 
 table {
-    height:80px;
-    width:250px;
     margin-top:5%;
     margin-bottom:5%;
     background:white;
@@ -53,6 +52,11 @@ table:hover {
     background-size: cover;
   }
   
+  h1
+  {
+      padding-left:0;
+  }
+
   mat-card-header
   {
     float:left;
@@ -132,4 +136,11 @@ table:hover {
   button>span
 {
     color:white;
+}
+
+.container {
+    margin-left: 1%;
+    margin-right: 1%;
+    padding: auto;
+    width: auto;
 }

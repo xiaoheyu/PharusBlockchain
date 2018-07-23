@@ -46,20 +46,20 @@ table:hover {
      font-weight: bold;
  }
 
- .example-header-image {
-    background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR4bcWw4MUW89aYDHro3K-uS3glsYoH8zmWPopMgxgn5YxE0KA_fQ');
-    background-size: cover;
-  }
+//  .example-header-image {
+//     background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR4bcWw4MUW89aYDHro3K-uS3glsYoH8zmWPopMgxgn5YxE0KA_fQ');
+//     background-size: cover;
+//   }
   
   mat-card-header
   {
     float:left;
   }
   
-  .mat-card-avatar
+  img.mat-card-avatar
   {
-    height: 100px;
-    width: 100px;
+    height: 80px;
+    width: 80px;
   }
 
   mat-card {

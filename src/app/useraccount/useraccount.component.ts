@@ -1,6 +1,6 @@
 import { Component, OnInit,AfterViewChecked } from '@angular/core';
 import * as $ from 'jquery';
-import * as blockieGen from 'ethereum-blockies';
+// import * as blockieGen from 'ethereum-blockies';
 
 var accountList:any[]=[];
 var listCount:number;
@@ -19,16 +19,16 @@ export class UseraccountComponent implements OnInit,AfterViewChecked {
   ngOnInit() {
     this.userAccountCount=0;
     listCount=1;
-    $(document).ready(function(){
-      this.avatars=$("span.example-header-image");
-      var opt = { scale: 7, size: 10}
-      var icon = blockieGen.create(opt);
-      for(let avatar of this.avatars)
-      {
-        icon = blockieGen.create(opt);
-        avatar.append(icon);
-      }
-    });
+    // $(document).ready(function(){
+    //   this.avatars=$("span.example-header-image");
+    //   var opt = { scale: 7, size: 10}
+    //   var icon = blockieGen.create(opt);
+    //   for(let avatar of this.avatars)
+    //   {
+    //     icon = blockieGen.create(opt);
+    //     avatar.append(icon);
+    //   }
+    // });
     
 
     

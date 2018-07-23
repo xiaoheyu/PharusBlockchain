@@ -39,6 +39,8 @@
 
       <div class="row justify-content-center">
         <button class="col-md-3 btn btn-primary btn-raised" (click)="loadAi()" >Continue</button>
+        <span class="col-md-5"></span>
+        <button  type="submit" class="col-md-3 btn btn-primary btn-raised" [hidden]="isBacktoModelHidden" (click)="backToModel()" ><i class="material-icons md-36">exit_to_app</i>Back to Models</button>
       </div>
       
   </div>
@@ -48,7 +50,7 @@
   </div>
 
   <div class="row justify-content-center">
-      <button  type="submit" class="col-md-3 btn btn-primary btn-raised" [hidden]="isBacktoModelHidden" (click)="backToModel()" ><i class="material-icons md-36">exit_to_app</i>Back to Models</button>
+      <button  type="submit" class="col-md-3 btn btn-primary btn-raised" [hidden]="isBacktoModelHidden2" (click)="backToModel()" ><i class="material-icons md-36">exit_to_app</i>Back to Models</button>
   </div>
 
 </div>  

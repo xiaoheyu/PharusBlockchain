@@ -22,6 +22,7 @@ export class Service3Model2FormComponent implements OnInit,AfterViewChecked {
   isaiOneHidden=true;
   isBacktoModelHidden=true;
   isaiContentHidden=true;
+  isBacktoModelHidden2=true;
   //table data
   displayedColumns: string[] = ['transactionHash', 'transactionIndex', 'blockHash', 'blockNumber','gasUsed','cumulativeGasUsed'];
   tableData=[];
@@ -45,6 +46,7 @@ export class Service3Model2FormComponent implements OnInit,AfterViewChecked {
     this.isaiOneHidden=true;
     window.sessionStorage.setItem('serviceThreeParentVisible','true');
     this.isBacktoModelHidden=true;
+    this.isBacktoModelHidden2=true;
     this.isaiContentHidden=true;
     this.isFormHidden=false;
   }
@@ -55,6 +57,7 @@ export class Service3Model2FormComponent implements OnInit,AfterViewChecked {
     this.isaiOneHidden=true;
     this.isBacktoModelHidden=false;
     this.isaiContentHidden=false;
+    this.isBacktoModelHidden2=false;
   }
 
 
@@ -63,6 +66,19 @@ export class Service3Model2FormComponent implements OnInit,AfterViewChecked {
 
 
   ngAfterViewChecked(){
+    $(".mdl-data-table td,.mdl-data-table th").css({
+      "font-weight": "bold",
+      "font-size":"20px",
+      "width": "180px",
+      "height":"60px",
+      "display": "inline-block",
+      "white-space": "nowrap",
+      "valign":"middle"
+    });
+    $("td.mdl-data-table__cell--non-numeric").css({
+      "overflow-x":"auto",
+      "overflow-y":"hidden"
+    });
 	  if ($('#serviceThreeContainer').length===1){
 		  this.serviceOneCount++;
 		  //run only when service 1 is truly rendered
@@ -134,17 +150,7 @@ export class Service3Model2FormComponent implements OnInit,AfterViewChecked {
                         let a=this.tableData[this.tableData.length-1];
                         console.log(a);
                         $('#transactionHistoryTwo').append(`<tr><td class="mdl-data-table__cell--non-numeric">${a.receipt.transactionHash}</td><td class="mdl-data-table__cell--non-numeric">${a.from}</td><td class="mdl-data-table__cell--non-numeric">${a.value}</td><td>${(a.balance/Math.pow(10,18)).toFixed(2)}</td><td>${a.receipt.blockNumber}</td><td>${a.receipt.gasUsed}</td><td>${a.receipt.cumulativeGasUsed}</td></tr>`);
-                        $(".mdl-data-table td,.mdl-data-table th").css({
-                          "font-weight": "bold",
-                          "width": "150px",
-                          "height":"60px",
-                          "display": "inline-block",
-                          "white-space": "nowrap",
-                          "valign":"middle"
-                        });
-                        $("td.mdl-data-table__cell--non-numeric").css({
-                          "overflow":"auto"
-                        });
+                        
                       });
                     });
 
