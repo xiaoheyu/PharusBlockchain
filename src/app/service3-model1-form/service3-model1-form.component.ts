@@ -29,9 +29,12 @@ export class Service3Model1FormComponent implements OnInit,AfterViewChecked {
   //hide the form
   enterAiThree()
   {
+    console.log($('#accountSelect').val());
+    if ($('#accountSelect').val()!==null){
     this.isFormHidden=true;
     this.isaiOneHidden=false;
     this.isBacktoModelHidden=false;
+    }
   }
 
   //Handler function for ajax
@@ -95,6 +98,7 @@ export class Service3Model1FormComponent implements OnInit,AfterViewChecked {
                         // $.get("http://18.236.104.52:8080/api/getBalance?address="+data.from, (data)=>{window.sessionStorage.setItem('currentValue',(data/Math.pow(10,18)).toFixed(2));console.log(window.sessionStorage.getItem('currentValue'));});
                         // data.currentValue=window.sessionStorage.getItem('currentValue');
                         data.value=this.modelOnePrice+" ETH";
+                        console.log(JSON.stringify(data));
                         this.tableData.push(data);
                       });
                       posting.done(()=>{
@@ -129,8 +133,18 @@ export class Service3Model1FormComponent implements OnInit,AfterViewChecked {
                         //   $('#transactionHistoryOne').append(`<tr><td>${a.transactionHash}</td><td>${a.from}</td><td>${a.value}</td><td>${a.currentValue}</td><td>${a.transactionIndex}</td><td>${a.blockHash}</td><td>${a.blockNumber}</td><td>${a.gasUsed}</td><td>${a.cumulativeGasUsed}</td></tr>`);
                         // }
                         let a=this.tableData[this.tableData.length-1];
-                        $('#transactionHistoryOne').append(`<tr><td>${a.transactionHash}</td><td>${a.from}</td><td>${a.value}</td><td>${a.transactionIndex}</td><td>${a.blockHash}</td><td>${a.blockNumber}</td><td>${a.gasUsed}</td><td>${a.cumulativeGasUsed}</td></tr>`);
-                           
+                        $('#transactionHistoryOne').append(`<tr><td class="mdl-data-table__cell--non-numeric">${a.receipt.transactionHash}</td><td class="mdl-data-table__cell--non-numeric">${a.from}</td><td class="mdl-data-table__cell--non-numeric">${a.value}</td><td>${(a.balance/Math.pow(10,18)).toFixed(2)}</td><td>${a.receipt.blockNumber}</td><td>${a.receipt.gasUsed}</td><td>${a.receipt.cumulativeGasUsed}</td></tr>`);
+                        $(".mdl-data-table td,.mdl-data-table th").css({
+                          "font-weight": "bold",
+                          "width": "150px",
+                          "height":"60px",
+                          "display": "inline-block",
+                          "white-space": "nowrap",
+                          "valign":"middle"
+                        });
+                        $("td.mdl-data-table__cell--non-numeric").css({
+                          "overflow":"auto"
+                        });
                       });
                     });
 

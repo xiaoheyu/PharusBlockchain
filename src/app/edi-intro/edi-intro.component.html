@@ -1,16 +1,18 @@
-<div class="container-fluid">
+<div class="container">
   
     <div class="row">
-      <h1 id="title1">EDI Data Conversion</h1>
+      <h1 class="col" id="title1">EDI Data Conversion</h1>
     </div>
     
     <div class="row">
-      <h2 id="title2">Description:</h2>
-      <span>This is the description of the EDI Data Conversion.</span>
+      <h2 class="col" id="title2">Description:</h2>
     </div>
-    
+
+    <div class="row">
+    <span class="col">This is the description of the EDI Data Conversion.</span>
+    </div>
     <div class="row middle">
-        <a routerLink="/edi-form" routerLinkActive="active">
+        <a class="col" routerLink="/edi-form" routerLinkActive="active">
         <mat-card class="col-lg-2 col-md-2 col-xs-3">
             <mat-card-header>
             <span mat-card-avatar class="example-header-image" ></span>
@@ -21,7 +23,7 @@
         </mat-card>
         </a>
   
-        <a routerLink="/edi-form2" routerLinkActive="active">
+        <a class="col" routerLink="/edi-form2" routerLinkActive="active">
         <mat-card class="col-lg-2 col-md-2 col-xs-3">
             <mat-card-header>
             <span mat-card-avatar class="example-header-image" ></span>
@@ -31,13 +33,13 @@
             <mat-card-content>This is the description of form 2</mat-card-content>
         </mat-card>
       </a>
-      <span class="col-lg-2 col-md-2 col-xs-3"><router-outlet></router-outlet></span>
+      
       
        
     </div>
   
     <div class="row">
-      
+        <span class="col"><router-outlet></router-outlet></span>
     </div>
   </div>
   
