@@ -1,37 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {MatTabsModule,
-  MatAutocompleteModule,
-  MatButtonModule,
-  MatButtonToggleModule,
-
-  MatCheckboxModule,
-  MatChipsModule,
-  MatDatepickerModule,
-  MatDialogModule,
-  MatExpansionModule,
-
-  MatIconModule,
-  MatInputModule,
-  MatListModule,
-  MatMenuModule,
-  MatNativeDateModule,
-  MatPaginatorModule,
-  MatProgressBarModule,
-  MatProgressSpinnerModule,
-  MatRadioModule,
-  MatRippleModule,
-
-  MatSidenavModule,
-  MatSliderModule,
-  MatSlideToggleModule,
-  MatSnackBarModule,
-  MatSortModule,
-  MatTableModule,
-  MatTooltipModule,
-  MatStepperModule
-} from '@angular/material';
+import {MatTabsModule,MatButtonModule,MatMenuModule,MatNativeDateModule} from '@angular/material';
 import { AppComponent } from './app.component';
 import { UseraccountComponent } from './useraccount/useraccount.component';
 import {MatToolbarModule} from '@angular/material/toolbar';
@@ -45,7 +15,6 @@ import {MatGridListModule} from '@angular/material/grid-list';
 import {MatDividerModule} from '@angular/material/divider';
 import { EdiIntroComponent } from './edi-intro/edi-intro.component';
 import { Edi2Component } from './edi2/edi2.component';
-import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { Service1Model1FormComponent } from './service1-model1-form/service1-model1-form.component';
 import {MatSelectModule} from '@angular/material/select';
 import { Service1Model2FormComponent } from './service1-model2-form/service1-model2-form.component';
@@ -60,7 +29,6 @@ import { Service4Model2FormComponent } from './service4-model2-form/service4-mod
 import { Service5Component } from './service5/service5.component';
 import { Service5Model1FormComponent } from './service5-model1-form/service5-model1-form.component';
 import { Service5Model2FormComponent } from './service5-model2-form/service5-model2-form.component';
-import {CdkTableModule} from '@angular/cdk/table';
 
 const appRoutes: Routes = [
   {
@@ -209,7 +177,7 @@ const appRoutes: Routes = [
     Service5Model2FormComponent
   ],
   imports: [
-    MDBBootstrapModule.forRoot(),
+    // MDBBootstrapModule.forRoot(),
     RouterModule.forRoot(
       appRoutes,
       { enableTracing: true,onSameUrlNavigation	:'ignore' } // <-- debugging purposes only
@@ -232,44 +200,44 @@ const appRoutes: Routes = [
   ],
   schemas:[ NO_ERRORS_SCHEMA ],
   providers: [],
-  bootstrap: [AppComponent],
-  exports: [
-    CdkTableModule,
-    MatAutocompleteModule,
-    MatButtonModule,
-    MatButtonToggleModule,
-    MatCardModule,
-    MatCheckboxModule,
-    MatChipsModule,
-    MatStepperModule,
-    MatDatepickerModule,
-    MatDialogModule,
-    MatExpansionModule,
-    MatGridListModule,
-    MatIconModule,
-    MatInputModule,
-    MatListModule,
-    MatMenuModule,
-    MatNativeDateModule,
-    MatPaginatorModule,
-    MatProgressBarModule,
-    MatProgressSpinnerModule,
-    MatRadioModule,
-    MatRippleModule,
-    MatSelectModule,
-    MatSidenavModule,
-    MatSliderModule,
-    MatSlideToggleModule,
-    MatSnackBarModule,
-    MatSortModule,
-    MatTableModule,
-    MatTabsModule,
-    MatToolbarModule,
-    MatTooltipModule,
-    MatNativeDateModule,
-    MatMenuModule,
-    MatButtonModule,
-    MatDividerModule
-  ]
+  bootstrap: [AppComponent]
+  // exports: [
+  //   CdkTableModule,
+  //   MatAutocompleteModule,
+  //   MatButtonModule,
+  //   MatButtonToggleModule,
+  //   MatCardModule,
+  //   MatCheckboxModule,
+  //   MatChipsModule,
+  //   MatStepperModule,
+  //   MatDatepickerModule,
+  //   MatDialogModule,
+  //   MatExpansionModule,
+  //   MatGridListModule,
+  //   MatIconModule,
+  //   MatInputModule,
+  //   MatListModule,
+  //   MatMenuModule,
+  //   MatNativeDateModule,
+  //   MatPaginatorModule,
+  //   MatProgressBarModule,
+  //   MatProgressSpinnerModule,
+  //   MatRadioModule,
+  //   MatRippleModule,
+  //   MatSelectModule,
+  //   MatSidenavModule,
+  //   MatSliderModule,
+  //   MatSlideToggleModule,
+  //   MatSnackBarModule,
+  //   MatSortModule,
+  //   MatTableModule,
+  //   MatTabsModule,
+  //   MatToolbarModule,
+  //   MatTooltipModule,
+  //   MatNativeDateModule,
+  //   MatMenuModule,
+  //   MatButtonModule,
+  //   MatDividerModule
+  // ]
 })
 export class AppModule { }
