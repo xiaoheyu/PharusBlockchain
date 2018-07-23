@@ -89,7 +89,7 @@ export class Service3Model1FormComponent implements OnInit,AfterViewChecked {
           success:(data)=>{
             modelOneList=[];
             //why doesn't it work outside?
-            this.modelOnePrice=15;
+            this.modelOnePrice=5;
             for (let i of data.account_list){
               if (Number(i['balance'])>=this.modelOnePrice*Math.pow(10,18)){
                 modelOneList.push(i);
@@ -108,7 +108,7 @@ export class Service3Model1FormComponent implements OnInit,AfterViewChecked {
 
                     //submit form using ajax
                     $('#purchase').submit(()=>{
-                      this.modelOnePrice=15;
+                      this.modelOnePrice=5;
                       var posting =$.get('http://18.236.104.52:8080/api/sendCoin',{address_a:$('#accountSelect').val(), trans_value:this.modelOnePrice*Math.pow(10,18)},(data)=>{
                         data.from=$('#accountSelect').val()
                         // $.get("http://18.236.104.52:8080/api/getBalance?address="+data.from, (data)=>{window.sessionStorage.setItem('currentValue',(data/Math.pow(10,18)).toFixed(2));console.log(window.sessionStorage.getItem('currentValue'));});
@@ -119,7 +119,7 @@ export class Service3Model1FormComponent implements OnInit,AfterViewChecked {
                       });
                       posting.done(()=>{
                         window.sessionStorage.setItem('serviceThreeParentVisible','false');
-                        this.modelOnePrice=15;
+                        this.modelOnePrice=5;
                         $("option").remove();
                         $.ajax({
                           url:'http://18.236.104.52:8080/api/accounts',
@@ -130,7 +130,7 @@ export class Service3Model1FormComponent implements OnInit,AfterViewChecked {
                             $('select').append('<option selected value=\'\'>Your available accounts for MODEL 1</option>');
                             modelOneList=[];
                             //why doesn't it work outside?
-                            this.modelOnePrice=15;
+                            this.modelOnePrice=5;
                             for (let i of data.account_list){
                               if (Number(i['balance'])>=this.modelOnePrice*Math.pow(10,18)){
                                 modelOneList.push(i);
@@ -166,7 +166,7 @@ export class Service3Model1FormComponent implements OnInit,AfterViewChecked {
 
   constructor() {
     this.serviceOneCount=0;
-    this.modelOnePrice=15;
+    this.modelOnePrice=5;
    }
 
   ngOnInit() {

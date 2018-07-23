@@ -7,9 +7,15 @@ $app-primary: mat-palette($mat-blue,400);
 $app-accent:  mat-palette($mat-indigo);
 $app-warn:    mat-palette($mat-red);
 
-$app-theme: mat-dark-theme($app-primary, $app-accent, $app-warn);
-@include angular-material-theme($app-theme);
+$theme: mat-dark-theme($app-primary, $app-accent, $app-warn);
+@include angular-material-theme($theme);
 
+$primary: mat-palette($mat-blue,100,200,300);
+$accent:  mat-palette($mat-indigo,300,400,500);
+$warn:    mat-palette($mat-red);
+$themeformenu:mat-dark-theme($primary,$accent, $warn);
+
+@include mat-menu-theme($themeformenu);
 
 
 mat-tab-header.mat-tab-header
@@ -132,3 +138,36 @@ select,select.custom-select
     font-weight: bold;
     font-size:130%;
 }
+
+a.mat-menu-item:link {
+    text-decoration: none;
+}
+
+a.mat-menu-item:visited {
+    text-decoration: none;
+}
+
+div.mat-menu-content
+{
+    background-color: #001433;
+    font-weight: bold;
+    font-size:100%;
+}
+// a.mat-menu-item{
+//     background-color: white;
+//     color: black !important;
+// }
+// a.mat-menu-item:hover {
+    
+//     color: black !important;
+// }
+
+// div.mat-menu-panel
+// {
+//     background-color: white;
+// }
+
+// div.mat-menu-content:hover
+// {
+//     background: whitesmoke;
+// }

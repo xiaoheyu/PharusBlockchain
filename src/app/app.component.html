@@ -1,6 +1,5 @@
-<mat-tab-group class="noselect" [backgroundColor]="tabBackgroundColor" [color]="tabColor">
+<!-- <mat-tab-group class="noselect" [backgroundColor]="tabBackgroundColor" [color]="tabColor">
   <mat-tab >
-    <!-- The name of a label -->
     <ng-template mat-tab-label>
       <span>Account</span>
     </ng-template>
@@ -38,4 +37,48 @@
     <app-edi-intro></app-edi-intro>
   </mat-tab>
 </mat-tab-group>
+ -->
 
+
+ 
+<div class="container-fluid">
+    <div class="row">
+    <mat-toolbar  color="primary">
+
+        
+        <mat-toolbar-row>
+          <img src="../assets/images/favicon.ico" alt="Pharus Logo">
+            <mat-divider [vertical]="true"></mat-divider>
+
+            <button mat-button mat-raised-button color="accent" [matMenuTriggerFor]="account">Account</button>
+            <mat-menu #account="matMenu">
+              <a mat-menu-item [routerLink]="[{ outlets: { menu: ['account'] } }]">Account</a>
+            </mat-menu>
+          
+          <mat-divider [vertical]="true"></mat-divider>
+          
+          <button mat-button mat-raised-button color="accent" [matMenuTriggerFor]="menu">AI Service</button>
+          <mat-menu #menu="matMenu">
+            <a mat-menu-item [routerLink]="[{ outlets: { menu: ['service1'] } }]">Trading Partner Discovery</a>
+            <a mat-menu-item [routerLink]="[{ outlets: { menu: ['service3'] } }]">Business 360</a>
+            <a mat-menu-item [routerLink]="[{ outlets: { menu: ['service2'] } }]">Inventory Planning</a>
+            <a mat-menu-item [routerLink]="[{ outlets: { menu: ['service4'] } }]">Sales Prediction</a>
+            <a mat-menu-item [routerLink]="[{ outlets: { menu: ['service5'] } }]">Shipping Optimization</a>
+          </mat-menu>
+
+          <mat-divider [vertical]="true"></mat-divider>
+          
+          <button mat-button mat-raised-button color="accent" [matMenuTriggerFor]="EDI">EDI</button>
+          <mat-menu #EDI="matMenu">
+            <a mat-menu-item [routerLink]="[{ outlets: { menu: ['EDIintro'] } }]">EDI</a>
+          </mat-menu>
+    
+        </mat-toolbar-row>
+      </mat-toolbar>
+    </div>
+
+  <div class="row">
+      <router-outlet name="menu" ></router-outlet>
+  </div>
+</div>
+ 
