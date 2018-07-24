@@ -66,12 +66,13 @@ export class Service3Model2FormComponent implements OnInit,AfterViewChecked {
 
 
   ngAfterViewChecked(){
+    $("table.mdl-data-table").css("width","100%");
     $(".mdl-data-table td,.mdl-data-table th").css({
       "font-weight": "bold",
-      "font-size":"20px",
-      "width": "180px",
+      "font-size":"16px",
+      // "width": "180px",
       "height":"60px",
-      "display": "inline-block",
+      // "display": "inline-block",
       "white-space": "nowrap",
       "valign":"middle"
     });

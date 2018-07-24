@@ -1,48 +1,52 @@
 @import '~@angular/material/_theming.scss';
 
-
-
 @include mat-core();
-$app-primary: mat-palette($mat-blue,400);
+$app-primary: mat-palette($mat-blue,400,200,100);
 $app-accent:  mat-palette($mat-indigo);
 $app-warn:    mat-palette($mat-red);
 
-$theme: mat-dark-theme($app-primary, $app-accent, $app-warn);
+$theme: mat-light-theme($app-primary,$app-primary, $app-warn);
+
+
+
 @include angular-material-theme($theme);
 
-$primary: mat-palette($mat-blue,100,200,300);
-$accent:  mat-palette($mat-yellow);
+$primary: mat-palette($mat-blue,100);
+$accent:  mat-palette($mat-blue);
 $warn:    mat-palette($mat-red);
 $themeformenu:mat-dark-theme($primary,$accent, $warn);
 
 @include mat-menu-theme($themeformenu);
 
 
-mat-tab-header.mat-tab-header
+.middle
 {
-    position: sticky;
-    position: -webkit-sticky; /* For macOS/iOS Safari */
-    top: 0; /* Sets the sticky toolbar to be on top */
-    z-index: 1000; /* Ensure that your app's content doesn't overlap the toolbar */
+    margin-bottom: 1% !important;
 }
 
-h2
+mat-toolbar
 {
+    position: sticky !important;
+    position: -webkit-sticky !important; /* For macOS/iOS Safari */
+    top: 0 !important; /* Sets the sticky toolbar to be on top */
+    z-index: 1000 !important; /* Ensure that your app's content doesn't overlap the toolbar */
+}
+
+// h2
+// {
     
-    padding-left:1%;
-}
-h1 {
-    padding-top:2%;
-    font-weight:bold;
-}
+//     padding-left:1%;
+// }
+// h1 {
+//     padding-top:2%;
+//     font-weight:bold;
+    
+// }
 span
 {
     padding-left:1%;
 }
-body {
-    background-color:#F0F0F0;
-    font-family: 'Raleway','Source Sans Pro', 'Arial';
-}
+
 // .container {
 //     margin-left:1%;
 //     margin-right:1%;
@@ -67,19 +71,18 @@ label {
 }
 
 mat-card {
-    min-width: 350px;
-    max-width: 350px;
-    margin:auto 2% auto 2%;
-    background: #fff;
-    border-radius: 2px;
+    width: 280px !important;
+    margin:auto 2% auto 2% !important;
+    background: #fff !important;
+    border-radius: 2px !important;
     // display: inline-block;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
-    transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24) !important;
+    transition: all 0.3s cubic-bezier(.25,.8,.25,1) !important;
     
   }
   
   mat-card:hover {
-    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22) !important;
   }
 
   #accountSelect
@@ -153,6 +156,62 @@ div.mat-menu-content
     font-weight: bold;
     font-size:100%;
 }
+
+// @font-face
+// {
+//     font-family: bender !important;
+//     src:url(/src/assets/fonts/bender.otf) format("opentype") !important;
+// }
+
+
+body * 
+{
+    font-family: "Bender-Light" !important;
+}
+
+
+
+
+@font-face {
+	font-family:"Bender-Light";
+	src:url("Bender_Light.eot?") format("eot"),
+		url("Bender_Light.woff") format("woff"),
+		url("Bender_Light.ttf") format("truetype"),
+		url("Bender_Light.svg#Bender-Light") format("svg");
+		font-weight:normal;
+		font-style:normal;
+}
+h1
+{
+    padding-left: 15px !important;
+    margin:80px auto 0 0!important;
+    font-size: 52px !important;
+    font-weight: bold !important;
+}
+h2
+{
+    padding-left: 15px !important;
+    margin:80px auto 0 0 !important;
+    font-size: 32px !important;
+    font-weight: bold !important;
+}
+
+span p
+{
+    padding-left: 15px !important;
+    margin:30px auto 0 0 !important;
+    font-weight: bold !important;
+    font-weight: 16px;
+}
+button.btn.btn-primary.btn-raised
+{
+    height: 50px !important;
+    margin-top:30px !important;
+}
+mat-icon
+{
+    font-family: 'Material Icons' !important;
+}
 // a.mat-menu-item{
 //     background-color: white;
 //     color: black !important;
@@ -171,3 +230,21 @@ div.mat-menu-content
 // {
 //     background: whitesmoke;
 // }
+
+select.custom-select,select.custom-select option
+{
+    font-size: 16px !important;
+    font-weight: bold !important;
+}
+.container-fluid iframe
+{
+    width: 100% !important;
+    height: 800px !important;
+    
+}
+
+small.form-text.text-muted
+{
+    font-size:14px !important;
+    font-weight: bolder !important;
+}

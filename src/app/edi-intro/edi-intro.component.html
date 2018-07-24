@@ -1,23 +1,23 @@
 <div class="container-fluid">
   
     <div class="row">
-      <h1 class="col" id="title1">EDI Data Conversion</h1>
+      <h1 class="col-md-12" >EDI Data Conversion</h1>
     </div>
     
     <div class="row">
-      <h2 class="col" id="title2">Description:</h2>
+      <h2 class="col-md-12">Description:</h2>
     </div>
 
     <div class="row">
-    <span class="col">
+    <span class="col-md-12">
         <p>
         Electronic Data Interchange (EDI) is the predominant data standard used by business world for transaction information exchange. Businesses leverage EDI conversion service within Pharus Protocol to conveniently make trades with others for almost free.
         </p>
     </span>
     </div>
     <div class="row middle">
-        <a class="col" [routerLink]="[{ outlets: { edi:['edi-form'] } }]" routerLinkActive="active">
-        <mat-card class="col-lg-2 col-md-2 col-xs-3">
+        <a class="col col1" [routerLink]="[{ outlets: { edi:['edi-form'] } }]" routerLinkActive="active">
+        <mat-card >
             <mat-card-header>
             <img mat-card-avatar src="https://www.materialui.co/materialIcons/hardware/phonelink_black_192x192.png" alt="">
             </mat-card-header>
@@ -27,8 +27,8 @@
         </mat-card>
         </a>
   
-        <a class="col" [routerLink]="[{ outlets: { edi:['edi-form2'] } }]" routerLinkActive="active">
-        <mat-card class="col-lg-2 col-md-2 col-xs-3">
+        <a class="col col2" [routerLink]="[{ outlets: { edi:['edi-form2'] } }]" routerLinkActive="active">
+        <mat-card >
             <mat-card-header>
             <img mat-card-avatar src="https://www.materialui.co/materialIcons/hardware/phonelink_black_192x192.png" alt="">
             </mat-card-header>
@@ -43,7 +43,7 @@
     </div>
   
     <div class="row">
-        <div class="col-md-8">
+        <div class="col-md-12">
         <router-outlet name="edi"></router-outlet>
         </div>
     </div>

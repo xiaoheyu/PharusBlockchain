@@ -42,12 +42,11 @@
 
  
 <div class="noselect container-fluid">
+    <div class="content">
     <div class="row">
-    <mat-toolbar  color="primary">
-
-        
+    <mat-toolbar  color="primary"> 
         <mat-toolbar-row>
-          <img src="../assets/images/favicon.ico" alt="Pharus Logo">
+          <img src="../assets/images/LogoWhite.svg" alt="Pharus Logo">
             <mat-divider [vertical]="true"></mat-divider>
           
             <button mat-button mat-raised-button color="accent" [matMenuTriggerFor]="account">Account</button>
@@ -59,22 +58,24 @@
           
           <button mat-button mat-raised-button color="accent" [matMenuTriggerFor]="menu">AI Service</button>
           <mat-menu #menu="matMenu">
-            <a mat-menu-item [routerLink]="[{ outlets: { menu: ['service1'] } }]">Trading Partner Discovery</a>
+            <a mat-menu-item [routerLink]="[{ outlets: { menu: ['service1'] } }]">Partner Matching</a>
             <mat-divider></mat-divider>
             <a mat-menu-item [routerLink]="[{ outlets: { menu: ['service3'] } }]">Business 360</a>
             <mat-divider></mat-divider>
             <a mat-menu-item [routerLink]="[{ outlets: { menu: ['service2'] } }]">Inventory Planning</a>
             <mat-divider></mat-divider>
-            <a mat-menu-item [routerLink]="[{ outlets: { menu: ['service4'] } }]">Sales Prediction</a>
+            <a mat-menu-item [routerLink]="[{ outlets: { menu: ['service4'] } }]">Demand Forecasting</a>
             <mat-divider></mat-divider>
-            <a mat-menu-item [routerLink]="[{ outlets: { menu: ['service5'] } }]">Shipping Optimization</a>
+            <a mat-menu-item [routerLink]="[{ outlets: { menu: ['service5'] } }]">Logistics Optimization</a>
           </mat-menu>
 
           <mat-divider [vertical]="true"></mat-divider>
           
           <button mat-button mat-raised-button color="accent" [matMenuTriggerFor]="EDI">Data Service</button>
           <mat-menu #EDI="matMenu">
-            <a mat-menu-item [routerLink]="[{ outlets: { menu: ['EDIintro'] } }]">EDI</a>
+            <a mat-menu-item [routerLink]="[{ outlets: { menu: ['EDIintro'] } }]">EDI Conversion</a>
+            <a mat-menu-item href="">Data Storage</a>
+            <a mat-menu-item href="">Data Computation</a>
           </mat-menu>
     
         </mat-toolbar-row>
@@ -84,5 +85,15 @@
   <div class="row">
       <router-outlet name="menu" ></router-outlet>
   </div>
+</div>
+
+  <div class="footer row justify-content-md-center">
+    <div class="col-md-5 text-center">
+    <p>
+      2018©, PHARUS PROTOCOL. ALL RIGHTS RESERVED.
+    </p>
+    </div>
+  </div>
+
 </div>
  

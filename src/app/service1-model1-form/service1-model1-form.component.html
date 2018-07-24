@@ -1,8 +1,9 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.light_green-light_blue.min.css" /> 
 <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+
   <div class="container-fluid">
-  <div class="row justify-content-md-center" [hidden]="isFormHidden">
+  <div class="row" [hidden]="isFormHidden">
     <form id="purchase" action="http://18.236.104.52:8080/api/sendCoin" method="GET"  >
       <div class="form-group">
     <select class="custom-select" id="accountSelect" name="address_a">
@@ -11,16 +12,16 @@
     <small class="form-text text-muted">Choose an account from the dropdown list above and submit to proceed.</small>
       </div>
       <div id="serviceOneSubmit">
-    <button  type="submit" class="btn btn-primary btn-raised" (click)="enterAiOne()" ><i class="material-icons md-36">attach_money</i>Purchase Model 1 at {{modelOnePrice}}<span class="balanceUnit"> ETH</span></button>
-    <button  type="submit" class="btn btn-primary btn-raised" [hidden]="isBacktoModelHidden" (click)="backToModel()" ><i class="material-icons md-36">exit_to_app</i>Back to Models</button>
+    <button  type="submit" class="btn btn-primary btn-raised" (click)="enterAiOne()" ><mat-icon>attach_money</mat-icon>Purchase Model 1 at {{modelOnePrice}}<span class="balanceUnit"> ETH</span></button>
+    <button  type="submit" class="btn btn-primary btn-raised" [hidden]="isBacktoModelHidden" (click)="backToModel()" ><mat-icon>home</mat-icon>Back to Models</button>
       </div>
     </form>
   </div>
 
   <div [hidden]="isaiOneHidden">
    
-      <div class="row">
-          <table class="mdl-data-table mdl-js-data-table mdl-data-table__header--sorted-ascending mdl-shadow--2dp">
+      <div class="row ">
+          <table id="sOneMOneFormTable" class="col-md-12 mdl-data-table mdl-js-data-table mdl-data-table__header--sorted-ascending mdl-shadow--2dp">
               <thead>
                 <tr>
                   <th class="mdl-data-table__cell--non-numeric">Transaction Hash</th>
@@ -37,10 +38,9 @@
             </table>
       </div>
 
-      <div class="row justify-content-center">
-        <button class="col-md-3 btn btn-primary btn-raised" (click)="loadAi()" >Continue</button>
-        <span class="col-md-5"></span>
-        <button  type="submit" class="col-md-3 btn btn-primary btn-raised" [hidden]="isBacktoModelHidden" (click)="backToModel()" ><i class="material-icons md-36">exit_to_app</i>Back to Models</button>
+      <div class="row">
+        <button  type="submit" class="col btn btn-primary btn-raised" [hidden]="isBacktoModelHidden" (click)="backToModel()" ><mat-icon>home</mat-icon>Back to Models</button>
+        <button class="col btn btn-primary btn-raised" (click)="loadAi()" >Continue</button>
       </div>
       
   </div>
@@ -50,7 +50,7 @@
   </div>
 
   <div class="row justify-content-center">
-      <button  type="submit" class="col-md-3 btn btn-primary btn-raised" [hidden]="isBacktoModelHidden2" (click)="backToModel()" ><i class="material-icons md-36">exit_to_app</i>Back to Models</button>
+      <button  type="submit" class="col-md-3 btn btn-primary btn-raised" [hidden]="isBacktoModelHidden2" (click)="backToModel()" ><mat-icon>home</mat-icon>Back to Models</button>
   </div>
 
 </div>  

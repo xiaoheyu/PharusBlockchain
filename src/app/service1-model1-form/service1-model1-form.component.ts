@@ -1,4 +1,4 @@
-import { Component,OnInit,AfterViewChecked } from '@angular/core';
+import { Component,OnInit,AfterViewChecked} from '@angular/core';
 import * as $ from 'jquery';
 
 
@@ -69,17 +69,18 @@ export class Service1Model1FormComponent implements OnInit,AfterViewChecked{
   }
 
   ngAfterViewChecked(){
+    $("sOneMOneFormTable").css("width","100%");
     $(".mdl-data-table td,.mdl-data-table th").css({
       "font-weight": "bold",
-      "font-size":"20px",
-      "width": "180px",
+      "font-size":"16px",
+      // "width": "180px",
       "height":"60px",
-      "display": "inline-block",
+      // "display": "inline-block",
       "white-space": "nowrap",
       "valign":"middle"
     });
     $("td.mdl-data-table__cell--non-numeric").css({
-      "overflow-x":"auto",
+      "overflow-x":"hidden",
       "overflow-y":"hidden"
     });
 	  if ($('#serviceOneContainer').length===1){

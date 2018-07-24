@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {MatTabsModule,MatButtonModule,MatMenuModule,MatNativeDateModule} from '@angular/material';
+import {MatTabsModule,MatButtonModule,MatMenuModule,MatNativeDateModule,MatIconModule} from '@angular/material';
 import { AppComponent } from './app.component';
 import { UseraccountComponent } from './useraccount/useraccount.component';
 import {MatToolbarModule} from '@angular/material/toolbar';
@@ -29,6 +29,7 @@ import { Service4Model2FormComponent } from './service4-model2-form/service4-mod
 import { Service5Component } from './service5/service5.component';
 import { Service5Model1FormComponent } from './service5-model1-form/service5-model1-form.component';
 import { Service5Model2FormComponent } from './service5-model2-form/service5-model2-form.component';
+
 
 const appRoutes: Routes = [
   {
@@ -200,7 +201,8 @@ const appRoutes: Routes = [
     MatNativeDateModule,
     MatMenuModule,
     MatButtonModule,
-    MatDividerModule
+    MatDividerModule,
+    MatIconModule
 
   ],
   schemas:[ NO_ERRORS_SCHEMA ],

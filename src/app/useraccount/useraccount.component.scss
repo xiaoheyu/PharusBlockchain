@@ -58,7 +58,6 @@ table:hover {
 //   }
 
   mat-card.mat-card {
-    max-width:100px;
     margin:5% 0 auto 0;
     background: #fff;
     border-radius: 2px;
@@ -100,11 +99,12 @@ table:hover {
       box-shadow: 0 -2px 8px gray;
   }
 
-#firstRow
-{
-    margin-top:8%;
-    margin-bottom:5%;
-}
+// #firstRow
+// {
+//     margin-top:8%;
+//     margin-bottom:5%;
+//     justify-content: center;  
+// }
 
 #secondRow
 {
@@ -123,12 +123,12 @@ a:visited {
     text-decoration: none;
 }
 
-.container-fluid {
-    margin-left: 1%;
-    margin-right: 0;
-    padding: auto;
-    width: 1900px;
-}
+// .container-fluid {
+//     margin-left: 1%;
+//     margin-right: 0;
+//     padding: auto;
+//     width: 1900px;
+// }
 // .col
 // {
 //     width:20%;
@@ -137,4 +137,10 @@ a:visited {
 div.mat-tab-label
 {
     width:40%;
+}
+
+@font-face
+{
+    font-family: bender;
+    src:url(/src/assets/fonts/bender.otf)format("opentype");
 }
