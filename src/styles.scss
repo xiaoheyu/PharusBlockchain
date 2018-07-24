@@ -11,7 +11,7 @@ $theme: mat-dark-theme($app-primary, $app-accent, $app-warn);
 @include angular-material-theme($theme);
 
 $primary: mat-palette($mat-blue,100,200,300);
-$accent:  mat-palette($mat-indigo,300,400,500);
+$accent:  mat-palette($mat-yellow);
 $warn:    mat-palette($mat-red);
 $themeformenu:mat-dark-theme($primary,$accent, $warn);
 

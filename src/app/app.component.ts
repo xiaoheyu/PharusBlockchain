@@ -9,5 +9,4 @@ import { Component,ViewEncapsulation  } from '@angular/core';
 export class AppComponent {
   tabBackgroundColor="primary";
   tabColor="accent";
-  logo="/images/pharus.ico";
 }

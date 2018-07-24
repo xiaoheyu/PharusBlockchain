@@ -32,6 +32,11 @@ import { Service5Model2FormComponent } from './service5-model2-form/service5-mod
 
 const appRoutes: Routes = [
   {
+    path:'',
+    redirectTo:'/(menu:account)',
+    pathMatch:'full'
+  },
+  {
   path:'account',
   component:UseraccountComponent,
   outlet:'menu'
