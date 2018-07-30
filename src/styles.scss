@@ -19,10 +19,10 @@ $themeformenu:mat-dark-theme($primary,$accent, $warn);
 @include mat-menu-theme($themeformenu);
 
 
-.middle
-{
-    margin-bottom: 1% !important;
-}
+// .middle
+// {
+//     margin-bottom: 1% !important;
+// }
 
 mat-toolbar
 {
@@ -71,8 +71,9 @@ label {
 }
 
 mat-card {
-    width: 280px !important;
-    margin:auto 2% auto 2% !important;
+    height: 150px !important;
+    width: 350px !important;
+    margin:5% 2% auto 2% !important;
     background: #fff !important;
     border-radius: 2px !important;
     // display: inline-block;
@@ -212,24 +213,6 @@ mat-icon
 {
     font-family: 'Material Icons' !important;
 }
-// a.mat-menu-item{
-//     background-color: white;
-//     color: black !important;
-// }
-// a.mat-menu-item:hover {
-    
-//     color: black !important;
-// }
-
-// div.mat-menu-panel
-// {
-//     background-color: white;
-// }
-
-// div.mat-menu-content:hover
-// {
-//     background: whitesmoke;
-// }
 
 select.custom-select,select.custom-select option
 {
@@ -247,4 +230,9 @@ small.form-text.text-muted
 {
     font-size:14px !important;
     font-weight: bolder !important;
+}
+
+mat-card-content
+{
+    font-weight: bolder;
 }

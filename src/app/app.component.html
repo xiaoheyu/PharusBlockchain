@@ -1,46 +1,3 @@
-<!-- <mat-tab-group class="noselect" [backgroundColor]="tabBackgroundColor" [color]="tabColor">
-  <mat-tab >
-    <ng-template mat-tab-label>
-      <span>Account</span>
-    </ng-template>
-    <app-useraccount ></app-useraccount>
-  </mat-tab>
-  <mat-tab>
-      <ng-template mat-tab-label><span>Trading Partner<br>Discovery</span></ng-template>
-      <app-service1></app-service1>
-  </mat-tab>
-
-  <mat-tab> 
-    <ng-template mat-tab-label><span>Business 360</span> </ng-template>
-    <app-service3></app-service3>
-  </mat-tab>
-
-  <mat-tab> 
-      <ng-template mat-tab-label><span>Inventory Planning</span> </ng-template>
-      <app-service2></app-service2>
-  </mat-tab>
-
-  <mat-tab> 
-    <ng-template mat-tab-label><span>Sales Prediction</span> </ng-template>
-    <app-service4></app-service4>
-  </mat-tab>
-
-  <mat-tab> 
-    <ng-template mat-tab-label><span>Shipping<br>Optimization</span> </ng-template>
-    <app-service5></app-service5>
-  </mat-tab>
-
-  <mat-tab> 
-      <ng-template mat-tab-label>
-          <span>EDI</span>
-      </ng-template>
-    <app-edi-intro></app-edi-intro>
-  </mat-tab>
-</mat-tab-group>
- -->
-
-
- 
 <div class="noselect container-fluid">
     <div class="content">
     <div class="row">
@@ -83,17 +40,28 @@
     </div>
 
   <div class="row">
-      <router-outlet name="menu" ></router-outlet>
+      <router-outlet class="col-md-12" name="menu" ></router-outlet>
   </div>
+  <div class="push"></div>
 </div>
+  
+<div class="footer">2018©, PHARUS PROTOCOL. ALL RIGHTS RESERVED.</div>
 
-  <div class="footer row justify-content-md-center">
+    <!-- <div class="placeholderRow">
+        <p id="realfooter">
+            2018©, PHARUS PROTOCOL. ALL RIGHTS RESERVED.
+          </p>
+    </div> -->
+
+  <!-- <div class="footer row justify-content-md-center">
     <div class="col-md-5 text-center">
     <p>
       2018©, PHARUS PROTOCOL. ALL RIGHTS RESERVED.
     </p>
     </div>
-  </div>
+  </div> -->
+
+ 
 
 </div>
  

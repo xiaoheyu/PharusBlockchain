@@ -4,30 +4,26 @@ span
     font-size:150%;
     margin-bottom:5%;
 }
-.content {
-    min-height: calc(100vh - 70px) !important;
-  }
-  .footer {
-    height: 50px !important;
-  }
-// .mat-tab-labels{
-//     justify-content: center; /* align items in Main Axis */
-// }
 
-// mat-toolbar-row.mat-toolbar-row
-// {
-//     justify-content: center; /* align items in Main Axis */
-// }
-// div.col-md-5.text-center p
-// {
-//     position: absolute;
-//     bottom: 0;
-// }
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+  }
+  .wrapper {
+    min-height: 100%;  
+    margin-bottom: -150px; /* 等于footer的高度 */
+  }
+  .footer, .push {
+    text-align:center;
+    height: 150px;
+  }
 
-// div.col-md-5.text-center p:host
-// {
-//     height: 100%;
-// }
+
+div.col-md-5.text-center p
+{
+    font-size: x-small
+}
 
 span p
 {
@@ -37,7 +33,7 @@ mat-toolbar-row>img
 {
     width: 60px;
     height: 60px;
-    // justify-content:flex-start;
+
 }
 
 mat-toolbar-row.mat-toolbar-row button

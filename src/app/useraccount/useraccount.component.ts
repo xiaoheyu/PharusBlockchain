@@ -43,7 +43,7 @@ export class UseraccountComponent implements OnInit,AfterViewChecked {
     for (let i of accountList){
       $('#address'+listCount).text(i.account);
       $('#balance'+listCount).text((i.balance/Math.pow(10,18)).toFixed(2));
-      $('#balance'+listCount).append('<span class=\"balanceUnit\"> ETH</span>')
+      $('#balance'+listCount).append('<span class=\"balanceUnit\"> FRS</span>')
       listCount++;
       };
       
