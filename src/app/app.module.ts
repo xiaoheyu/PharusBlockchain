@@ -10,6 +10,7 @@ import {MatDividerModule} from '@angular/material/divider';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
+import {FlexLayoutModule} from '@angular/flex-layout';
 
 
 import { AppComponent } from './app.component';
@@ -34,6 +35,7 @@ import { Service5Component } from './service5/service5.component';
 import { Service5Model1FormComponent } from './service5-model1-form/service5-model1-form.component';
 import { Service5Model2FormComponent } from './service5-model2-form/service5-model2-form.component';
 import { AddModelComponent } from './forms/add-model/add-model.component';
+import { HttpClientModule } from '@angular/common/http';
 
 
 const appRoutes: Routes = [
@@ -212,7 +214,9 @@ const appRoutes: Routes = [
     MatIconModule,
     ReactiveFormsModule,
     MatFormFieldModule,
-    MatInputModule
+    MatInputModule,
+    FlexLayoutModule,
+    HttpClientModule
 
   ],
   schemas:[ NO_ERRORS_SCHEMA ],

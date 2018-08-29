@@ -1,20 +1,84 @@
-<h2 mat-dialog-title>Hi</h2>
+<h2 mat-dialog-title>AI Model Registration</h2>
 
-<div mat-dialog-content>
-  <form [formGroup]="modelForm">
-    Value:{{modelForm.value|json}}
-    <mat-form-field>
-      <input placeholder="Model Title" formControlName="title">
+<mat-dialog-content>
+<form fxLayout="column" [formGroup]="modelForm" fxLayoutAlign="center" >
+
+    <mat-form-field fxFlex>
+      <input matInput type="text" placeholder="Title" formControlName="title">
+    </mat-form-field>
+    <!-- warning for required field -->
+    <div *ngIf="controls.title.touched && controls.title.errors?.required">
+        Please enter a title for your model
+    </div>
+    
+
+    <mat-form-field fxFlex>
+      <textarea matInput placeholder="Description for your model" formControlName="description"></textarea>
     </mat-form-field>
 
-    <mat-form-field>
-      <textarea  cdkAutosizeTextarea placeholder="Description" formControlName="description"></textarea>
+    <mat-form-field fxFlex>
+      <input matInput  type="text"  placeholder="price" formControlName="price">
+    </mat-form-field>
+    <!-- warning for required field -->
+    <div *ngIf="controls.price.touched && controls.price.errors?.required">
+        Please enter a price for your model
+    </div>
+
+    <mat-form-field fxFlex>
+      <input matInput  type="text"  placeholder="URL" formControlName="url">
+    </mat-form-field>
+    <!-- warning for required field -->
+    <div fxFlex *ngIf="controls.url.touched && controls.url.errors?.required">
+        Please enter a correct URL for your model
+    </div>
+
+
+    <!-- nested from group for parameters -->
+    <div formArrayName="parameter">
+      <div *ngFor="let para of parameter.controls; let i=index" [formGroupName]="i">
+          <div fxFlex fxLayout="row">
+            <h4 fxFlex>Parameter #{{i + 1}}</h4>
+            <mat-form-field fxFlex>
+                <input matInput  type="text"  placeholder="Name" formControlName="name">
+            </mat-form-field>
+
+            <mat-form-field fxFlex>
+                <input matInput  type="text"  placeholder="Field" formControlName="field">
+            </mat-form-field>
+          </div>
+      </div>
+    </div>
+
+    <mat-form-field fxFlex>
+      <mat-select placeholder="Category" formControlName="category">
+        <!-- TODO: link option to dynamic data -->
+        <mat-option value="1">
+          this is the only option
+        </mat-option>
+      </mat-select>
     </mat-form-field>
 
-  </form>
-</div>
+    <mat-form-field fxFlex>
+      <mat-select placeholder="Subcategory" formControlName="subcategory">
+          <!-- TODO: link option to dynamic data -->
+          <mat-option value="1">
+            this is the only option
+          </mat-option>
+      </mat-select>
+    </mat-form-field>
+    
+</form>
+{{modelForm.value|json}}
+</mat-dialog-content>
 
-<div mat-dialog-actions>
-  <button mat-button (click)="onNoClick()">No Thanks</button>
-  <button mat-button [mat-dialog-close] cdkFocusInitial>Ok</button>
-</div>
+<mat-dialog-actions>
+  <div fxFlex fxLayout="row" fxLayoutAlign="center">
+      <button fxFlex mat-dialog-close mat-raised-button>Close</button>
+      <button fxFlex mat-dialog-close mat-raised-button (click)="submitModel()">Submit</button>
+  </div>
+  <div fxFlex fxLayout="row" fxLayoutAlign="center">
+      <button fxFlex mat-raised-button (click)="addParameter()">Add a parameter</button>
+      <button fxFlex mat-raised-button (click)="removeAllParameters()">Remove All parameters</button>
+      <button fxFlex mat-raised-button (click)="resetParameter()">reset parameters</button> 
+  </div>
+</mat-dialog-actions>

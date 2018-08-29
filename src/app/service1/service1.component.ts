@@ -1,6 +1,8 @@
 import { Component, OnInit,DoCheck } from '@angular/core';
 import {MatDialog} from '@angular/material/dialog';
-import {AddModelComponent} from '../forms/add-model/add-model.component'
+import {AddModelComponent} from '../forms/add-model/add-model.component';
+import {AimodelService} from '../forms/aimodel.service';
+import {url} from '../forms/model-data-model';
 @Component({
   selector: 'app-service1',
   templateUrl: './service1.component.html',
@@ -9,12 +11,17 @@ import {AddModelComponent} from '../forms/add-model/add-model.component'
 })
 export class Service1Component implements OnInit,DoCheck {
 
-  constructor(public dialog:MatDialog){}
+  constructor(public dialog:MatDialog,private aimodelservice:AimodelService){}
   openDialog():void
   {
     const dialogRef = this.dialog.open(AddModelComponent, {
       data: {}
     });
+    dialogRef.afterClosed()
+             .subscribe(() => {
+                this.aimodelservice.getModel(url)
+                .subscribe(models=>console.log(JSON.stringify(models)));
+              });
   }
 
   
@@ -26,6 +33,7 @@ export class Service1Component implements OnInit,DoCheck {
 
   public ngOnInit(){
     window.sessionStorage.setItem('serviceOneParentVisible','true');
+
   };
 
 }
