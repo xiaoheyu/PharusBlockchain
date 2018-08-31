@@ -45,8 +45,24 @@
       
   </div>
 
-  <div class="row" id="aiContent" [hidden]="isaiContentHidden" >
-      <iframe class="col-md-12" src="http://ai2tpd.s3-website-us-east-1.amazonaws.com/#!/consumer"></iframe>
+  <div class="row justify-content-center" id="aiContent" [hidden]="isaiContentHidden">
+      <div class="col-md-4">
+        <json-schema-form
+        loadExternalAssets="true"
+        [schema]="jsonSchema"
+        framework="material-design"
+        (onSubmit)="showAiResult()">
+        </json-schema-form>
+      </div>
+      <div class="col-md-4" [hidden]="isAiResultHidden">
+        <json-schema-form
+        loadExternalAssets="true"
+        [schema]="resultSchema"
+        [(data)]="aiResult"
+        framework="material-design">
+        </json-schema-form>
+      </div>
+      <!--<iframe class="col-md-12" src="http://ai2tpd.s3-website-us-east-1.amazonaws.com/#!/consumer"></iframe>-->
   </div>
 
   <div class="row justify-content-center">

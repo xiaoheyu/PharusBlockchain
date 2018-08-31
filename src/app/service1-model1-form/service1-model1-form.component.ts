@@ -23,10 +23,30 @@ export class Service1Model1FormComponent implements OnInit,AfterViewChecked{
   isaiOneHidden=true;
   isBacktoModelHidden=true;
   isaiContentHidden=true;
+  isAiResultHidden = true;
   isBacktoModelHidden2=true;
   //table data
   displayedColumns: string[] = ['transactionHash', 'transactionIndex', 'blockHash', 'blockNumber','gasUsed','cumulativeGasUsed'];
   tableData=[];
+  jsonSchema = {
+      "Company Size": {"type": "integer"},
+      "Company Type": {"type": "string", "enum": ["public", "private"]},
+      "Industry": {"type": "integer"},
+      "Product1 Purchase Amount": {"type": "integer"},
+      "Product2 Purchase Amount": {"type": "integer"},
+      "Product3 Purchase Amount": {"type": "integer"},
+  }
+  
+  resultSchema ={
+    "Output1": {"type": "number"},
+    "Output2": {"type": "number"},
+    "Output3": {"type": "number"}
+  }
+  aiResult = {
+    "Output1": "0.1",
+    "Output2": "0.2",
+    "Output3": "0.3"
+  }
 
   ngOnInit() {
     // console.log('inside ngOnInit()');
@@ -66,6 +86,10 @@ export class Service1Model1FormComponent implements OnInit,AfterViewChecked{
     this.isBacktoModelHidden=false;
     this.isaiContentHidden=false;
     this.isBacktoModelHidden2=false;
+  }
+  showAiResult()
+  {
+    this.isAiResultHidden=false;
   }
 
   ngAfterViewChecked(){

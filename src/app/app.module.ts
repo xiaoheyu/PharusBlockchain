@@ -30,6 +30,10 @@ import { Service5Component } from './service5/service5.component';
 import { Service5Model1FormComponent } from './service5-model1-form/service5-model1-form.component';
 import { Service5Model2FormComponent } from './service5-model2-form/service5-model2-form.component';
 
+import {
+  MaterialDesignFrameworkModule
+} from 'angular6-json-schema-form';
+
 
 const appRoutes: Routes = [
   {
@@ -202,8 +206,8 @@ const appRoutes: Routes = [
     MatMenuModule,
     MatButtonModule,
     MatDividerModule,
-    MatIconModule
-
+    MatIconModule,
+    MaterialDesignFrameworkModule
   ],
   schemas:[ NO_ERRORS_SCHEMA ],
   providers: [],
