@@ -71,6 +71,10 @@ export class AddModelComponent implements OnInit {
   //TODO: send new model data via POST
   submitModel()
   {
+    //transfer parameter array into a single string; Temporary solution for the 
+    //database problem
+    this.modelForm.value.parameter=JSON.stringify(this.modelForm.value.parameter);
+    console.log(this.modelForm.value);
     this.aimodelService.addModel(this.modelForm.value,url)
     .subscribe(model=>console.log(JSON.stringify(model)));
   }

@@ -36,6 +36,7 @@ import { Service5Model1FormComponent } from './service5-model1-form/service5-mod
 import { Service5Model2FormComponent } from './service5-model2-form/service5-model2-form.component';
 import { AddModelComponent } from './forms/add-model/add-model.component';
 import { HttpClientModule } from '@angular/common/http';
+import { PurchaseModelComponent } from './forms/purchase-model/purchase-model.component';
 
 
 const appRoutes: Routes = [
@@ -188,7 +189,8 @@ const appRoutes: Routes = [
     Service5Component,
     Service5Model1FormComponent,
     Service5Model2FormComponent,
-    AddModelComponent
+    AddModelComponent,
+    PurchaseModelComponent
   ],
   imports: [
     // MDBBootstrapModule.forRoot(),

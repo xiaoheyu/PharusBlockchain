@@ -15,13 +15,9 @@ export class AimodelService {
   
   addModel(inputModel:Object,url:string):Observable<Object>
   {
-    console.log('add model!!');
-    return this.http.post(url,JSON.stringify(inputModel),httpOptions).pipe(
+    return this.http.post(url,inputModel,httpOptions).pipe(
     tap((hero:Object) =>console.log(JSON.stringify(hero))),
     catchError(err=>of(err)));
-    // return this.http.get(url).pipe(
-    //   tap((hero:Object) =>console.log(JSON.stringify(hero))),
-    //   catchError(err=>of(err)));
   }
 
   //fetch all models and save it into localstorage

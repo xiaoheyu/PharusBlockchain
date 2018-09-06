@@ -1,7 +1,10 @@
-<div class="noselect container-fluid">
-    <div class="content">
-    <div class="row">
-    <mat-toolbar  color="primary"> 
+<div class="noselect">
+    <div fxLayout="row" class="content">
+
+
+
+
+    <mat-toolbar fxFlex="100%"  color="primary"> 
         <mat-toolbar-row>
           <img src="../assets/images/LogoWhite.svg" alt="Pharus Logo">
             <mat-divider [vertical]="true"></mat-divider>
@@ -37,31 +40,21 @@
     
         </mat-toolbar-row>
       </mat-toolbar>
+
+
+
+
     </div>
 
-  <div class="row">
-      <router-outlet class="col-md-12" name="menu" ></router-outlet>
-  </div>
-  <div class="push"></div>
-</div>
+    <div fxLayout="row" >
+      
+        <router-outlet name="menu" ></router-outlet>
+      
+    </div>
   
-<div class="footer">2018©, PHARUS PROTOCOL. ALL RIGHTS RESERVED.</div>
-
-    <!-- <div class="placeholderRow">
-        <p id="realfooter">
-            2018©, PHARUS PROTOCOL. ALL RIGHTS RESERVED.
-          </p>
-    </div> -->
-
-  <!-- <div class="footer row justify-content-md-center">
-    <div class="col-md-5 text-center">
-    <p>
-      2018©, PHARUS PROTOCOL. ALL RIGHTS RESERVED.
-    </p>
+    <div fxLayout="row" fxLayoutAlign="center end" >
+        2018©, PHARUS PROTOCOL. ALL RIGHTS RESERVED.
     </div>
-  </div> -->
-
- 
 
 </div>
  

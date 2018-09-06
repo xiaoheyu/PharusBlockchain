@@ -23,12 +23,16 @@ export class AiModel
 export class Parameter
 {
 name:string;
-field:string;
+value_type:string;
+value_range:string;
+parameter_type:string;
 
 constructor()
 {
-    this.name='';
-    this.field='';
+   this.name='';
+   this.value_type='';
+   this.value_range='';
+   this.parameter_type='';
 }
 }
 

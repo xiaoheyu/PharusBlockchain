@@ -1,5 +1,6 @@
-import { Component, OnInit,DoCheck } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {MatDialog} from '@angular/material/dialog';
+
 import {AddModelComponent} from '../forms/add-model/add-model.component';
 import {AimodelService} from '../forms/aimodel.service';
 import {url} from '../forms/model-data-model';
@@ -9,8 +10,10 @@ import {url} from '../forms/model-data-model';
   styleUrls: ['./service1.component.scss'],
 
 })
-export class Service1Component implements OnInit,DoCheck {
-
+export class Service1Component implements OnInit {
+  modelList:Object[];
+  selectedModel:number;
+  showModels:boolean=true;
   constructor(public dialog:MatDialog,private aimodelservice:AimodelService){}
   openDialog():void
   {
@@ -20,20 +23,28 @@ export class Service1Component implements OnInit,DoCheck {
     dialogRef.afterClosed()
              .subscribe(() => {
                 this.aimodelservice.getModel(url)
-                .subscribe(models=>console.log(JSON.stringify(models)));
+                .subscribe(
+                  // update models in localstorage
+                  ()=>
+                  {
+                    this.modelList=JSON.parse(localStorage.getItem('models'));
+                    console.log(this.modelList);
+                  }
+                );
               });
   }
 
-  
-  serviceOneParentVisible:string;
-  ngDoCheck()
+  selectModel(id:number):void
   {
-    this.serviceOneParentVisible=sessionStorage.getItem('serviceOneParentVisible')==='true'?'flex':'none';
+    console.log('you selected id:'+id);
+    this.showModels=!this.showModels;
+    this.selectedModel=id;
+    console.log(this.showModels);
+    
   }
 
   public ngOnInit(){
-    window.sessionStorage.setItem('serviceOneParentVisible','true');
-
+    this.modelList=JSON.parse(localStorage.getItem('models'));
   };
 
 }
