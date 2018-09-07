@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import {Observable,of} from 'rxjs';
 import {tap,catchError,map} from 'rxjs/operators';
+
+import {modelcategories,ModelCategory} from './model-data-model';
 const httpOptions = {
   headers: new HttpHeaders({'Access-Control-Allow-Origin':'*'})
 };
@@ -27,6 +29,12 @@ export class AimodelService {
       map(data=>{return data['products'];}),
       tap((models:Object) =>localStorage.setItem('models',JSON.stringify(models))),
       catchError(err=>of(err)));
+  }
+
+  //get all info for model categories
+  getCategories():Observable<ModelCategory[]>
+  {
+    return of(modelcategories);
   }
 
 }
