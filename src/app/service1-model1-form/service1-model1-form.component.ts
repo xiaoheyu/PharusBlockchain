@@ -28,14 +28,36 @@ export class Service1Model1FormComponent implements OnInit,AfterViewChecked{
   //table data
   displayedColumns: string[] = ['transactionHash', 'transactionIndex', 'blockHash', 'blockNumber','gasUsed','cumulativeGasUsed'];
   tableData=[];
-  jsonSchema = {
+  jsontemplate = {
+      "title": "Business 360", 
+      "description": "This is the description of the AI Model", 
+      "price": 1.5, 
+      "url": "will generate a API for testing", 
+      "parameter":
+      [{ "name": "Company Size", "value_type": "integer", "value_range": [0,100], "parameter_type":"input" },
+       { "name": "Company Type", "value_type": "string" , "value_range": ["private","public"], "parameter_type":"input"},
+       { "name": "Industry", "value_type": "int" , "value_range": [0,100], "parameter_type":"input"},
+       { "name": "Product1 Purchase Amount", "value_type": "integer" , "value_range": [0,100], "parameter_type":"input"},
+       { "name": "Product2 Purchase Amount", "value_type": "integer" , "value_range": [0,100], "parameter_type":"input"},
+       { "name": "Product3 Purchase Amount", "value_type": "integer" , "value_range": [0,100], "parameter_type":"input"},
+       { "name": "Output1", "value_type": "float" , "parameter_type":"output"},
+       { "name": "Output2", "value_type": "float" , "parameter_type":"output"},
+       { "name": "Output3", "value_type": "float" , "parameter_type":"output"},
+       { "name": "Output4", "value_type": "float" , "parameter_type":"output"}
+      ],
+      "category": "1", 
+      "subcategory": "1" 
+  };
+  //console.log(jsontemplate);
+  jsonSchema = {}
+  /*jsonSchema = {
       "Company Size": {"type": "integer"},
       "Company Type": {"type": "string", "enum": ["public", "private"]},
       "Industry": {"type": "integer"},
       "Product1 Purchase Amount": {"type": "integer"},
       "Product2 Purchase Amount": {"type": "integer"},
       "Product3 Purchase Amount": {"type": "integer"},
-  }
+  }*/
   
   resultSchema ={
     "Output1": {"type": "number"},
@@ -49,6 +71,23 @@ export class Service1Model1FormComponent implements OnInit,AfterViewChecked{
   }
 
   ngOnInit() {
+
+    var parameters = this.jsontemplate.parameter;
+    var jsonParameter = {};
+    parameters.forEach(function(entry){
+      if(entry.parameter_type == 'input'){
+        var type = {"type": entry.value_type};
+        console.log(type);
+        jsonParameter[entry.name] = type;
+        if(entry.value_type == "string" && entry.value_range !=null){
+          console.log(entry.value_range)
+          //var enum = ;
+          jsonParameter[entry.name].enum = entry.value_range;
+        }
+      }
+    })
+    this.jsonSchema = jsonParameter;
+    console.log(this.jsonSchema);
     // console.log('inside ngOnInit()');
     
   }
