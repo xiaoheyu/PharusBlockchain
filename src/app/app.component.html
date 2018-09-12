@@ -1,17 +1,12 @@
-<div class="noselect">
-    <div fxLayout="row" class="content">
-    <app-topnavbar fxFlex="100%"></app-topnavbar>
-    </div>
+<div fxLayout="column" class="noselect">
+    <app-topnavbar class="topnav" fxFlex="1 0 auto"></app-topnavbar>
 
-    <div fxLayout="row" >
+    
       
-        <router-outlet name="menu" ></router-outlet>
+        <router-outlet fxFlex></router-outlet>
       
-    </div>
   
-    <div fxLayout="row" fxLayoutAlign="center end" >
-        2018©, PHARUS PROTOCOL. ALL RIGHTS RESERVED.
-    </div>
+    <app-footer></app-footer>  
 
 </div>
  

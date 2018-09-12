@@ -3,15 +3,15 @@
     <img src="../assets/images/LogoWhite.svg" alt="Pharus Logo">
       <mat-divider [vertical]="true"></mat-divider>
     
-      <button mat-button mat-raised-button color="accent" [matMenuTriggerFor]="account">Account</button>
-      <mat-menu #account="matMenu">
-        <a mat-menu-item [routerLink]="[{ outlets: { menu: ['account'] } }]">Account</a>
+      <button mat-button  [matMenuTriggerFor]="account">Account</button>
+      <mat-menu #account="matMenu" [overlapTrigger]="false">
+        <a mat-menu-item routerLink="account">Account</a>
       </mat-menu>
     
     <mat-divider [vertical]="true"></mat-divider>
     
-    <button mat-button mat-raised-button color="accent" [matMenuTriggerFor]="menu">AI Service</button>
-    <mat-menu #menu="matMenu">
+    <button mat-button #menuTriggerOne (mouseenter)="trigger()" [matMenuTriggerFor]="menu">AI Service</button>
+    <!-- <mat-menu #menu="matMenu">
       <a mat-menu-item [routerLink]="[{ outlets: { menu: ['service1'] } }]">Partner Matching</a>
       <mat-divider></mat-divider>
       <a mat-menu-item [routerLink]="[{ outlets: { menu: ['service3'] } }]">Business 360</a>
@@ -21,12 +21,15 @@
       <a mat-menu-item [routerLink]="[{ outlets: { menu: ['service4'] } }]">Demand Forecasting</a>
       <mat-divider></mat-divider>
       <a mat-menu-item [routerLink]="[{ outlets: { menu: ['service5'] } }]">Logistics Optimization</a>
+    </mat-menu> -->
+    <mat-menu #menu="matMenu" [overlapTrigger]="false">
+      <a *ngFor="let category of modelCategories" mat-menu-item [routerLink]="[category.abbr]">{{category.title}}</a>
     </mat-menu>
 
     <mat-divider [vertical]="true"></mat-divider>
     
-    <button mat-button mat-raised-button color="accent" [matMenuTriggerFor]="EDI">Data Service</button>
-    <mat-menu #EDI="matMenu">
+    <button mat-button [matMenuTriggerFor]="EDI">Data Service</button>
+    <mat-menu #EDI="matMenu" [overlapTrigger]="false">
       <a mat-menu-item [routerLink]="[{ outlets: { menu: ['EDIintro'] } }]">EDI Conversion</a>
       <a mat-menu-item href="">Data Storage</a>
       <a mat-menu-item href="">Data Computation</a>

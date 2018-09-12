@@ -1,7 +1,7 @@
 import { Component, OnInit,ViewEncapsulation } from '@angular/core';
-import {FormBuilder,FormGroup, FormControl,FormArray,Validators} from '@angular/forms'
+import {FormBuilder,FormGroup,FormArray,Validators} from '@angular/forms'
 import {AimodelService} from '../aimodel.service';
-import {AiModel,Parameter,url} from '../model-data-model';
+import {Parameter,url,ModelCategory} from '../model-data-model';
 @Component({
   selector: 'app-add-model',
   templateUrl: './add-model.component.html',
@@ -9,7 +9,7 @@ import {AiModel,Parameter,url} from '../model-data-model';
   encapsulation:ViewEncapsulation.Emulated
 })
 export class AddModelComponent implements OnInit {
- 
+  modelCategories:ModelCategory[];
   modelForm : FormGroup;
 
   constructor(public fb: FormBuilder,
@@ -20,6 +20,12 @@ export class AddModelComponent implements OnInit {
 
   ngOnInit()
   {
+    // load model category list
+    this.aimodelService.getCategories().subscribe(
+      modelcategories=>this.modelCategories=modelcategories
+    )
+    console.log(this.modelCategories);
+    
     this.modelForm = this.fb.group(
       {
       title : ['',Validators.required],

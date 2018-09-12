@@ -1,4 +1,4 @@
-@import '~@angular/material/_theming.scss';
+@import '~@angular/material/theming';
 
 @include mat-core();
 $app-primary: mat-palette($mat-blue,400,200,100);
@@ -7,78 +7,22 @@ $app-warn:    mat-palette($mat-red);
 
 $theme: mat-light-theme($app-primary,$app-primary, $app-warn);
 
-
-
 @include angular-material-theme($theme);
 
-$primary: mat-palette($mat-blue,100);
-$accent:  mat-palette($mat-blue);
-$warn:    mat-palette($mat-red);
-$themeformenu:mat-dark-theme($primary,$accent, $warn);
+// theme class for overlay-based UI component in angular material library
+// will be added in the constructor of AppModule class in app.module.ts
+.menu-theme
+{
+  @include angular-material-theme($theme);
+}
+// $primary: mat-palette($mat-blue,100);
+// $accent:  mat-palette($mat-blue);
+// $warn:    mat-palette($mat-red);
+// $themeformenu:mat-dark-theme($primary,$accent, $warn);
 
-@include mat-menu-theme($themeformenu);
-
-
-// span
-// {
-//     padding-left:1%;
-// }
-
-
-// label {
-//     display:block;
-//     margin-bottom:10px;
-// }
-
-// .mat-tab-label-content 
-// {
-//     font-weight:bold;
-//     color:white;
-// }
+// @include mat-menu-theme($themeformenu);
 
 
-//   #accountSelect
-//   {
-//       width:auto;
-//   }
-
-
-
-  
-  
-
-// .mat-tab-label.mat-ripple.ng-star-inserted
-// {
-//     height:70px;
-//     // width:40%;
-// }
-
-// span.ng-star-inserted
-// {
-//     word-wrap: break-word;
-// }
-
-
-// option
-// {
-//     font-weight: bold;
-//     font-size:130%;
-// }
-
-// select,select.custom-select
-// {
-//     font-weight: bold;
-//     font-size:130%;
-// }
-
-
-
-// div.mat-menu-content
-// {
-//     background-color: #001433;
-//     font-weight: bold;
-//     font-size:100%;
-// }
 
 // disable underline of menu links
 a.mat-menu-item:link {
@@ -138,4 +82,12 @@ body *
   
   mat-card:hover {
     box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22) !important;
+  }
+
+
+  .topnav
+  {
+    position: fixed;
+    top: 0;
+    width: 100%;
   }

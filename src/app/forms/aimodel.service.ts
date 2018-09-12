@@ -14,6 +14,7 @@ const httpOptions = {
 export class AimodelService {
 
   constructor(private http: HttpClient) {}
+  selectedAiCategory:ModelCategory;
   
   addModel(inputModel:Object,url:string):Observable<Object>
   {
@@ -36,5 +37,6 @@ export class AimodelService {
   {
     return of(modelcategories);
   }
+  
 
 }

@@ -1,9 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import {MatDialog} from '@angular/material/dialog';
+import { Router, ActivatedRoute, ParamMap } from '@angular/router';
+import {map} from 'rxjs/operators';
 
 import {AddModelComponent} from '../forms/add-model/add-model.component';
 import {AimodelService} from '../forms/aimodel.service';
-import {url} from '../forms/model-data-model';
+import {url,modelcategories,ModelCategory} from '../forms/model-data-model';
+import { Observable } from 'rxjs';
 @Component({
   selector: 'app-service1',
   templateUrl: './service1.component.html',
@@ -11,10 +14,22 @@ import {url} from '../forms/model-data-model';
 
 })
 export class Service1Component implements OnInit {
-  modelList:Object[];
+  modelCategories:ModelCategory[];
+  modelList:ModelCategory[];
+  displayModelList:ModelCategory[];
   selectedModel:number;
+  selectedCategory:Observable<string>;
   showModels:boolean=true;
-  constructor(public dialog:MatDialog,private aimodelservice:AimodelService){}
+
+
+  constructor
+  (
+    public dialog:MatDialog,
+    private aimodelservice:AimodelService,
+    private route: ActivatedRoute,
+    private router: Router,
+  )
+  {}
   openDialog():void
   {
     const dialogRef = this.dialog.open(AddModelComponent, {
@@ -44,7 +59,33 @@ export class Service1Component implements OnInit {
   }
 
   public ngOnInit(){
+    this.aimodelservice.getCategories().subscribe(categories=>this.modelCategories=categories);
     this.modelList=JSON.parse(localStorage.getItem('models'));
+    this.selectedCategory = this.route.paramMap.pipe(
+      map((params: ParamMap) =>
+        {
+        
+        return params.get('abbr')
+        
+        } 
+    )
+  );
+    this.selectedCategory.subscribe
+    (
+      (categoryAbbr)=>{this.modelCategories.forEach(m=>
+        {
+          if (m['abbr']===categoryAbbr)
+          {
+          // this.selectedCategory=e;
+          console.log(m.categoryId);
+          this.displayModelList=this.modelList.filter(model=>model['category']===m.categoryId);
+          console.log(this.displayModelList);
+          }
+        }
+      )}
+    );
+
+    
   };
 
 }

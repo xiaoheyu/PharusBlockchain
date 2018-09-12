@@ -11,154 +11,141 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import {FlexLayoutModule} from '@angular/flex-layout';
+import {OverlayContainer} from '@angular/cdk/overlay';
 
 
 import { AppComponent } from './app.component';
 import { UseraccountComponent } from './useraccount/useraccount.component';
 import { Service1Component } from './service1/service1.component';
-import { Service2Component } from './service2/service2.component';
+// import { Service2Component } from './service2/service2.component';
 import { EDIComponent } from './edi/edi.component';
 import { EdiIntroComponent } from './edi-intro/edi-intro.component';
 import { Edi2Component } from './edi2/edi2.component';
-import { Service1Model1FormComponent } from './service1-model1-form/service1-model1-form.component';
+// import { Service1Model1FormComponent } from './service1-model1-form/service1-model1-form.component';
 import {MatSelectModule} from '@angular/material/select';
-import { Service1Model2FormComponent } from './service1-model2-form/service1-model2-form.component';
-import { Service2Model1FormComponent } from './service2-model1-form/service2-model1-form.component';
-import { Service2Model2FormComponent } from './service2-model2-form/service2-model2-form.component';
-import { Service3Component } from './service3/service3.component';
-import { Service3Model1FormComponent } from './service3-model1-form/service3-model1-form.component';
-import { Service3Model2FormComponent } from './service3-model2-form/service3-model2-form.component';
-import { Service4Component } from './service4/service4.component';
-import { Service4Model1FormComponent } from './service4-model1-form/service4-model1-form.component';
-import { Service4Model2FormComponent } from './service4-model2-form/service4-model2-form.component';
-import { Service5Component } from './service5/service5.component';
-import { Service5Model1FormComponent } from './service5-model1-form/service5-model1-form.component';
-import { Service5Model2FormComponent } from './service5-model2-form/service5-model2-form.component';
+// import { Service1Model2FormComponent } from './service1-model2-form/service1-model2-form.component';
+// import { Service2Model1FormComponent } from './service2-model1-form/service2-model1-form.component';
+// import { Service2Model2FormComponent } from './service2-model2-form/service2-model2-form.component';
+// import { Service3Component } from './service3/service3.component';
+// import { Service3Model1FormComponent } from './service3-model1-form/service3-model1-form.component';
+// import { Service3Model2FormComponent } from './service3-model2-form/service3-model2-form.component';
+// import { Service4Component } from './service4/service4.component';
+// import { Service4Model1FormComponent } from './service4-model1-form/service4-model1-form.component';
+// import { Service4Model2FormComponent } from './service4-model2-form/service4-model2-form.component';
+// import { Service5Component } from './service5/service5.component';
+// import { Service5Model1FormComponent } from './service5-model1-form/service5-model1-form.component';
+// import { Service5Model2FormComponent } from './service5-model2-form/service5-model2-form.component';
 import { AddModelComponent } from './forms/add-model/add-model.component';
 import { HttpClientModule } from '@angular/common/http';
 import { PurchaseModelComponent } from './forms/purchase-model/purchase-model.component';
 import { TopnavbarComponent } from './topnavbar/topnavbar.component';
+import { FooterComponent } from './footer/footer.component';
 
 
 const appRoutes: Routes = [
   {
     path:'',
-    redirectTo:'/(menu:account)',
+    redirectTo:'/account',
     pathMatch:'full'
   },
   {
   path:'account',
-  component:UseraccountComponent,
-  outlet:'menu'
+  component:UseraccountComponent
   },
 
   {
-  path:'service1',
-  component:Service1Component,
-  outlet:'menu',
-  children:[
-    {
-      path: 'compose',
-      component: Service1Model1FormComponent,
-      outlet: 'popup'
-    },
-    {
-      path: 'compose2',
-      component: Service1Model2FormComponent,
-      outlet: 'popup'
-    }
-  ]
+  path:':abbr',
+  component:Service1Component
   },
 
-  {
-  path:'service2',
-  component:Service2Component,
-  outlet:'menu',
-  children:[
-    {
-      path: 'compose3',
-      component: Service2Model1FormComponent,
-      outlet: 'popup2'
-    },
-    {
-      path: 'compose4',
-      component: Service2Model2FormComponent,
-      outlet: 'popup2'
-    }
-  ]
-  },
+  // {
+  // path:'service2',
+  // component:Service2Component,
+  // outlet:'menu',
+  // children:[
+  //   {
+  //     path: 'compose3',
+  //     component: Service2Model1FormComponent,
+  //     outlet: 'popup2'
+  //   },
+  //   {
+  //     path: 'compose4',
+  //     component: Service2Model2FormComponent,
+  //     outlet: 'popup2'
+  //   }
+  // ]
+  // },
 
-  {
-  path:'service3',
-  component:Service3Component,
-  outlet:'menu',
-  children:[
-    {
-      path: 'compose5',
-      component: Service3Model1FormComponent,
-      outlet: 'popup3'
-    },
-    {
-      path: 'compose6',
-      component: Service3Model2FormComponent,
-      outlet: 'popup3'
-    }
-  ]
-  },
+  // {
+  // path:'service3',
+  // component:Service3Component,
+  // outlet:'menu',
+  // children:[
+  //   {
+  //     path: 'compose5',
+  //     component: Service3Model1FormComponent,
+  //     outlet: 'popup3'
+  //   },
+  //   {
+  //     path: 'compose6',
+  //     component: Service3Model2FormComponent,
+  //     outlet: 'popup3'
+  //   }
+  // ]
+  // },
 
-  {
-  path:'service4',
-  component:Service4Component,
-  outlet:'menu',
-  children:[
-    {
-      path: 'compose7',
-      component: Service4Model1FormComponent,
-      outlet: 'popup4'
-    },
-    {
-      path: 'compose8',
-      component: Service4Model2FormComponent,
-      outlet: 'popup4'
-    }
-  ]
-  },
+  // {
+  // path:'service4',
+  // component:Service4Component,
+  // outlet:'menu',
+  // children:[
+  //   {
+  //     path: 'compose7',
+  //     component: Service4Model1FormComponent,
+  //     outlet: 'popup4'
+  //   },
+  //   {
+  //     path: 'compose8',
+  //     component: Service4Model2FormComponent,
+  //     outlet: 'popup4'
+  //   }
+  // ]
+  // },
 
-  {
-  path:'service5',
-  component:Service5Component,
-  outlet:'menu',
-  children:[
-    {
-      path: 'compose9',
-      component: Service5Model1FormComponent,
-      outlet: 'popup5'
-    },
-    {
-      path: 'compose10',
-      component: Service5Model2FormComponent,
-      outlet: 'popup5'
-    }
-  ]
-  },
+  // {
+  // path:'service5',
+  // component:Service5Component,
+  // outlet:'menu',
+  // children:[
+  //   {
+  //     path: 'compose9',
+  //     component: Service5Model1FormComponent,
+  //     outlet: 'popup5'
+  //   },
+  //   {
+  //     path: 'compose10',
+  //     component: Service5Model2FormComponent,
+  //     outlet: 'popup5'
+  //   }
+  // ]
+  // },
   
-  {
-  path:'EDIintro',
-  component:EdiIntroComponent,
-  outlet:'menu',
-  children:[
-  { 
-    path: 'edi-form', 
-    component: EDIComponent,
-    outlet:'edi'
-   },
-  { 
-    path: 'edi-form2', 
-    component: Edi2Component,
-    outlet:'edi'
-  },
-  ]
-  }
+  // {
+  // path:'EDIintro',
+  // component:EdiIntroComponent,
+  // children:[
+  // { 
+  //   path: 'edi-form', 
+  //   component: EDIComponent,
+  //   outlet:'edi'
+  //  },
+  // { 
+  //   path: 'edi-form2', 
+  //   component: Edi2Component,
+  //   outlet:'edi'
+  // },
+  // ]
+  // }
 
   
   
@@ -173,32 +160,32 @@ const appRoutes: Routes = [
     AppComponent,
     UseraccountComponent,
     Service1Component,
-    Service2Component,
+    // Service2Component,
     EDIComponent,
     EdiIntroComponent,
     Edi2Component,
-    Service1Model1FormComponent,
-    Service1Model2FormComponent,
-    Service2Model1FormComponent,
-    Service2Model2FormComponent,
-    Service3Component,
-    Service3Model1FormComponent,
-    Service3Model2FormComponent,
-    Service4Component,
-    Service4Model1FormComponent,
-    Service4Model2FormComponent,
-    Service5Component,
-    Service5Model1FormComponent,
-    Service5Model2FormComponent,
+    // Service1Model1FormComponent,
+    // Service1Model2FormComponent,
+    // Service2Model1FormComponent,
+    // Service2Model2FormComponent,
+    // Service3Component,
+    // Service3Model1FormComponent,
+    // Service3Model2FormComponent,
+    // Service4Component,
+    // Service4Model1FormComponent,
+    // Service4Model2FormComponent,
+    // Service5Component,
+    // Service5Model1FormComponent,
+    // Service5Model2FormComponent,
     AddModelComponent,
     PurchaseModelComponent,
-    TopnavbarComponent
+    TopnavbarComponent,
+    FooterComponent
   ],
   imports: [
-    // MDBBootstrapModule.forRoot(),
     RouterModule.forRoot(
       appRoutes,
-      { enableTracing: true,onSameUrlNavigation	:'ignore' } // <-- debugging purposes only
+      { enableTracing: false,onSameUrlNavigation	:'reload' } // <-- debugging purposes only
     ),
     BrowserModule,
     BrowserAnimationsModule,
@@ -228,4 +215,10 @@ const appRoutes: Routes = [
   bootstrap: [AppComponent],
   entryComponents:[AddModelComponent]
 })
-export class AppModule { }
+export class AppModule 
+{
+  constructor(overlayContainer:OverlayContainer)
+  {
+    overlayContainer.getContainerElement().classList.add('menu-theme');
+  }
+}
