@@ -9,8 +9,16 @@ import {MatMenuTrigger} from '@angular/material';
 })
 export class TopnavbarComponent implements OnInit {
 
-  @ViewChild('menuTriggerOne',{read:MatMenuTrigger})
-  menuOne:MatMenuTrigger;
+  // get the reference of the button instead of the menu element, or it won't work
+  // but why??
+  @ViewChild('aiMenu',{read:MatMenuTrigger})
+  aiMenu:MatMenuTrigger;
+
+  @ViewChild('accountMenu',{read:MatMenuTrigger})
+  accountMenu:MatMenuTrigger;
+
+  @ViewChild('ediMenu',{read:MatMenuTrigger})
+  ediMenu:MatMenuTrigger;
 
   modelCategories:ModelCategory[];
   constructor(private aimodelservice:AimodelService) { }
@@ -21,16 +29,21 @@ export class TopnavbarComponent implements OnInit {
     console.log(this.modelCategories);
   }
 
-  trigger()
+  toggleAccount()
   {
-    console.log('triggered!');
-    this.menuOne.openMenu();
+    this.accountMenu.toggleMenu();
   }
 
-  close()
+  toggleAi()
   {
-  
-    this.menuOne.closeMenu();
+    this.aiMenu.toggleMenu();
   }
+
+  toggleEdi()
+  {
+    this.ediMenu.toggleMenu();
+  }
+
+  
 
 }

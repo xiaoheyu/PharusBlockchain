@@ -3,36 +3,31 @@
     <img src="../assets/images/LogoWhite.svg" alt="Pharus Logo">
       <mat-divider [vertical]="true"></mat-divider>
     
-      <button mat-button  [matMenuTriggerFor]="account">Account</button>
+      <button mat-button #accountMenu (mouseenter)="toggleAccount()" [matMenuTriggerFor]="account">Account</button>
       <mat-menu #account="matMenu" [overlapTrigger]="false">
-        <a mat-menu-item routerLink="account">Account</a>
+        <span (mouseleave)="toggleAccount()">
+          <a mat-menu-item routerLink="account">Account</a>
+        </span>
       </mat-menu>
     
     <mat-divider [vertical]="true"></mat-divider>
     
-    <button mat-button #menuTriggerOne (mouseenter)="trigger()" [matMenuTriggerFor]="menu">AI Service</button>
-    <!-- <mat-menu #menu="matMenu">
-      <a mat-menu-item [routerLink]="[{ outlets: { menu: ['service1'] } }]">Partner Matching</a>
-      <mat-divider></mat-divider>
-      <a mat-menu-item [routerLink]="[{ outlets: { menu: ['service3'] } }]">Business 360</a>
-      <mat-divider></mat-divider>
-      <a mat-menu-item [routerLink]="[{ outlets: { menu: ['service2'] } }]">Inventory Planning</a>
-      <mat-divider></mat-divider>
-      <a mat-menu-item [routerLink]="[{ outlets: { menu: ['service4'] } }]">Demand Forecasting</a>
-      <mat-divider></mat-divider>
-      <a mat-menu-item [routerLink]="[{ outlets: { menu: ['service5'] } }]">Logistics Optimization</a>
-    </mat-menu> -->
+    <button mat-button #aiMenu (mouseenter)="toggleAi()" [matMenuTriggerFor]="menu">AI Service</button>
     <mat-menu #menu="matMenu" [overlapTrigger]="false">
-      <a *ngFor="let category of modelCategories" mat-menu-item [routerLink]="[category.abbr]">{{category.title}}</a>
+      <span (mouseleave)="toggleAi()">
+        <a *ngFor="let category of modelCategories" mat-menu-item [routerLink]="[category.abbr]">{{category.title}}</a>
+      </span>
     </mat-menu>
 
     <mat-divider [vertical]="true"></mat-divider>
     
-    <button mat-button [matMenuTriggerFor]="EDI">Data Service</button>
+    <button mat-button #ediMenu (mouseenter)="toggleEdi()" [matMenuTriggerFor]="EDI">Data Service</button>
     <mat-menu #EDI="matMenu" [overlapTrigger]="false">
-      <a mat-menu-item [routerLink]="[{ outlets: { menu: ['EDIintro'] } }]">EDI Conversion</a>
-      <a mat-menu-item href="">Data Storage</a>
-      <a mat-menu-item href="">Data Computation</a>
+      <span (mouseleave)="toggleEdi()">
+        <a mat-menu-item [routerLink]="[{ outlets: { menu: ['EDIintro'] } }]">EDI Conversion</a>
+        <a mat-menu-item href="">Data Storage</a>
+        <a mat-menu-item href="">Data Computation</a>
+      </span>
     </mat-menu>
 
   </mat-toolbar-row>
