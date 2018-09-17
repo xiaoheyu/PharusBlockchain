@@ -20,34 +20,30 @@ export class AiModel
     }
 }
 // used in add-model component for adding more parameters for new model
-export class Parameter
-{
-display_name:string;
-name:string;
-value_type:string;
-value_range:string;
-parameter_type:string;
+export class Parameter{
+    display_name:string;
+    name:string;
+    value_type:string;
+    value_range:string;
+    parameter_type:string;
 
-constructor()
-{
+constructor(){
    this.display_name='';
    this.name='';
    this.value_type='';
    this.value_range='';
    this.parameter_type='';
-}
+  }
 }
 // Structural definition of model categories
-export class ModelCategory
-{
+export class ModelCategory{
     categoryId:number;
     title:string;
     abbr:string;
     description:string;
 }
 
-export const modelcategories:ModelCategory[]=
-[
+export const modelcategories:ModelCategory[]=[
     {
         categoryId:1,
         title:'Partner Matching',

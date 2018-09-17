@@ -28,9 +28,8 @@ export class Service1Component implements OnInit {
     public dialog:MatDialog,
     private aimodelservice:AimodelService,
     private route: ActivatedRoute,
-    private router: Router,
-  )
-  {}
+    private router: Router,){
+  }
   openDialog():void
   {
     const dialogRef = this.dialog.open(AddModelComponent, {

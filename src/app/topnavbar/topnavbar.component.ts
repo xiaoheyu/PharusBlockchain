@@ -1,4 +1,4 @@
-import { Component,ViewChild, OnInit } from '@angular/core';
+import { Component,ViewChild, OnInit,isDevMode} from '@angular/core';
 import {AimodelService} from '../forms/aimodel.service';
 import {ModelCategory} from '../forms/model-data-model';
 import {MatMenuTrigger} from '@angular/material';
@@ -26,7 +26,10 @@ export class TopnavbarComponent implements OnInit {
   ngOnInit() {
     // get all model info from model-data-model
     this.aimodelservice.getCategories().subscribe(categories=>this.modelCategories=categories);
+    if (isDevMode()){
+    console.log('topnavbar testing');
     console.log(this.modelCategories);
+    }
   }
 
   toggleAccount()
