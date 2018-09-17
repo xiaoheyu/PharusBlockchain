@@ -38,12 +38,17 @@
       <div *ngFor="let para of parameter.controls; let i=index" [formGroupName]="i">
           <div fxFlex fxLayout="row">
             <h4 fxFlex>Parameter #{{i + 1}}</h4>
+            
             <mat-form-field fxFlex>
-                <input matInput  type="text"  placeholder="Name" formControlName="name">
+              <input matInput  type="text"  placeholder="Display name" formControlName="display_name">
             </mat-form-field>
 
             <mat-form-field fxFlex>
-                <input matInput  type="text"  placeholder="Type of value" formControlName="value_type">
+              <input matInput  type="text"  placeholder="Name" formControlName="name">
+            </mat-form-field>
+
+            <mat-form-field fxFlex>
+              <input matInput  type="text"  placeholder="Type of value" formControlName="value_type">
             </mat-form-field>
 
             <mat-form-field fxFlex>
@@ -51,7 +56,7 @@
             </mat-form-field>
 
             <mat-form-field fxFlex>
-                <input matInput  type="text"  placeholder="Parameter type: Input or Output" formControlName="parameter_type">
+              <input matInput  type="text"  placeholder="Parameter type: Input or Output" formControlName="parameter_type">
             </mat-form-field>
           </div>
       </div>
@@ -83,7 +88,7 @@
 <mat-dialog-actions>
   <div fxFlex fxLayout="row" fxLayoutAlign="center">
       <button fxFlex mat-dialog-close mat-raised-button>Close</button>
-      <button fxFlex mat-raised-button (click)="submitModel()">Submit</button>
+      <button fxFlex mat-raised-button (click)="submitModel()" [disabled]="!modelForm.valid">Submit</button>
   </div>
   <div fxFlex fxLayout="row" fxLayoutAlign="center">
       <button fxFlex mat-raised-button (click)="addParameter()">Add a parameter</button>

@@ -17,7 +17,14 @@ export class AddModelComponent implements OnInit {
               ){
   
   }
-
+// TODO: remove value_range field when the parameter_type is "output"
+// https://stackoverflow.com/questions/44898010/form-control-valuechanges-gives-the-previous-value
+// this.parentForm.controls['question1'].valueChanges.subscribe(
+//   (selectedValue) => {
+//     console.log(selectedValue);
+//     console.log(this.parentForm.value.question1);     
+//   }
+// );
   ngOnInit()
   {
     // load model category list
@@ -50,10 +57,6 @@ export class AddModelComponent implements OnInit {
     //debug
     console.log('added!');
     this.parameter.push(this.fb.group(
-      // {
-      // name:'',
-      // field:''
-      // }
       new Parameter
     ));
   }
@@ -74,7 +77,6 @@ export class AddModelComponent implements OnInit {
     }
   }
 
-  //TODO: send new model data via POST
   submitModel()
   {
     //transfer parameter array into a single string; Temporary solution for the 

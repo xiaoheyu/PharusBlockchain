@@ -15,11 +15,11 @@ import { Observable } from 'rxjs';
 })
 export class Service1Component implements OnInit {
   modelCategories:ModelCategory[];
-  modelList:ModelCategory[];
-  displayModelList:ModelCategory[];
+  modelList:Object[];
+  displayModelList:Object[];
   selectedModel:number;
   selectedCategory:Observable<string>;
-  showModels:boolean=true;
+  // showModels:boolean=true;
 
 
   constructor
@@ -49,14 +49,14 @@ export class Service1Component implements OnInit {
               });
   }
 
-  selectModel(id:number):void
-  {
-    console.log('you selected id:'+id);
-    this.showModels=!this.showModels;
-    this.selectedModel=id;
-    console.log(this.showModels);
+  // selectModel(id:number):void
+  // {
+  //   console.log('you selected id:'+id);
+  //   this.showModels=!this.showModels;
+  //   this.selectedModel=id;
+  //   console.log(this.showModels);
     
-  }
+  // }
 
   public ngOnInit(){
     this.aimodelservice.getCategories().subscribe(categories=>this.modelCategories=categories);

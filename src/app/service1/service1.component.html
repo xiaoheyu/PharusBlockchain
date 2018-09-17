@@ -16,50 +16,14 @@
     </span>
     </div>
 
-    <div  fxShow="{{showModels}}" fxFlex fxLayout="row wrap" fxLayoutAlign="space-evenly space-evenly">
-      <!-- Another router -->
- 
+    <div fxFlex fxLayout="row wrap" fxLayoutAlign="space-evenly space-evenly">
 
-      <!-- <a fxFlex  [routerLink]="[{ outlets: { popup: ['compose'] } }]" routerLinkActive="active">
-        <mat-card id="cardOne" >
-            <mat-card-header>
-              <img mat-card-avatar src="https://www.materialui.co/materialIcons/communication/business_black_144x144.png" alt="">
-            </mat-card-header>
-            <mat-card-title> Model 1</mat-card-title>
-            <mat-card-subtitle>COST: 1.5 <span class="balanceUnit" > ETH</span></mat-card-subtitle>
-            <mat-card-content></mat-card-content>
-        </mat-card>
-      </a>
-
-      <a fxFlex  [routerLink]="[{ outlets: { popup: ['compose2'] } }]" routerLinkActive="active">
-        <mat-card >
-            <mat-card-header>
-                <img mat-card-avatar src="https://www.materialui.co/materialIcons/communication/business_black_144x144.png" alt="">
-            </mat-card-header>
-            <mat-card-title> Model 2</mat-card-title>
-            <mat-card-subtitle>COST: 2<span class="balanceUnit"> ETH</span></mat-card-subtitle>
-            <mat-card-content></mat-card-content>
-        </mat-card>
-      </a>
-
-      <a fxFlex >
-          <mat-card id="cardOne" >
-              <mat-card-header>
-              <img mat-card-avatar src="https://www.materialui.co/materialIcons/communication/business_black_144x144.png" alt="">
-              </mat-card-header>
-              <mat-card-title> Model 3</mat-card-title>
-              <mat-card-subtitle>COST:4.6 <span class="balanceUnit" > ETH</span></mat-card-subtitle>
-              <mat-card-content></mat-card-content>
-          </mat-card>
-        </a> -->
-
-
-            <a fxFlex="25%"  *ngFor="let model of displayModelList;let i=index" (click)="selectModel(i)">
+            <a fxFlex="25%"  *ngFor="let model of displayModelList;let i=index" [routerLink]="model.id">
                 <mat-card>
                     <mat-card-header>
                     <img mat-card-avatar src="https://www.materialui.co/materialIcons/communication/business_black_144x144.png" alt="">
                     </mat-card-header>
-                    <mat-card-title> Model {{i+1}}</mat-card-title>
+                    <mat-card-title> Model {{i+1}}: {{model.title}}</mat-card-title>
                     <mat-card-subtitle>COST:{{model.price}} <span class="balanceUnit" > ETH</span></mat-card-subtitle>
                     <mat-card-content></mat-card-content>
                 </mat-card>
@@ -79,13 +43,8 @@
 
       
     </div>
-    <div fxFlex>
+    <!-- <div fxFlex>
     <app-purchase-model [chosenId]="selectedModel" fxShow="{{!showModels}}"></app-purchase-model>
-    </div>
-    <!-- <div  fxFlex fxLayout="row">
-      <div fxFlex="100%" >
-      <router-outlet name="popup" id="serviceOneRightPart"></router-outlet>
-    </div>
     </div> -->
     
   </div>
