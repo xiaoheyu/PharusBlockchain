@@ -1,7 +1,8 @@
 import { Component, OnInit,ViewEncapsulation } from '@angular/core';
 import {FormBuilder,FormGroup,FormArray,Validators} from '@angular/forms'
 import {AimodelService} from '../aimodel.service';
-import {Parameter,url,ModelCategory} from '../model-data-model';
+import {Parameter,ModelCategory} from '../model-data-model';
+import {environment} from '../../../environments/environment';
 @Component({
   selector: 'app-add-model',
   templateUrl: './add-model.component.html',
@@ -13,10 +14,8 @@ export class AddModelComponent implements OnInit {
   modelForm : FormGroup;
 
   constructor(public fb: FormBuilder,
-              private aimodelService:AimodelService
-              ){
-  
-  }
+              private aimodelService:AimodelService){
+              }
 // TODO: remove value_range field when the parameter_type is "output"
 // https://stackoverflow.com/questions/44898010/form-control-valuechanges-gives-the-previous-value
 // this.parentForm.controls['question1'].valueChanges.subscribe(
@@ -52,8 +51,7 @@ export class AddModelComponent implements OnInit {
   get parameter(){return this.controls.parameter as FormArray;};
 
   //add a new parameter 
-  addParameter()
-  {
+  addParameter(){
     //debug
     console.log('added!');
     this.parameter.push(this.fb.group(
@@ -62,16 +60,14 @@ export class AddModelComponent implements OnInit {
   }
 
   //reset all parameters
-  resetParameter()
-  {
+  resetParameter(){
     //debug
     console.log('reset!');
     this.parameter.reset([]);
   }
 
   //remove all parameters
-  removeAllParameters()
-  {
+  removeAllParameters(){
     while (this.parameter.length !== 0) {
       this.parameter.removeAt(0)
     }
@@ -83,7 +79,7 @@ export class AddModelComponent implements OnInit {
     //database problem
     this.modelForm.value.parameter=JSON.stringify(this.modelForm.value.parameter);
     console.log(this.modelForm.value);
-    this.aimodelService.addModel(this.modelForm.value,url)
+    this.aimodelService.addModel(this.modelForm.value,environment.url)
     .subscribe(model=>console.log(JSON.stringify(model)));
   }
 
