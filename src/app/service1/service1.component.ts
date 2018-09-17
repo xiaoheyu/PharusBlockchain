@@ -5,7 +5,8 @@ import {map} from 'rxjs/operators';
 
 import {AddModelComponent} from '../forms/add-model/add-model.component';
 import {AimodelService} from '../forms/aimodel.service';
-import {url,modelcategories,ModelCategory} from '../forms/model-data-model';
+import {modelcategories,ModelCategory} from '../forms/model-data-model';
+import {environment} from '../../environments/environment';
 import { Observable } from 'rxjs';
 @Component({
   selector: 'app-service1',
@@ -37,7 +38,7 @@ export class Service1Component implements OnInit {
     });
     dialogRef.afterClosed()
              .subscribe(() => {
-                this.aimodelservice.getModel(url)
+                this.aimodelservice.getModel(environment.url)
                 .subscribe(
                   // update models in localstorage
                   ()=>

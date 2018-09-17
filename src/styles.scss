@@ -1,5 +1,7 @@
 @import '~@angular/material/theming';
 
+
+
 @include mat-core();
 $app-primary: mat-palette($mat-blue,400,200,100);
 $app-accent:  mat-palette($mat-indigo);
@@ -14,6 +16,12 @@ $theme: mat-light-theme($app-primary,$app-primary, $app-warn);
 .menu-theme
 {
   @include angular-material-theme($theme);
+  
+}
+
+.menu-theme *
+{
+  font-family: 'Source Sans Pro', sans-serif;
 }
 // $primary: mat-palette($mat-blue,100);
 // $accent:  mat-palette($mat-blue);
@@ -42,19 +50,24 @@ a.mat-menu-item:visited {
 
 
 // font settings
-body * 
-{
-    font-family: "Bender-Light" !important;
-}
+// body * 
+// {
+//     font-family: "Bender-Light" !important;
+// }
 
-@font-face {
-	font-family:"Bender-Light";
-	src:url("Bender_Light.eot?") format("eot"),
-		url("Bender_Light.woff") format("woff"),
-		url("Bender_Light.ttf") format("truetype"),
-		url("Bender_Light.svg#Bender-Light") format("svg");
-		font-weight:normal;
-		font-style:normal;
+// @font-face {
+// 	font-family:"Bender-Light";
+// 	src:url("Bender_Light.eot?") format("eot"),
+// 		url("Bender_Light.woff") format("woff"),
+// 		url("Bender_Light.ttf") format("truetype"),
+// 		url("Bender_Light.svg#Bender-Light") format("svg");
+// 		font-weight:normal;
+// 		font-style:normal;
+// }
+
+body *
+{
+  font-family: 'Source Sans Pro', sans-serif;
 }
 
 // make the whole website unselectable
@@ -90,4 +103,7 @@ body *
     position: fixed;
     top: 0;
     width: 100%;
+    // make the navbar be on top of everything else
+    z-index: 3;
+    box-shadow: 0 1px 2px 1px rgba(0, 0, 0, 0.2);
   }

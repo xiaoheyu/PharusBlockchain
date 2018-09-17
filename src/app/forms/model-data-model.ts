@@ -46,8 +46,6 @@ export class ModelCategory
     description:string;
 }
 
-export const url="http://18.236.104.52:8080/api/product";
-
 export const modelcategories:ModelCategory[]=
 [
     {

@@ -1,4 +1,4 @@
-<div fxLayout="column" id="serviceOneContainer">
+<div class="content" fxFlex fxLayout="column" fxLayoutAlign="space-evenly center">
   
     <div fxFlex >
       <h1 >Partner Matching</h1>
@@ -18,7 +18,7 @@
 
     <div fxFlex fxLayout="row wrap" fxLayoutAlign="space-evenly space-evenly">
 
-            <a fxFlex="25%"  *ngFor="let model of displayModelList;let i=index" [routerLink]="model.id">
+            <a fxFlex="25%"  *ngFor="let model of displayModelList;let i=index" [routerLink]="[selectedCategory,model.id]">
                 <mat-card>
                     <mat-card-header>
                     <img mat-card-avatar src="https://www.materialui.co/materialIcons/communication/business_black_144x144.png" alt="">
