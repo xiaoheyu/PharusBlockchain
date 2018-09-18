@@ -18,7 +18,7 @@
 
     <div fxFlex fxLayout="row wrap" fxLayoutAlign="space-evenly space-evenly">
 
-            <a fxFlex="25%"  *ngFor="let model of displayModelList;let i=index" [routerLink]="[selectedCategory,model.id]">
+            <a fxFlex="25%"  *ngFor="let model of displayModelList;let i=index" [routerLink]="[model.id]">
                 <mat-card>
                     <mat-card-header>
                     <img mat-card-avatar src="https://www.materialui.co/materialIcons/communication/business_black_144x144.png" alt="">

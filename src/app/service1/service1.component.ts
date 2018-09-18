@@ -42,7 +42,7 @@ export class Service1Component implements OnInit {
                   // update models in localstorage
                   ()=>
                   {
-                    this.modelList=JSON.parse(localStorage.getItem('models'));
+                    this.modelList=this.aimodelservice.models;
                     console.log(this.modelList);
                   }
                 );

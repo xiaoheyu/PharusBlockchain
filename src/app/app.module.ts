@@ -42,12 +42,10 @@ const appRoutes: Routes = [
   {
   path:':abbr',
   component:Service1Component,
-  children:[
-    {
-      path:':modelId',
-      component:PurchaseModelComponent
-    }
-  ]
+  },
+  {
+        path:':abbr/:modelId',
+        component:PurchaseModelComponent
   }
 
   

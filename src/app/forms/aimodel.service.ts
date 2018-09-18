@@ -32,6 +32,12 @@ export class AimodelService {
       catchError(err=>of(err)));
   }
 
+  // read data of all the models that has been saved into localstorage
+  get models():Object[]
+  {
+    return JSON.parse(localStorage.getItem('models'));
+  }
+
   //get all info for model categories
   getCategories():Observable<ModelCategory[]>
   {
