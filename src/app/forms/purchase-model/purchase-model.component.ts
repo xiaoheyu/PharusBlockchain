@@ -1,4 +1,4 @@
-import { Component, OnInit,isDevMode} from '@angular/core';
+import { Component, OnInit, OnChanges,isDevMode} from '@angular/core';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import {map} from 'rxjs/operators';
 import { Observable } from 'rxjs';
@@ -12,7 +12,7 @@ import {UserAccount} from '../../useraccount/account-data-model';
   templateUrl: './purchase-model.component.html',
   styleUrls: ['./purchase-model.component.scss']
 })
-export class PurchaseModelComponent implements OnInit {
+export class PurchaseModelComponent implements OnInit,OnChanges {
   modelList:Object[];
   model$:Observable<string>;
   category$:Observable<string>;
@@ -70,6 +70,10 @@ export class PurchaseModelComponent implements OnInit {
       )
       
       if (isDevMode) console.log(JSON.stringify(this.selectedModel));
+    }
+
+    ngOnChanges(){
+      
     }
 
     goBackToService()

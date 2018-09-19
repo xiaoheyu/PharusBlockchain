@@ -16,15 +16,23 @@
         <mat-form-field>
           <!-- <input matInput placeholder="Last name, First name" formControlName="firstCtrl" required> -->
           <mat-select placeholder="Choose an account" formControlName="selectedAccount" required>
-            <mat-option *ngFor="let account of accountList"  [disabled]="selectedModel.price>account.balance" [value]="account.account">
-              Account Address:{{account.account}} | Account Balance: {{account.balance}}
+            <mat-option #account{{i}} *ngFor="let account of accountList;let i=index"  [disabled]="selectedModel.price>account.balance" [value]="account.account">
+              {{account.account}} | Account Balance: {{account.balance}}
             </mat-option>
           </mat-select>
         </mat-form-field>
         <div>
-          <p>
-            You choose: {{accountListFormGroup.value.selectedAccount}}
-          <p>
+            <mat-list role="list">
+                <mat-list-item role="listitem">
+                 <span matLine>
+                   You choose: {{accountListFormGroup.value.selectedAccount}}
+                 </span>
+                 <span matLine>
+                   <!-- Current Balance: {{account.balance}} -->
+                 </span>
+                </mat-list-item>
+            </mat-list>
+
           <button mat-button matStepperNext>Next</button>
         </div>
       </form>
