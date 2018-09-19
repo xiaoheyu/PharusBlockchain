@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  url:"http://18.236.104.52:8080/api/product"
+  modelUrl:"http://18.236.104.52:8080/api/product",
+  accountUrl:"http://18.236.104.52:8080/api/accounts"
 };
 
 /*

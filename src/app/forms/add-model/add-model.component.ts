@@ -2,7 +2,6 @@ import { Component, OnInit,ViewEncapsulation } from '@angular/core';
 import {FormBuilder,FormGroup,FormArray,Validators} from '@angular/forms'
 import {AimodelService} from '../aimodel.service';
 import {Parameter,ModelCategory} from '../model-data-model';
-import {environment} from '../../../environments/environment';
 @Component({
   selector: 'app-add-model',
   templateUrl: './add-model.component.html',
@@ -38,11 +37,10 @@ export class AddModelComponent implements OnInit {
       description :[ '',],
       price : ['',Validators.required],
       url:['',Validators.required],
-      parameter:this.fb.array([]),
+      parameter:this.fb.array([this.fb.group(new Parameter)]),
       category:'',
       subcategory:''
     }
-    // new AiModel()
   );
   }
 
@@ -79,7 +77,7 @@ export class AddModelComponent implements OnInit {
     //database problem
     this.modelForm.value.parameter=JSON.stringify(this.modelForm.value.parameter);
     console.log(this.modelForm.value);
-    this.aimodelService.addModel(this.modelForm.value,environment.url)
+    this.aimodelService.addModel(this.modelForm.value)
     .subscribe(model=>console.log(JSON.stringify(model)));
   }
 

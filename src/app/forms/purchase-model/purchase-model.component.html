@@ -1,12 +1,62 @@
-<div class="content" fxLayout="column">
+<div class="content" fxLayout="column" fxLayoutAlign="center center">
 
-  <h1 fxFlex>
-    You are now purchasing Model:
-  </h1>
-  <p>
-    {{selectedModel.title}}
-  </p>
+  <div fxFlex="calc(20%)">
+    <h1>
+      You are now purchasing Model:
+    </h1>
+    <p>
+      {{selectedModel.title}}
+    </p>
+  </div>
 
+  <mat-vertical-stepper fxFlex="calc(80%)" [linear]="true" #stepper>
+    <mat-step [stepControl]="accountListFormGroup">
+      <form [formGroup]="accountListFormGroup">
+        <ng-template matStepLabel>Choose an account to pay</ng-template>
+        <mat-form-field>
+          <!-- <input matInput placeholder="Last name, First name" formControlName="firstCtrl" required> -->
+          <mat-select placeholder="Choose an account" formControlName="selectedAccount" required>
+            <mat-option *ngFor="let account of accountList"  [disabled]="selectedModel.price>account.balance" [value]="account.account">
+              Account Address:{{account.account}} | Account Balance: {{account.balance}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <div>
+          <p>
+            You choose: {{accountListFormGroup.value.selectedAccount}}
+          <p>
+          <button mat-button matStepperNext>Next</button>
+        </div>
+      </form>
+    </mat-step>
+    <mat-step [stepControl]="secondFormGroup">
+      <ng-template matStepLabel>Confirm purchase detail</ng-template>
 
+          <mat-list role="list">
+            <mat-list-item role="listitem">
+             <span matLine> Item 1:
+             </span>
+             <span matLine> detail
+             </span>
+            </mat-list-item>
+            <mat-list-item role="listitem">Item 2</mat-list-item>
+            <mat-list-item role="listitem">Item 3</mat-list-item>
+          </mat-list>
+        <div>
+          <button mat-button matStepperPrevious>Back</button>
+          <button mat-button matStepperNext>Next</button>
+        </div>
+    </mat-step>
+    <mat-step>
+      <ng-template matStepLabel>Done</ng-template>
+      You are now done.
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button (click)="stepper.reset()">Reset</button>
+      </div>
+    </mat-step>
+  </mat-vertical-stepper>
+
+<button mat-button (click)="goBackToService()">go back</button>
 </div>
 

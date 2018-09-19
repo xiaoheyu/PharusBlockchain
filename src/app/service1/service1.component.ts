@@ -5,8 +5,8 @@ import {map} from 'rxjs/operators';
 
 import {AddModelComponent} from '../forms/add-model/add-model.component';
 import {AimodelService} from '../forms/aimodel.service';
-import {modelcategories,ModelCategory} from '../forms/model-data-model';
-import {environment} from '../../environments/environment';
+import {ModelCategory} from '../forms/model-data-model';
+
 import { Observable } from 'rxjs';
 @Component({
   selector: 'app-service1',
@@ -19,8 +19,8 @@ export class Service1Component implements OnInit {
   modelList:Object[];
   displayModelList:Object[];
   selectedModel:number;
-  selectedCategory:Observable<string>;
-  // showModels:boolean=true;
+  category$:Observable<string>;
+  selectedCategory:ModelCategory;
 
 
   constructor
@@ -37,7 +37,7 @@ export class Service1Component implements OnInit {
     });
     dialogRef.afterClosed()
              .subscribe(() => {
-                this.aimodelservice.getModel(environment.url)
+                this.aimodelservice.getModel()
                 .subscribe(
                   // update models in localstorage
                   ()=>
@@ -49,19 +49,10 @@ export class Service1Component implements OnInit {
               });
   }
 
-  // selectModel(id:number):void
-  // {
-  //   console.log('you selected id:'+id);
-  //   this.showModels=!this.showModels;
-  //   this.selectedModel=id;
-  //   console.log(this.showModels);
-    
-  // }
-
   public ngOnInit(){
     this.aimodelservice.getCategories().subscribe(categories=>this.modelCategories=categories);
     this.modelList=JSON.parse(localStorage.getItem('models'));
-    this.selectedCategory = this.route.paramMap.pipe(
+    this.category$ = this.route.paramMap.pipe(
       map((params: ParamMap) =>
         {
         
@@ -70,16 +61,14 @@ export class Service1Component implements OnInit {
         } 
     )
   );
-    this.selectedCategory.subscribe
+    this.category$.subscribe
     (
-      (categoryAbbr)=>{this.modelCategories.forEach(m=>
+      (categoryAbbr)=>{this.modelCategories.forEach(category=>
         {
-          if (m['abbr']===categoryAbbr)
+          if (category['abbr']===categoryAbbr)
           {
-          // this.selectedCategory=e;
-          console.log(m.categoryId);
-          this.displayModelList=this.modelList.filter(model=>model['category']===m.categoryId);
-          console.log(this.displayModelList);
+          this.selectedCategory=category;
+          this.displayModelList=this.modelList.filter(model=>model['category']===category.categoryId);
           }
         }
       )}
