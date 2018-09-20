@@ -12,7 +12,7 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import {FlexLayoutModule} from '@angular/flex-layout';
 import {OverlayContainer} from '@angular/cdk/overlay';
-
+import {MatDividerModule} from '@angular/material/divider';
 
 import { AppComponent } from './app.component';
 import { UseraccountComponent } from './useraccount/useraccount.component';
@@ -96,7 +96,8 @@ const appRoutes: Routes = [
     FlexLayoutModule,
     HttpClientModule,
     MatStepperModule,
-    MatListModule
+    MatListModule,
+    MatDividerModule
 
   ],
   schemas:[ NO_ERRORS_SCHEMA ],

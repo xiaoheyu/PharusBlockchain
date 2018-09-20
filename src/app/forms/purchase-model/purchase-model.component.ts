@@ -1,4 +1,4 @@
-import { Component, OnInit, OnChanges,isDevMode} from '@angular/core';
+import { Component, OnInit, isDevMode} from '@angular/core';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import {map} from 'rxjs/operators';
 import { Observable } from 'rxjs';
@@ -12,9 +12,11 @@ import {UserAccount} from '../../useraccount/account-data-model';
   templateUrl: './purchase-model.component.html',
   styleUrls: ['./purchase-model.component.scss']
 })
-export class PurchaseModelComponent implements OnInit,OnChanges {
+export class PurchaseModelComponent implements OnInit {
   modelList:Object[];
+  // an Observable that provides the parameter of model in routing
   model$:Observable<string>;
+  // an Observable that provides the parameter of model category in routing
   category$:Observable<string>;
   // TODO: make a class for models in model-data-model.ts instead of using Object type
   selectedModel:Object;
@@ -22,7 +24,9 @@ export class PurchaseModelComponent implements OnInit,OnChanges {
   
   accountList:UserAccount[];
   accountListFormGroup: FormGroup;
-  secondFormGroup: FormGroup;
+  
+  selectedAccount:UserAccount;
+  selectedAccountBalance:number;
 
   constructor
   ( private route: ActivatedRoute,
@@ -33,21 +37,21 @@ export class PurchaseModelComponent implements OnInit,OnChanges {
     }
 
   ngOnInit() {
+    // read the account list from localStorage
     this.accountList=this.useraccount.accounts;
+    // convert the token unit
     for (let i=0;i<this.accountList.length;i++){
       this.accountList[i].balance/=Math.pow(10,18);
     }
+    // Build a reactive form for user to choose an available account
     this.accountListFormGroup = this._formBuilder.group({
       selectedAccount: ['', Validators.required]
     });
-    // this.secondFormGroup = this._formBuilder.group({
-    //   secondCtrl: ['', Validators.required]
-    // });
-
+    this.formOnChanges();
+    // fetch all models from localStorage
     this.modelList=this.aimodelService.models;
     this.model$ = this.route.paramMap.pipe(
       map((params: ParamMap) =>{
-        params.get('abbr');
         return params.get('modelId')
         })
       );
@@ -69,16 +73,26 @@ export class PurchaseModelComponent implements OnInit,OnChanges {
         this.modelCategory=category
       )
       
-      if (isDevMode) console.log(JSON.stringify(this.selectedModel));
+      if (isDevMode) {
+        console.log('Model detail:\n'+JSON.stringify(this.selectedModel));
+
+      }
     }
 
-    ngOnChanges(){
-      
-    }
 
     goBackToService()
     {
       this.router.navigate([this.modelCategory]);
+    }
+
+    formOnChanges()
+    {
+      this.accountListFormGroup.valueChanges.subscribe(
+        val=> { this.accountList.forEach(account=>{
+          if (val['selectedAccount']===account.account)
+          this.selectedAccountBalance=account.balance;}
+          ) }
+      )
     }
 
 }

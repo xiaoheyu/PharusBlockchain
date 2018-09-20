@@ -1,4 +1,7 @@
 import { Component,ViewChild, OnInit,isDevMode} from '@angular/core';
+import {DomSanitizer} from '@angular/platform-browser';
+import {MatIconRegistry} from '@angular/material';
+
 import {AimodelService} from '../forms/aimodel.service';
 import {ModelCategory} from '../forms/model-data-model';
 import {MatMenuTrigger} from '@angular/material';
@@ -21,7 +24,13 @@ export class TopnavbarComponent implements OnInit {
   ediMenu:MatMenuTrigger;
 
   modelCategories:ModelCategory[];
-  constructor(private aimodelservice:AimodelService) { }
+  constructor(private aimodelservice:AimodelService,
+              iconRegistry: MatIconRegistry,
+              sanitizer: DomSanitizer) {
+                iconRegistry.addSvgIcon(
+                  'pharus-logo',
+                  sanitizer.bypassSecurityTrustResourceUrl('../assets/images/LogoWhite.svg'));
+              }
 
   ngOnInit() {
     // get all model info from model-data-model

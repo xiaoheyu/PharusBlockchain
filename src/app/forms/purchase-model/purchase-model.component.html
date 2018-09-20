@@ -14,7 +14,6 @@
       <form [formGroup]="accountListFormGroup">
         <ng-template matStepLabel>Choose an account to pay</ng-template>
         <mat-form-field>
-          <!-- <input matInput placeholder="Last name, First name" formControlName="firstCtrl" required> -->
           <mat-select placeholder="Choose an account" formControlName="selectedAccount" required>
             <mat-option #account{{i}} *ngFor="let account of accountList;let i=index"  [disabled]="selectedModel.price>account.balance" [value]="account.account">
               {{account.account}} | Account Balance: {{account.balance}}
@@ -24,11 +23,17 @@
         <div>
             <mat-list role="list">
                 <mat-list-item role="listitem">
+                 <h2 matLine>
+                   You choose:
+                 </h2>
                  <span matLine>
-                   You choose: {{accountListFormGroup.value.selectedAccount}}
+                  {{accountListFormGroup.value.selectedAccount}}
                  </span>
+                 <h2 matLine>
+                   Current Balance:
+                 </h2>
                  <span matLine>
-                   <!-- Current Balance: {{account.balance}} -->
+                  {{selectedAccountBalance}}
                  </span>
                 </mat-list-item>
             </mat-list>
@@ -38,17 +43,37 @@
       </form>
     </mat-step>
     <mat-step [stepControl]="secondFormGroup">
-      <ng-template matStepLabel>Confirm purchase detail</ng-template>
+      <ng-template matStepLabel>Confirm purchase detail and Pay</ng-template>
 
           <mat-list role="list">
             <mat-list-item role="listitem">
-             <span matLine> Item 1:
+             <span matSubheader matLine>
+               Chosen Model
              </span>
-             <span matLine> detail
+             <span matLine>
+               Model name: {{selectedModel.title}}
+             </span>
+             <span matLine>
+                 <textarea readonly matInput>
+                    {{selectedModel.description}}
+                 </textarea>
+            </span>
+             <span matLine>
+               Price: {{selectedModel.price}}
              </span>
             </mat-list-item>
-            <mat-list-item role="listitem">Item 2</mat-list-item>
-            <mat-list-item role="listitem">Item 3</mat-list-item>
+            <mat-divider></mat-divider>
+            <mat-list-item role="listitem">
+                <span matLine matSubheader>
+                    Chosen Account
+                </span>
+                <span matLine>
+                    Account address: {{accountListFormGroup.value.selectedAccount}}
+                </span>
+                <span matLine>
+                    Current balance: {{selectedAccountBalance}}
+                </span>
+            </mat-list-item>
           </mat-list>
         <div>
           <button mat-button matStepperPrevious>Back</button>
@@ -56,11 +81,13 @@
         </div>
     </mat-step>
     <mat-step>
-      <ng-template matStepLabel>Done</ng-template>
+      <ng-template matStepLabel>Pay and Proceed to Model</ng-template>
       You are now done.
       <div>
+        <!-- TODO: make the second step purchase step -->
         <button mat-button matStepperPrevious>Back</button>
         <button mat-button (click)="stepper.reset()">Reset</button>
+        <button mat-button >Pay and Proceed</button>
       </div>
     </mat-step>
   </mat-vertical-stepper>

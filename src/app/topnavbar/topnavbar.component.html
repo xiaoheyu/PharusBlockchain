@@ -1,6 +1,8 @@
 <mat-toolbar  color="primary"> 
   <mat-toolbar-row fxLayout="row" fxLayoutAlign="center center">
-    <img fxFlex src="../assets/images/LogoWhite.svg" alt="Pharus Logo">
+    <!-- Registrate logo with material MatIconRegistry -->
+    <!-- <img fxFlex src="../assets/images/LogoWhite.svg" alt="Pharus Logo"> -->
+      <mat-icon fxFlex svgIcon="pharus-logo" [inline]="true"></mat-icon>
       <mat-divider [vertical]="true"></mat-divider>
     
       <button fxFlex mat-button #accountMenu (mouseenter)="toggleAccount()" [matMenuTriggerFor]="account">Account</button>
