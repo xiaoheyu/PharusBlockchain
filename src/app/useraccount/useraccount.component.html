@@ -3,8 +3,11 @@
     <h1>Account Overview</h1>
     <h2>Description:</h2>
      <p>Accounts below represent all wallets owned by users on the blockchain. Account information includes name, balance and address.</p>
-    </div> 
-
+    </div>
+    
+    <div fxFlex>
+    <button mat-button (click)="ngOnInit()"> <mat-icon [inline]="true">refresh</mat-icon> Refresh</button>
+    </div>
     <div fxLayout="row wrap" fxLayoutGap="1%" fxLayoutAlign="space-around center">
       <mat-card fxFlex="25%" *ngFor="let account of userAccountList;let i=index">
           <mat-card-header>

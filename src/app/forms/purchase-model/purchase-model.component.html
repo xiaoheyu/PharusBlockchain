@@ -94,68 +94,6 @@
     </mat-step>
   </mat-vertical-stepper>
 
-
-  <!-- Receipt Table -->
-  <table fxFlex="50%" [hidden]="!isPurchaseCompleted" mat-table multiTemplateDataRows [dataSource]="latestReceipt" class="mat-elevation-z8">
-
-      <!--- Note that these columns can be defined in any order.
-            The actual rendered columns are set as a property on the row definition" -->
-    
-      <!-- Position Column -->
-      <ng-container matColumnDef="account">
-        <th mat-header-cell *matHeaderCellDef>Account</th>
-        <td mat-cell *matCellDef="let element"> {{element.account}} </td>
-        <mat-divider [vertical]="true"></mat-divider>
-      </ng-container>
-    
-      <!-- Name Column -->
-      <ng-container matColumnDef="receipt.balance">
-        <th mat-header-cell *matHeaderCellDef> balance </th>
-        <td mat-cell *matCellDef="let element"> {{element['receipt.balance']|frsConvert}} </td>
-      </ng-container>
-    
-      <!-- Weight Column -->
-      <ng-container matColumnDef="receipt.receipt.blockHash">
-        <th mat-header-cell *matHeaderCellDef> Block Hash </th>
-        <td mat-cell *matCellDef="let element"> {{element['receipt.receipt.blockHash']}} </td>
-      </ng-container>
-    
-      <!-- Symbol Column -->
-      <ng-container matColumnDef="receipt.receipt.blockNumber">
-        <th mat-header-cell *matHeaderCellDef> Block Number </th>
-        <td mat-cell *matCellDef="let element"> {{element['receipt.receipt.blockNumber']}} </td>
-      </ng-container>
-
-      <ng-container matColumnDef="receipt.receipt.cumulativeGasUsed">
-          <th mat-header-cell *matHeaderCellDef> Cumulative Gas Used </th>
-          <td mat-cell *matCellDef="let element"> {{element['receipt.receipt.cumulativeGasUsed']}} </td>
-      </ng-container>
-
-      <ng-container matColumnDef="receipt.receipt.gasUsed">
-          <th mat-header-cell *matHeaderCellDef> Gas Used </th>
-          <td mat-cell *matCellDef="let element"> {{element['receipt.receipt.gasUsed']}} </td>
-      </ng-container>
-
-      <ng-container matColumnDef="receipt.receipt.status">
-          <th mat-header-cell *matHeaderCellDef> Status </th>
-          <td mat-cell *matCellDef="let element"> {{element['receipt.receipt.status']}} </td>
-      </ng-container>
-
-      <ng-container matColumnDef="receipt.receipt.transactionHash">
-          <th mat-header-cell *matHeaderCellDef> Transaction Hash </th>
-          <td mat-cell *matCellDef="let element"> {{element['receipt.receipt.transactionHash']}} </td>
-      </ng-container>
-
-      <ng-container matColumnDef="receipt.receipt.transactionIndex">
-          <th mat-header-cell *matHeaderCellDef> Transaction Index </th>
-          <td mat-cell *matCellDef="let element"> {{element['receipt.receipt.transactionIndex']}} </td>
-      </ng-container>
-    
-      <tr mat-header-row *matHeaderRowDef="receiptChartColumn"></tr>
-      <tr mat-row *matRowDef="let row;columns: receiptChartColumn;"></tr>
-  </table>
-
-
 <button mat-button (click)="goBackToService()">Return to Model List</button>
 </div>
 
