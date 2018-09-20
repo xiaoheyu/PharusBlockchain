@@ -5,7 +5,8 @@
 export const environment = {
   production: false,
   modelUrl:"http://18.236.104.52:8080/api/product",
-  accountUrl:"http://18.236.104.52:8080/api/accounts"
+  accountUrl:"http://18.236.104.52:8080/api/accounts",
+  sendCoinUrl:"http://18.236.104.52:8080/api/sendCoin"
 };
 
 /*

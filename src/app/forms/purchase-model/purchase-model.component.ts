@@ -7,6 +7,7 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {AimodelService} from '../aimodel.service';
 import {UseraccountService} from '../../useraccount/useraccount.service';
 import {UserAccount} from '../../useraccount/account-data-model';
+import {receiptChartColumn} from '../model-data-model';
 @Component({
   selector: 'app-purchase-model',
   templateUrl: './purchase-model.component.html',
@@ -28,6 +29,14 @@ export class PurchaseModelComponent implements OnInit {
   selectedAccount:UserAccount;
   selectedAccountBalance:number;
 
+  receipts:Object[];
+  receiptsArray:Object[];
+  isPurchaseCompleted:boolean;
+  transactionError:string;
+
+  receiptChartColumn:string[]=receiptChartColumn;
+  latestReceipt:Object[];
+
   constructor
   ( private route: ActivatedRoute,
     private aimodelService:AimodelService,
@@ -37,6 +46,8 @@ export class PurchaseModelComponent implements OnInit {
     }
 
   ngOnInit() {
+    this.receiptChartColumn=receiptChartColumn;
+    this.isPurchaseCompleted=false;
     // read the account list from localStorage
     this.accountList=this.useraccount.accounts;
     // convert the token unit
@@ -94,5 +105,61 @@ export class PurchaseModelComponent implements OnInit {
           ) }
       )
     }
+
+    purchase()
+    {
+      this.transactionError=null;
+      console.log(this.accountListFormGroup.value['selectedAccount'],this.selectedModel['price']*Math.pow(10,18));
+      this.aimodelService.purchaseModel(this.accountListFormGroup.value['selectedAccount'],(this.selectedModel['price']*Math.pow(10,18)).toString())
+      .subscribe(receipt=>{
+
+        this.refreshAccounts();
+        if (receipt.hasOwnProperty('error')){
+          this.transactionError=receipt.error.text;
+          console.log(receipt.error.text);
+          console.log(this.isPurchaseCompleted);
+        }
+        else{
+            this.isPurchaseCompleted=true;
+            this.aimodelService.pushReceipt(this.accountListFormGroup.value['selectedAccount'],receipt);
+            this.receipts=this.aimodelService.receipts;
+            this.receiptsArray=[];
+            for (let prop of Object.keys(this.receipts)){
+                this.receiptsArray.push(this.receipts[prop])
+              }
+            this.latestReceipt=[this.flattenObject(this.receiptsArray[this.receiptsArray.length-1])];
+            console.log(this.latestReceipt)
+        }
+      });
+    }
+
+    // refresh accounts info after purchase
+    refreshAccounts(){
+        this.useraccount.getAccount().subscribe();
+        this.accountList=JSON.parse(localStorage.getItem('accounts'));
+        for (let i=0;i<this.accountList.length;i++){
+          this.accountList[i].balance/=Math.pow(10,18);
+        }
+      }
+// flatten a receipt to a one-layer object
+flattenObject(ob:Object):Object {
+        let toReturn = {};
+        
+        for (let i in ob) {
+          if (!ob.hasOwnProperty(i)) continue;
+          
+          if ((typeof ob[i]) === 'object') {
+            let flatObject =this.flattenObject(ob[i]);
+            for (let x in flatObject) {
+              if (!flatObject.hasOwnProperty(x)) continue;
+              
+              toReturn[i + '.' + x] = flatObject[x];
+            }
+          } else {
+            toReturn[i] = ob[i];
+          }
+        }
+        return toReturn;
+      };
 
 }

@@ -13,6 +13,8 @@ import {MatInputModule} from '@angular/material/input';
 import {FlexLayoutModule} from '@angular/flex-layout';
 import {OverlayContainer} from '@angular/cdk/overlay';
 import {MatDividerModule} from '@angular/material/divider';
+import {MatTableModule} from '@angular/material/table';
+import {CdkTableModule} from '@angular/cdk/table';
 
 import { AppComponent } from './app.component';
 import { UseraccountComponent } from './useraccount/useraccount.component';
@@ -97,7 +99,9 @@ const appRoutes: Routes = [
     HttpClientModule,
     MatStepperModule,
     MatListModule,
-    MatDividerModule
+    MatDividerModule,
+    MatTableModule,
+    CdkTableModule
 
   ],
   schemas:[ NO_ERRORS_SCHEMA ],

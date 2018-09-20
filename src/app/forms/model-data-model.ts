@@ -75,3 +75,14 @@ export const modelcategories:ModelCategory[]=[
         description:'Inefficient planning, volatile freight rate, and route congestion are key challenges to businesses. Pharus Protocol helps optimize transportation route and assets by considering alternate transportation modes, customer delivery windows, cost, and service levels.'
     },
 ]
+
+export const receiptChartColumn:string[]=[
+    'account',
+    'receipt.balance',
+    'receipt.receipt.blockHash',
+    'receipt.receipt.blockNumber',
+    'receipt.receipt.cumulativeGasUsed',
+    'receipt.receipt.gasUsed',
+    'receipt.receipt.status',
+    'receipt.receipt.transactionHash',
+    'receipt.receipt.transactionIndex'];
