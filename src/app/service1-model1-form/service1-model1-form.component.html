@@ -44,23 +44,58 @@
       </div>
       
   </div>
-
+  <div class = "container-fluid" id="aiheader" [hidden]="isaiContentHidden">
+    <div class="row justify-content-between">
+        <h2 class="col-md-12">{{jsontemplate.title}}</h2>
+      
+      </div>
+      <div class="row">
+        <span>
+          <p>
+            {{jsontemplate.description}}
+          </p>
+        </span>
+      </div>
+  </div>
   <div class="row justify-content-center" id="aiContent" [hidden]="isaiContentHidden">
       <div class="col-md-4">
+        <div class="row">
+          <span>
+            <p>
+              INPUT:
+            </p>
+          </span>
+        </div>
         <json-schema-form
         loadExternalAssets="true"
         [schema]="jsonSchema"
+        [(data)]="submittedData"
         framework="material-design"
         (onSubmit)="showAiResult()">
         </json-schema-form>
       </div>
       <div class="col-md-4" [hidden]="isAiResultHidden">
-        <json-schema-form
-        loadExternalAssets="true"
-        [schema]="resultSchema"
-        [(data)]="aiResult"
-        framework="material-design">
-        </json-schema-form>
+        <div class="row">
+          <span>
+            <p>
+              OUTPUT:
+            </p>
+          </span>
+        </div>
+        <table class="table table-striped">
+          <thead class="thead-dark">
+            <tr>
+              <th scope="col">Parameter</th>
+              <th scope="col">Value</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of resultSchema">
+              <td>{{item.parameter}}</td>
+              <td>{{item.value}}
+            </tr>
+          </tbody>
+        </table>
       </div>
       <!--<iframe class="col-md-12" src="http://ai2tpd.s3-website-us-east-1.amazonaws.com/#!/consumer"></iframe>-->
   </div>
