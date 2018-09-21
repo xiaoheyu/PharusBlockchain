@@ -85,7 +85,20 @@
     </mat-step>
     <mat-step>
       <ng-template matStepLabel>Proceed to Model</ng-template>
-      You are now done.
+      <p>Thanks for your purchase, now you can use your model!</p> 
+      <!-- 'keyvalue' is not a pure pipe, do not use it in large quantity of data. it is added after Angular 6.1 -->
+      <mat-list class="mat-elevation-z8" fxLayout="column">
+            <mat-list-item>
+              <span matSubheader>Receipt</span>
+            </mat-list-item>
+            <span fxFlex *ngFor="let prop of latestReceipt | keyvalue;let i=index">
+            <span matSubheader>{{receiptChartColumn[i]}}</span>
+            <mat-list-item>
+            <span matLine>{{prop.value}}</span>
+            </mat-list-item>
+            <mat-divider></mat-divider>
+            </span>
+      </mat-list>
       <div>
         <!-- TODO: make the second step purchase step -->
         <button mat-button matStepperPrevious>Back</button>

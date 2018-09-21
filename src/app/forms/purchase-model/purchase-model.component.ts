@@ -35,7 +35,7 @@ export class PurchaseModelComponent implements OnInit {
   transactionError:string;
 
   receiptChartColumn:string[]=receiptChartColumn;
-  latestReceipt:Object[];
+  latestReceipt:Object;
 
   constructor
   ( private route: ActivatedRoute,
@@ -112,8 +112,6 @@ export class PurchaseModelComponent implements OnInit {
       console.log(this.accountListFormGroup.value['selectedAccount'],this.selectedModel['price']*Math.pow(10,18));
       this.aimodelService.purchaseModel(this.accountListFormGroup.value['selectedAccount'],(this.selectedModel['price']*Math.pow(10,18)).toString())
       .subscribe(receipt=>{
-
-        this.refreshAccounts();
         if (receipt.hasOwnProperty('error')){
           this.transactionError=receipt.error.text;
           console.log(receipt.error.text);
@@ -127,9 +125,10 @@ export class PurchaseModelComponent implements OnInit {
             for (let prop of Object.keys(this.receipts)){
                 this.receiptsArray.push(this.receipts[prop])
               }
-            this.latestReceipt=[this.flattenObject(this.receiptsArray[this.receiptsArray.length-1])];
+            this.latestReceipt=this.flattenObject(this.receiptsArray[this.receiptsArray.length-1]);
             console.log(this.latestReceipt)
-        }
+        };
+        this.refreshAccounts();
       });
     }
 

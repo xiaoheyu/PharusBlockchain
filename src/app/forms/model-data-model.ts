@@ -77,12 +77,12 @@ export const modelcategories:ModelCategory[]=[
 ]
 
 export const receiptChartColumn:string[]=[
-    'account',
-    'receipt.balance',
-    'receipt.receipt.blockHash',
-    'receipt.receipt.blockNumber',
-    'receipt.receipt.cumulativeGasUsed',
-    'receipt.receipt.gasUsed',
-    'receipt.receipt.status',
-    'receipt.receipt.transactionHash',
-    'receipt.receipt.transactionIndex'];
+    'Account',
+    'Balance',
+    'Block Hash',
+    'Block Number',
+    'Cumulative Gas Used',
+    'Gas Used',
+    'Status',
+    'Transaction Hash',
+    'Transaction Index'];
