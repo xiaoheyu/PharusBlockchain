@@ -1,11 +1,22 @@
 
-.btncolor
+
+mat-toolbar-row.mat-toolbar-row button
 {
-  background-color: transparent;
+	min-width: 1%;
+    height: 95%;
+    color:black;
+    font-weight: bold;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: transparent;
+  background-repeat: no-repeat;
 }
 
 
-.btncolor /deep/.mat-button-focus
+
+mat-toolbar-row.mat-toolbar-row button:focus 
 {
-  background-color: blue;
-}
+    outline: none;
+    border: 0;
+ }

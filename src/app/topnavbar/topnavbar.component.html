@@ -1,25 +1,25 @@
 <mat-toolbar  [class.mat-elevation-z10]="!isActive" > 
-  <mat-toolbar-row fxLayout="row" fxLayoutAlign="center center">
+  <mat-toolbar-row fxLayout="row" fxLayoutAlign="center">
     <!-- Registrate logo with material MatIconRegistry -->
     <!-- <img fxFlex src="../assets/images/LogoWhite.svg" alt="Pharus Logo"> -->
-      <mat-icon fxFlex svgIcon="pharus-logo" [inline]="true"></mat-icon>
+      <mat-icon fxFlex='100px' svgIcon="pharus-logo" [inline]="true"></mat-icon>
       <mat-divider [vertical]="true"></mat-divider>
     
-      <button fxFlex mat-button mat-flat-button disableRipple class="btncolor" #accountMenu (mouseenter)="toggleAccount()" [matMenuTriggerFor]="account">Account</button>
+      <button fxFlex="100px" mat-button mat-flat-button class="btncolor" #accountMenu (mouseenter)="toggleAccount()" [matMenuTriggerFor]="account"><span style='font-size: 20pt;'>Account</span></button>
       <mat-menu #account="matMenu" [overlapTrigger]="false">
         <span (mouseleave)="toggleAccount()">
           <a mat-menu-item routerLink="account">Account</a>
         </span>
       </mat-menu>
 
-    <button fxFlex mat-button mat-flat-button class="btncolor" #aiMenu (mouseenter)="toggleAi()" [matMenuTriggerFor]="menu">AI Service</button>
+    <button fxFlex='150px' mat-button mat-flat-button class="btncolor" #aiMenu (mouseenter)="toggleAi()" [matMenuTriggerFor]="menu"><span style='font-size: 20pt;'>AI Service</span></button>
     <mat-menu #menu="matMenu" [overlapTrigger]="false">
       <span (mouseleave)="toggleAi()">
         <a *ngFor="let category of modelCategories" mat-menu-item [routerLink]="[category.abbr]">{{category.title}}</a>
       </span>
     </mat-menu>
     
-    <button fxFlex mat-button mat-flat-button class="btncolor" #ediMenu (mouseenter)="toggleEdi()" [matMenuTriggerFor]="EDI">Data Service</button>
+    <button fxFlex='150px' mat-button mat-flat-button class="btncolor" #ediMenu (mouseenter)="toggleEdi()" [matMenuTriggerFor]="EDI"><span style='font-size: 20pt;'>Data Service</span></button>
     <mat-menu #EDI="matMenu" [overlapTrigger]="false">
       <span (mouseleave)="toggleEdi()">
         <a mat-menu-item [routerLink]="[{ outlets: { menu: ['EDIintro'] } }]">EDI Conversion</a>
