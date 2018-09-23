@@ -31,6 +31,7 @@ import { FrsConvertPipe } from './useraccount/frs-convert.pipe';
 import {
   MaterialDesignFrameworkModule
 } from 'angular6-json-schema-form';
+import { AiformModelComponent } from './forms/aiform-model/aiform-model.component';
 
 
 const appRoutes: Routes = [
@@ -51,12 +52,11 @@ const appRoutes: Routes = [
   {
     path:':abbr/:modelId',
     component:PurchaseModelComponent
+  },
+  {
+    path:':abbr/:modelId/form',
+    component:AiformModelComponent
   }
-
-  
-  
-  
-  
   
 ];
 
@@ -73,7 +73,8 @@ const appRoutes: Routes = [
     PurchaseModelComponent,
     TopnavbarComponent,
     FooterComponent,
-    FrsConvertPipe
+    FrsConvertPipe,
+    AiformModelComponent
   ],
   imports: [
     RouterModule.forRoot(
