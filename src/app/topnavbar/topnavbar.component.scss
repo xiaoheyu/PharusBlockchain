@@ -10,7 +10,6 @@ mat-toolbar-row.mat-toolbar-row button
     margin-left: auto;
     margin-right: auto;
     background-color: transparent;
-  background-repeat: no-repeat;
 }
 
 
@@ -20,3 +19,7 @@ mat-toolbar-row.mat-toolbar-row button:focus
     outline: none;
     border: 0;
  }
+
+.btncenter {
+  margin: 0 auto;
+}
