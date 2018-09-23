@@ -10,6 +10,7 @@
   </div>
 
   <mat-vertical-stepper fxFlex="80%" [linear]="true" #stepper>
+    <!-- First Step -->
     <mat-step [stepControl]="accountListFormGroup">
       <form [formGroup]="accountListFormGroup">
         <ng-template matStepLabel>Choose an account to pay</ng-template>
@@ -42,6 +43,7 @@
         </div>
       </form>
     </mat-step>
+  <!-- Second Step -->
     <mat-step [stepControl]="secondFormGroup" [completed]="isPurchaseCompleted">
       <ng-template matStepLabel>Confirm purchase detail and Pay</ng-template>
 
@@ -83,14 +85,15 @@
           <button fxFlex mat-button matStepperNext [disabled]="!isPurchaseCompleted">Next</button>
         </div>
     </mat-step>
+    <!-- Third Step -->
     <mat-step>
       <ng-template matStepLabel>Proceed to Model</ng-template>
       <p>Thanks for your purchase, now you can use your model!</p> 
-      <!-- 'keyvalue' is not a pure pipe, do not use it in large quantity of data. it is added after Angular 6.1 -->
       <mat-list class="mat-elevation-z8" fxLayout="column">
             <mat-list-item>
               <span matSubheader>Receipt</span>
             </mat-list-item>
+            <!-- 'keyvalue' is not a pure pipe, do not use it with large quantity of data. it is added after Angular 6.1 -->
             <span fxFlex *ngFor="let prop of latestReceipt | keyvalue;let i=index">
             <span matSubheader>{{receiptChartColumn[i]}}</span>
             <mat-list-item>
@@ -107,6 +110,6 @@
     </mat-step>
   </mat-vertical-stepper>
 
-<button mat-button (click)="goBackToService()">Return to Model List</button>
+<button fxFlex mat-button (click)="goBackToService()">Return to Model List</button>
 </div>
 
