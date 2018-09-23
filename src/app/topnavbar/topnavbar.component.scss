@@ -1,0 +1,16 @@
+mat-toolbar-row.mat-toolbar-row button
+ {
+     width:20%;
+     height: 95%;
+     color:white;
+     font-weight: bold;
+     display: block;
+     margin-left: auto;
+     margin-right: auto;
+ }
+
+ mat-toolbar-row.mat-toolbar-row button:focus 
+{
+    outline: none;
+    border: 0;
+ }

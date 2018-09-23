@@ -5,7 +5,7 @@
       <mat-icon fxFlex svgIcon="pharus-logo" [inline]="true"></mat-icon>
       <mat-divider [vertical]="true"></mat-divider>
     
-      <button fxFlex mat-button #accountMenu (mouseenter)="toggleAccount()" [matMenuTriggerFor]="account">Account</button>
+      <button fxFlex mat-button #accountMenu disableRipple (mouseenter)="toggleAccount()" [matMenuTriggerFor]="account">Account</button>
       <mat-menu #account="matMenu" [overlapTrigger]="false">
         <span (mouseleave)="toggleAccount()">
           <a mat-menu-item routerLink="account">Account</a>
