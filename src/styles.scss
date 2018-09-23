@@ -7,8 +7,14 @@
 $app-primary: mat-palette($mat-grey);
 $app-accent:  mat-palette($mat-indigo);
 $app-warn:    mat-palette($mat-red);
-
 $theme: mat-light-theme($app-primary,$app-primary, $app-warn);
+
+//$primary: mat-palette($mat-blue-grey);
+//$accent:  mat-palette($mat-blue);
+//$warn:    mat-palette($mat-blue);
+//$themeformenu:mat-light-theme($primary,$accent, $warn);
+
+
 
 @include angular-material-theme($theme);
 

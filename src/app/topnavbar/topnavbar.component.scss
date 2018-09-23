@@ -1,16 +1,11 @@
-mat-toolbar-row.mat-toolbar-row button
- {
-     width:20%;
-     height: 95%;
-     color:white;
-     font-weight: bold;
-     display: block;
-     margin-left: auto;
-     margin-right: auto;
- }
 
- mat-toolbar-row.mat-toolbar-row button:focus 
+.btncolor
 {
-    outline: none;
-    border: 0;
- }
+  background-color: transparent;
+}
+
+
+.btncolor /deep/.mat-button-focus
+{
+  background-color: blue;
+}
