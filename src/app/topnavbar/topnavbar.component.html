@@ -1,0 +1,32 @@
+<mat-toolbar  color="primary"> 
+  <mat-toolbar-row fxLayout="row" fxLayoutAlign="center center">
+    <!-- Registrate logo with material MatIconRegistry -->
+    <!-- <img fxFlex src="../assets/images/LogoWhite.svg" alt="Pharus Logo"> -->
+      <mat-icon fxFlex svgIcon="pharus-logo" [inline]="true"></mat-icon>
+      <mat-divider [vertical]="true"></mat-divider>
+    
+      <button fxFlex mat-button #accountMenu (mouseenter)="toggleAccount()" [matMenuTriggerFor]="account">Account</button>
+      <mat-menu #account="matMenu" [overlapTrigger]="false">
+        <span (mouseleave)="toggleAccount()">
+          <a mat-menu-item routerLink="account">Account</a>
+        </span>
+      </mat-menu>
+
+    <button fxFlex mat-button #aiMenu (mouseenter)="toggleAi()" [matMenuTriggerFor]="menu">AI Service</button>
+    <mat-menu #menu="matMenu" [overlapTrigger]="false">
+      <span (mouseleave)="toggleAi()">
+        <a *ngFor="let category of modelCategories" mat-menu-item [routerLink]="[category.abbr]">{{category.title}}</a>
+      </span>
+    </mat-menu>
+    
+    <button fxFlex mat-button #ediMenu (mouseenter)="toggleEdi()" [matMenuTriggerFor]="EDI">Data Service</button>
+    <mat-menu #EDI="matMenu" [overlapTrigger]="false">
+      <span (mouseleave)="toggleEdi()">
+        <a mat-menu-item [routerLink]="[{ outlets: { menu: ['EDIintro'] } }]">EDI Conversion</a>
+        <a mat-menu-item href="">Data Storage</a>
+        <a mat-menu-item href="">Data Computation</a>
+      </span>
+    </mat-menu>
+
+  </mat-toolbar-row>
+</mat-toolbar>

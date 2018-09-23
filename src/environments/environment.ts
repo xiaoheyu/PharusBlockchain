@@ -3,7 +3,10 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  modelUrl:"http://18.236.104.52:8080/api/product",
+  accountUrl:"http://18.236.104.52:8080/api/accounts",
+  sendCoinUrl:"http://18.236.104.52:8080/api/sendCoin"
 };
 
 /*

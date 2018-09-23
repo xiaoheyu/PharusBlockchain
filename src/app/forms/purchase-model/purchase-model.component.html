@@ -1,0 +1,99 @@
+<div class="content" fxLayout="column" fxLayoutAlign="center center">
+
+  <div fxFlex="20%">
+    <h1>
+      You are now purchasing Model:
+    </h1>
+    <p>
+      {{selectedModel.title}}
+    </p>
+  </div>
+
+  <mat-vertical-stepper fxFlex="80%" [linear]="true" #stepper>
+    <mat-step [stepControl]="accountListFormGroup">
+      <form [formGroup]="accountListFormGroup">
+        <ng-template matStepLabel>Choose an account to pay</ng-template>
+        <mat-form-field>
+          <mat-select placeholder="Choose an account" formControlName="selectedAccount" required>
+            <mat-option #account{{i}} *ngFor="let account of accountList;let i=index"  [disabled]="selectedModel.price>account.balance" [value]="account.account">
+              {{account.account}} | Account Balance: {{account.balance}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <div>
+            <mat-list role="list">
+                <mat-list-item role="listitem">
+                 <h2 matLine>
+                   You choose:
+                 </h2>
+                 <span matLine>
+                  {{accountListFormGroup.value.selectedAccount}}
+                 </span>
+                 <h2 matLine>
+                   Current Balance:
+                 </h2>
+                 <span matLine>
+                  {{selectedAccountBalance}}
+                 </span>
+                </mat-list-item>
+            </mat-list>
+
+          <button mat-button matStepperNext>Next</button>
+        </div>
+      </form>
+    </mat-step>
+    <mat-step [stepControl]="secondFormGroup" [completed]="isPurchaseCompleted">
+      <ng-template matStepLabel>Confirm purchase detail and Pay</ng-template>
+
+          <mat-list role="list">
+            <mat-list-item role="listitem">
+             <span matSubheader matLine>
+               Chosen Model
+             </span>
+             <p matLine>
+               Model name: {{selectedModel.title}}
+             </p>
+             <span matLine>
+                 <textarea readonly [matTextareaAutosize]="true" matInput>{{selectedModel.description}}</textarea>
+             </span>
+             <span matLine>
+               Price: {{selectedModel.price}}
+             </span>
+            </mat-list-item>
+            <mat-divider></mat-divider>
+            <mat-list-item role="listitem">
+                <span matLine matSubheader>
+                    Chosen Account
+                </span>
+                <span matLine>
+                    Account address: {{accountListFormGroup.value.selectedAccount}}
+                </span>
+                <span matLine>
+                    Current balance: {{selectedAccountBalance}}
+                </span>
+                <span matLine>
+                    <textarea readonly [matTextareaAutosize]="true" matInput> {{transactionError}}</textarea>
+                </span>
+            </mat-list-item>
+          </mat-list>
+        <div fxLayout="row">
+          <button fxFlex mat-button matStepperPrevious>Back</button>
+          <button fxFlex mat-button  [disabled]="isPurchaseCompleted" (click)="stepper.reset()">Reset</button>
+          <button fxFlex mat-raised-button [disabled]="isPurchaseCompleted" (click)="purchase()">{{isPurchaseCompleted? "Paid": "Confirm and Pay"}}</button>
+          <button fxFlex mat-button matStepperNext [disabled]="!isPurchaseCompleted">Next</button>
+        </div>
+    </mat-step>
+    <mat-step>
+      <ng-template matStepLabel>Proceed to Model</ng-template>
+      You are now done.
+      <div>
+        <!-- TODO: make the second step purchase step -->
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button >Proceed</button>
+      </div>
+    </mat-step>
+  </mat-vertical-stepper>
+
+<button mat-button (click)="goBackToService()">Return to Model List</button>
+</div>
+
