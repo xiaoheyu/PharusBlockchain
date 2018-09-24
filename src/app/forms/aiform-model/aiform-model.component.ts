@@ -1,5 +1,9 @@
-import { Component,OnInit} from '@angular/core';
+import { Component,OnInit,isDevMode} from '@angular/core';
 import * as $ from 'jquery';
+import { Router, ActivatedRoute, ParamMap } from '@angular/router';
+import {map} from 'rxjs/operators';
+import { Observable } from 'rxjs';
+import {AimodelService} from '../aimodel.service';
 
 //declare and initialize as the global variable
 var modelOneList:any[]=[];
@@ -11,9 +15,17 @@ export {modelOneList};
   styleUrls: ['./aiform-model.component.scss']
 })
 export class AiformModelComponent implements OnInit{
+  modelList:Object[];
+  // an Observable that provides the parameter of model in routing
+  model$:Observable<string>;
+  // an Observable that provides the parameter of model category in routing
+  category$:Observable<string>;
+  // TODO: make a class for models in model-data-model.ts instead of using Object type
+  selectedModel:Object;
+  modelCategory:string;
 
   isAiResultHidden = true;
-  jsontemplate = {
+  jsontemplate1 = {
 "title": "Business 360 Product Preference Prediction", 
 "description": "This model is used to predict whehter a user is going to purchase three designated type of products. The model is trained based on thousouds of users purchase history. The inputs of the model related to a user's basic information and recent purchase records. The output of the model are the condidence score that user will purchase a type of product in the near future", 
 "price": 1.5, 
@@ -49,7 +61,7 @@ export class AiformModelComponent implements OnInit{
 "category": "1", 
 "subcategory": "1" 
 }
-  console.log(jsontemplate);
+  jsontemplate:Object
   jsonSchema = {}
   submittedData = {}
   resultSchema = []
@@ -57,15 +69,39 @@ export class AiformModelComponent implements OnInit{
   enumPair ={}
   outputPair = {}
 
-  ngOnInit() {
+  constructor(
+  	private route: ActivatedRoute,
+    private aimodelService:AimodelService,
+    private router:Router) {
+   }
 
-    var parameters = this.jsontemplate.parameter;
+  ngOnInit() {
+    this.modelList=this.aimodelService.models;
+    this.model$ = this.route.paramMap.pipe(
+      map((params: ParamMap) =>{
+        return params.get('modelId')
+        })
+      );
+    
+    this.model$.subscribe(modelId=>{
+        this.modelList.forEach(model=>{
+          if (Number(model['id'])===Number(modelId)){
+            this.selectedModel=model;
+            console.log()
+          }
+        });
+      });
+
+    var parameters = JSON.parse(this.selectedModel['parameter']);
+    console.log(parameters);
+    var parameters1 = this.jsontemplate1.parameter;
+    this.jsontemplate = this.selectedModel;
     var jsonParameter = {};
     var paraNamePair = {};
     var enumPair ={};
     var outputPair = {}
 
-    parameters.forEach(function(entry){
+    parameters1.forEach(function(entry){
       if(entry.parameter_type == 'input'){
         paraNamePair[entry.display_name] = entry.name;
         if(entry.value_type == 'numeric'){
@@ -74,8 +110,8 @@ export class AiformModelComponent implements OnInit{
           var type = {"type": "string"};
         }
         jsonParameter[entry.display_name] = type;
-        if(entry.value_type == "categorical"){
-          jsonParameter[entry.display_name].enum = entry.display_range;
+        if(entry['value_type'] == "categorical"){
+          jsonParameter[entry.display_name].enum = entry['display_range'];
           var temp = {};
           for(let index in entry.display_range){
           	temp[entry.display_range[index]] = entry.value_range[index];
@@ -90,6 +126,8 @@ export class AiformModelComponent implements OnInit{
     this.paraNamePair = paraNamePair;
     this.enumPair = enumPair;
     this.outputPair = outputPair;
+    //this.jsonSchema = jsonParameter;
+    console.log(typeof(jsonParameter));
     this.jsonSchema = jsonParameter;
     console.log(this.jsonSchema);
     
@@ -98,7 +136,7 @@ export class AiformModelComponent implements OnInit{
   showAiResult()
   {
     this.isAiResultHidden=false;
-    var model_url = this.jsontemplate.url;
+    var model_url = this.jsontemplate['url'];
     var dataReceived = this.submittedData;
     var paraNameMap = this.paraNamePair;
     var enumMap = this.enumPair;
@@ -133,8 +171,5 @@ export class AiformModelComponent implements OnInit{
 
     this.resultSchema = output;
   }
-  
-  constructor() {
-   }
 
 }

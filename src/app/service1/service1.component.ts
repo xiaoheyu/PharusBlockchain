@@ -50,6 +50,15 @@ export class Service1Component implements OnInit {
   }
 
   public ngOnInit(){
+        this.aimodelservice.getModel()
+              .subscribe(
+                 // update models in localstorage
+                 ()=>
+                 {
+                   this.modelList=this.aimodelservice.models;
+                   console.log(this.modelList);
+                 }
+               );
     this.aimodelservice.getCategories().subscribe(categories=>this.modelCategories=categories);
     this.modelList=JSON.parse(localStorage.getItem('models'));
     this.category$ = this.route.paramMap.pipe(
