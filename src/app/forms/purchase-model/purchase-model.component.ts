@@ -35,7 +35,7 @@ export class PurchaseModelComponent implements OnInit {
   transactionError:string;
 
   receiptChartColumn:string[]=receiptChartColumn;
-  latestReceipt:Object[];
+  latestReceipt:Object;
 
   constructor
   ( private route: ActivatedRoute,
@@ -95,7 +95,7 @@ export class PurchaseModelComponent implements OnInit {
     {
       this.router.navigate([this.modelCategory]);
     }
-
+// Listen for changes on selected account
     formOnChanges()
     {
       this.accountListFormGroup.valueChanges.subscribe(
@@ -109,15 +109,19 @@ export class PurchaseModelComponent implements OnInit {
     purchase()
     {
       this.transactionError=null;
-      console.log(this.accountListFormGroup.value['selectedAccount'],this.selectedModel['price']*Math.pow(10,18));
+      // debugging
+      if (isDevMode()){
+        console.log(this.accountListFormGroup.value['selectedAccount'],this.selectedModel['price']*Math.pow(10,18));}
       this.aimodelService.purchaseModel(this.accountListFormGroup.value['selectedAccount'],(this.selectedModel['price']*Math.pow(10,18)).toString())
       .subscribe(receipt=>{
-
-        this.refreshAccounts();
+        // display error message if the transaction somehow failed
         if (receipt.hasOwnProperty('error')){
           this.transactionError=receipt.error.text;
+          // debugging
+          if(isDevMode){
           console.log(receipt.error.text);
           console.log(this.isPurchaseCompleted);
+          }
         }
         else{
             this.isPurchaseCompleted=true;
@@ -127,9 +131,12 @@ export class PurchaseModelComponent implements OnInit {
             for (let prop of Object.keys(this.receipts)){
                 this.receiptsArray.push(this.receipts[prop])
               }
-            this.latestReceipt=[this.flattenObject(this.receiptsArray[this.receiptsArray.length-1])];
-            console.log(this.latestReceipt)
-        }
+            this.latestReceipt=this.flattenObject(this.receiptsArray[this.receiptsArray.length-1]);
+            if (isDevMode()){
+            console.log(this.latestReceipt);
+            }
+        };
+        this.refreshAccounts();
       });
     }
 
@@ -142,7 +149,7 @@ export class PurchaseModelComponent implements OnInit {
         }
       }
 // flatten a receipt to a one-layer object
-flattenObject(ob:Object):Object {
+    flattenObject(ob:Object):Object {
         let toReturn = {};
         
         for (let i in ob) {
