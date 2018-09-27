@@ -32,36 +32,6 @@
         Please enter a correct URL for your model
     </div>
 
-
-    <!-- nested from group for parameters -->
-    <div formArrayName="parameter">
-      <div *ngFor="let para of parameter.controls; let i=index" [formGroupName]="i">
-          <div fxFlex fxLayout="row">
-            <h4 fxFlex>Parameter #{{i + 1}}</h4>
-            
-            <mat-form-field fxFlex>
-              <input matInput  type="text"  placeholder="Display name" formControlName="display_name">
-            </mat-form-field>
-
-            <mat-form-field fxFlex>
-              <input matInput  type="text"  placeholder="Name" formControlName="name">
-            </mat-form-field>
-
-            <mat-form-field fxFlex>
-              <input matInput  type="text"  placeholder="Type of value" formControlName="value_type">
-            </mat-form-field>
-
-            <mat-form-field fxFlex>
-              <input matInput  type="text"  placeholder="range of value" formControlName="value_range">
-            </mat-form-field>
-
-            <mat-form-field fxFlex>
-              <input matInput  type="text"  placeholder="Parameter type: Input or Output" formControlName="parameter_type">
-            </mat-form-field>
-          </div>
-      </div>
-    </div>
-
     <mat-form-field fxFlex>
       <mat-select placeholder="Category" formControlName="category">
         <mat-option *ngFor="let category of modelCategories" value="{{category.categoryId}}">
@@ -79,6 +49,48 @@
           </mat-option>
       </mat-select>
     </mat-form-field>
+
+    <!-- nested from group for parameters -->
+    <div formArrayName="parameter">
+      <div *ngFor="let para of parameter.controls; let i=index" [formGroupName]="i">
+          <div fxFlex fxLayout="row">
+            <!-- <h4 fxFlex>Parameter #{{i + 1}}</h4> -->
+            
+            <mat-form-field fxFlex>
+              <input matInput  type="text"  placeholder="Display name" formControlName="display_name">
+            </mat-form-field>
+
+            <mat-form-field fxFlex>
+              <input matInput  type="text"  placeholder="Name" formControlName="name">
+            </mat-form-field>
+
+            <mat-form-field fxFlex>
+              <input matInput  type="text"  placeholder="Type of value" formControlName="value_type">
+            </mat-form-field>
+
+            <mat-form-field fxFlex>
+              <input matInput  type="text"  placeholder="Range of Value" formControlName="value_range">
+            </mat-form-field>
+
+            <mat-form-field fxFlex>
+              <input matInput  type="text"  placeholder="Display Range" formControlName="display_range">
+            </mat-form-field>
+
+            <mat-form-field fxFlex>
+              <!-- <input matInput  type="text"  placeholder="Parameter type: Input or Output" formControlName="parameter_type"> -->
+              <mat-select formControlName="parameter_type" placeholder="Parameter type: Input or Output">
+                <mat-option value="input">input</mat-option>
+                <mat-option value="output">output</mat-option>
+              </mat-select>
+            </mat-form-field>
+
+            <mat-form-field fxFlex>
+              <textarea matInput placeholder="Comment" formControlName="comment"></textarea>
+            </mat-form-field>
+
+          </div>
+      </div>
+    </div>
     
 </form>
 {{modelForm.value|json}}
