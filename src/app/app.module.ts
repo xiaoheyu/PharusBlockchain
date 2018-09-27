@@ -28,6 +28,11 @@ import { TopnavbarComponent } from './topnavbar/topnavbar.component';
 import { FooterComponent } from './footer/footer.component';
 import { FrsConvertPipe } from './useraccount/frs-convert.pipe';
 
+import {
+  MaterialDesignFrameworkModule
+} from 'angular6-json-schema-form';
+import { AiformModelComponent } from './forms/aiform-model/aiform-model.component';
+
 
 const appRoutes: Routes = [
   {
@@ -47,12 +52,11 @@ const appRoutes: Routes = [
   {
     path:':abbr/:modelId',
     component:PurchaseModelComponent
+  },
+  {
+    path:':abbr/:modelId/form',
+    component:AiformModelComponent
   }
-
-  
-  
-  
-  
   
 ];
 
@@ -69,7 +73,8 @@ const appRoutes: Routes = [
     PurchaseModelComponent,
     TopnavbarComponent,
     FooterComponent,
-    FrsConvertPipe
+    FrsConvertPipe,
+    AiformModelComponent
   ],
   imports: [
     RouterModule.forRoot(
@@ -89,6 +94,7 @@ const appRoutes: Routes = [
     MatNativeDateModule,
     MatMenuModule,
     MatButtonModule,
+    MaterialDesignFrameworkModule,
     MatIconModule,
     ReactiveFormsModule,
     MatFormFieldModule,
@@ -98,7 +104,6 @@ const appRoutes: Routes = [
     MatStepperModule,
     MatListModule,
     MatDividerModule
-
   ],
   schemas:[ NO_ERRORS_SCHEMA ],
   providers: [],

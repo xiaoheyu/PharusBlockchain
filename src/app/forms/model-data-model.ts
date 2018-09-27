@@ -19,20 +19,25 @@ export class AiModel
         this.subcategory=0;
     }
 }
+
 // used in add-model component for adding more parameters for new model
 export class Parameter{
-    display_name:string;
-    name:string;
-    value_type:string;
-    value_range:string;
-    parameter_type:string;
+    display_name:string[];
+    name:string[];
+    value_type:string[];
+    value_range:string[];
+    display_range:string[];
+    parameter_type:string[];
+    comment:string[];
 
 constructor(){
-   this.display_name='';
-   this.name='';
-   this.value_type='';
-   this.value_range='';
-   this.parameter_type='';
+   this.display_name=[''];
+   this.name=[''];
+   this.value_type=[''];
+   this.value_range=[''];
+   this.display_range=[''];
+   this.parameter_type=[''];
+   this.comment=[''];
   }
 }
 // Structural definition of model categories
@@ -77,12 +82,12 @@ export const modelcategories:ModelCategory[]=[
 ]
 
 export const receiptChartColumn:string[]=[
-    'account',
-    'receipt.balance',
-    'receipt.receipt.blockHash',
-    'receipt.receipt.blockNumber',
-    'receipt.receipt.cumulativeGasUsed',
-    'receipt.receipt.gasUsed',
-    'receipt.receipt.status',
-    'receipt.receipt.transactionHash',
-    'receipt.receipt.transactionIndex'];
+    'Account',
+    'Balance',
+    'Block Hash',
+    'Block Number',
+    'Cumulative Gas Used',
+    'Gas Used',
+    'Status',
+    'Transaction Hash',
+    'Transaction Index'];

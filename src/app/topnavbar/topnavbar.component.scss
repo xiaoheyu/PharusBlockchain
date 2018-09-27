@@ -1,5 +1,4 @@
 
-
 mat-toolbar-row.mat-toolbar-row button
 {
 	min-width: 1%;
@@ -10,6 +9,7 @@ mat-toolbar-row.mat-toolbar-row button
     margin-left: auto;
     margin-right: auto;
     background-color: transparent;
+    font-size:1vm;
 }
 
 
@@ -22,4 +22,12 @@ mat-toolbar-row.mat-toolbar-row button:focus
 
 .btncenter {
   margin: 0 auto;
+
+img
+{
+    height:3em;
+    width:3em;
+    position: fixed;
+    left:0;
+
 }
