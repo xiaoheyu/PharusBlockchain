@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatTabsModule,MatButtonModule,MatMenuModule,MatNativeDateModule,MatIconModule, MatDialogModule,MatStepperModule} from '@angular/material';
+import { MatTooltipModule } from '@angular/material/tooltip';
 import { FormsModule, ReactiveFormsModule }   from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
 import {MatCardModule} from '@angular/material/card';
@@ -74,7 +75,7 @@ const appRoutes: Routes = [
     TopnavbarComponent,
     FooterComponent,
     FrsConvertPipe,
-    AiformModelComponent
+    AiformModelComponent,
   ],
   imports: [
     RouterModule.forRoot(
@@ -103,7 +104,8 @@ const appRoutes: Routes = [
     HttpClientModule,
     MatStepperModule,
     MatListModule,
-    MatDividerModule
+    MatDividerModule,
+    MatTooltipModule
   ],
   schemas:[ NO_ERRORS_SCHEMA ],
   providers: [],

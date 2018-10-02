@@ -1,20 +1,20 @@
 <div class="content" fxFlex fxLayout="column" fxLayoutAlign="space-evenly center">
   
     <div fxFlex >
-      <h1>{{selectedCategory.title}}</h1>
+      <h1>
+        {{selectedCategory.title}} 
+        <i class="material-icons" 
+        matTooltipClass="appTooltip"
+        matTooltipShowDelay = 500
+         [matTooltip]='selectedCategory.description'
+         matTooltipPosition = 'after'
+        aria-label="Button that displays a tooltip when focused or hovered over">contact_support</i> 
+      </h1> 
+  
+      
+
     </div>
     
-    <div  fxFlex>
-      <h2 >Description:</h2>
-    </div>
-
-    <div fxFlex >
-    <span>
-      <p>
-        {{selectedCategory.description}}
-      </p>
-    </span>
-    </div>
 
     <div fxFlex fxLayout="row wrap" fxLayoutAlign="space-evenly space-evenly">
 

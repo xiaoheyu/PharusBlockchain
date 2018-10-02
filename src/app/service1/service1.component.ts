@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import {MatDialog} from '@angular/material/dialog';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import {map} from 'rxjs/operators';
-
 import {AddModelComponent} from '../forms/add-model/add-model.component';
 import {AimodelService} from '../forms/aimodel.service';
 import {ModelCategory} from '../forms/model-data-model';
