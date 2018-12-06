@@ -1,3 +1,6 @@
+# Block chain project
+UI for business data sharing platform
+Design and implement the responsive user interface to enable AI model transactions on ethereum
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.0.8.
 
